@@ -1,0 +1,35 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<% content_for :title, "ガソリン代の計算" %>
+
+<h1>ガソリン代の計算</h1>
+
+<div id="route-info">
+    <p>距離: <span id="distance"></span></p>
+    <p>時間: <span id="duration"></span></p>
+</div>
+
+
+<%= javascript_include_tag "gasolines_new", "data-turbo-track": "reload", defer: true %>
+
+<%= form_with model: @gasoline, url: gasolines_path, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :total_distance %>
+  <%= f.number_field :total_distance, value: session[:gasoline]['total_distance'] %>
+
+  <%= f.label :fuel_efficiency %>
+  <%= f.number_field :fuel_efficiency, value: session[:gasoline]['fuel_efficiency'] %>
+
+  <%= f.label :price_per_liter %>
+  <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'] %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= turbo_frame_tag @gasoline_cost  do %>
+  <div id="result">
+    <%= render 'result' %>
+  </div>
+<% end %>
+
+<%= link_to "次へ",  reset_and_redirect_highways_path, class: "next" %>
+
