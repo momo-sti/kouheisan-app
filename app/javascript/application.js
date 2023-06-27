@@ -4,3 +4,4 @@ import "./controllers"
 import './top.js'
 import './gasolines_new.js'
 import './highway.js'
+import './split.js'

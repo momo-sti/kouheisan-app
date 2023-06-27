@@ -28,11 +28,6 @@ Rails.application.routes.draw do
 
   end
 
-  resources :results do
-    get :get_gasoline_info, on: :collection
-    get :get_highway_info, on: :collection
-  end
-
   resources :extras
 
 

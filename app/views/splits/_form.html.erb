@@ -1,0 +1,12 @@
+<%= javascript_include_tag "split", "data-turbo-track": "reload", defer: true %>
+
+<div id="split-container" data-total-amount="<%= @total_amount %>">
+  <button id="decrement-button">-</button>
+  <input type="number" id="person-count" value="1" min="1">
+  <button id="increment-button">+</button>
+  <h5 id="split-amount">割り勘額: 0円</h5>
+</div>
+
+<div>
+  <a href="#">共有する</a>
+</div>
