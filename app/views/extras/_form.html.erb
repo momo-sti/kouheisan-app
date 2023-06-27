@@ -1,0 +1,26 @@
+<%= form_with(model: extra, url: extra.persisted? ? extra_path(id: @extras.index(extra)) : extras_path, local: true) do |f| %>
+  <% if extra.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(extra.errors.count, "error") %> prohibited this extra from being saved:</h2>
+        <ul>
+          <% extra.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :category %>
+      <%= f.text_field :category %>
+    </div>
+
+    <div class="field">
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
