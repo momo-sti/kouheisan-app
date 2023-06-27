@@ -3,4 +3,4 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import './top.js'
 import './gasolines_new.js'
-// import './highway.js'
+import './highway.js'
