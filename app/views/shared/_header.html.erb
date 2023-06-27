@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag 'header' %>
+
+<header>
+    <h1>
+        <a href="/">交平さん</a>
+    </h1>
+    <div class="back">
+        <% unless current_page?(root_path) %>
+            <%= link_to '<', :back %>
+        <% end %>
+    </div>
+    <h3><%= content_for?(:title) ? yield(:title) : "デフォルトのタイトル" %></h3>
+    <nav class="login">
+        <ul>
+            <li><a href="#">ログイン</a></li>
+        </ul>
+    </nav>
+</header>

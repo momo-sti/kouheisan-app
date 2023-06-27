@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'top' %>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= javascript_include_tag "top", "data-turbo-track": "reload", defer: true %>
+
+<% content_for :title, "距離を計算する" %>
+
+
+<div id="routeSearchForm">
+  <div class ="inputForm">
+    <div><input id="inputBegin" type="text" placeholder="出発地"></div>
+    <div><input id="inputEnd" type="text" placeholder="目的地"></div>
+  </div>
+    <div class="toggle-container">
+        <input type="checkbox" id="highwaysToggle" class="toggle">
+        <label for="highwaysToggle">高速道路を使用する</label>
+    </div>
+    <button id="searchButton">検索</button>
+    <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "button"} %>
+
+
+</div>
+
+
+<div id="map_canvas"></div>
+<div id="directionsPanel"></div>
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

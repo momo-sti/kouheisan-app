@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  padding: 20px;
+  text-align: center; /* 中央寄せ */
+}
+
+a {	
+  text-decoration: none;
+  color: #4b4b4b;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+footer li {
+  flex: 1;
+  margin: 0;
+  padding: 0 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.copyright {
+  margin: 0;
+  padding: 10px 0 0 0;
+  color: #4b4b4b;
+}
