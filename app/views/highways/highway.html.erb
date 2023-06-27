@@ -1,0 +1,63 @@
+<%= javascript_include_tag "highway", "data-turbo-track": "reload" %>
+<% content_for :title, "高速料金の計算" %>
+
+<%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false } do |f| %>
+  <div>
+    <%= f.label :start_place, '出発IC' %>
+    <%= f.text_field :start_place, id: "start_place" %>
+  </div>
+
+  <div>
+    <%= f.label :arrive_place, '到着IC' %>
+    <%= f.text_field :arrive_place, id: "arrive_place" %>
+  </div>
+
+  <div>
+    <%= f.label :car_type, '自動車タイプ' %>
+    <%= f.select :car_type, options_for_select([['普通車', '1'], ['軽自動車', '0']]) %>
+  </div>
+
+  <div>
+    <%= f.label :date, '日付' %>
+    <%= f.date_field :date %>
+    <%= f.label :hour, '時間' %>
+    <%= f.select :hour, options_for_select((0..23).to_a.map { |h| h.to_s.rjust(2, '0') }) %>
+    <%= f.label :minute, ':' %>
+    <%= f.select :minute, options_for_select((0..50).step(10).to_a.map { |m| m.to_s.rjust(2, '0') }) %>
+  </div>
+
+  <div>
+    <%= f.label :kind, '出発', value: 1 %>
+    <%= f.radio_button :kind, '1' %>
+
+    <%= f.label :kind, '到着', value: 2 %>
+    <%= f.radio_button :kind, '2' %>
+  </div>
+
+  <%= f.submit '検索' %>
+<% end %>
+
+
+  <div>
+    <%= form_with url: save_highway_info_highways_path, local: true do |f| %>
+      <p><%= f.number_field :highway_cost %>円</p>
+      <div><%= f.submit '次へ' %></div>
+    <% end %>
+  </div>
+
+<%= form_with url: 'https://www.driveplaza.com/dp/SearchQuick', method: :get, local: true, id: 'external_form', style: 'display: none;' do |f| %>
+  <%= hidden_field_tag :startPlaceKana, nil, id: 'startPlaceKana' %>
+  <%= hidden_field_tag :arrivePlaceKana, nil, id: 'arrivePlaceKana' %>
+  <%= hidden_field_tag :searchHour, nil, id: 'searchHour' %>
+  <%= hidden_field_tag :searchMinute, nil, id: 'searchMinute' %>
+  <%= hidden_field_tag :kind, nil, id: 'kind' %>
+  <%= hidden_field_tag :carType, nil, id: 'carType' %>
+  <%= hidden_field_tag :priority, '2' %>
+  <%= hidden_field_tag :keiyuPlaceKana, '' %>
+  <%= hidden_field_tag :keiyuPlaceKana2, '' %>
+  <%= hidden_field_tag :keiyuPlaceKana3, '' %>
+  <%= hidden_field_tag :searchYear, nil, id: 'searchYear' %>
+  <%= hidden_field_tag :searchMonth, nil, id: 'searchMonth' %>
+  <%= hidden_field_tag :searchDay, nil, id: 'searchDay' %>
+  <%= hidden_field_tag :selectickindflg, '0' %>
+<% end %>
