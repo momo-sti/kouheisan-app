@@ -1,0 +1,75 @@
+.gas-form {
+  position: relative;
+  height: 20px;
+}
+
+.next {
+  position: absolute;
+  bottom: 100px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-accent{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+#route-info {
+  text-align: center;
+}
+
+.max-w-xs {
+  position: relative;
+  width: 90px;
+  height: 40px;
+  margin: 5px;
+  text-align: right;
+}
+
+.form-label {
+  display: inline-block;
+  width: 140px;
+}
+
+.gas-form {
+  position: relative;
+  top: 50px;
+}
+
+.cal-button {
+  position: relative;
+  margin-top: 15px;
+}
+
+.result {
+  position: relative;
+  top: 300px;
+}
+
+.text-xl {
+  border-bottom:solid #d75050;
+}
+
+.yen {
+  position: relative;
+  left: 180px;
+}
+
+.gas-cost {
+  position: absolute;
+  left: 170px;
+  bottom: 2px;
+  color: #d75050;
+  font-size: 30px;
+}

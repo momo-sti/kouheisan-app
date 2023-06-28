@@ -5,7 +5,7 @@ class GasolinesController < ApplicationController
       session[:result] = ""
     end
     @gasoline = Gasoline.new
-    @result = session[:result]
+    @result = session[:result].present? ? session[:result] : 0
   end
 
   def create
