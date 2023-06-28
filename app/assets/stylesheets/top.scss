@@ -9,15 +9,13 @@
   padding: 20px;
 }
 #inputBegin {
-  width: 95%;
+  width: 100%;
   box-sizing: border-box;
-  padding: 5px;
   margin: 5px 10px;
 }
 #inputEnd {
-  width: 95%;
+  width: 100%;
   box-sizing: border-box;
-  padding: 5px;
   margin: 5px 10px;
 }
 .toggle-container {
@@ -27,17 +25,10 @@
   margin-bottom: 1em;
 }
 
-.toggle {
-  margin-left: 2em;
-}
-
 #searchButton {
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
-  background-color: #4285F4;
-  color: white;
-  border: none;
   border-radius: 4px;
   font-size: 1em;
 }

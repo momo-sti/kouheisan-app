@@ -19,7 +19,9 @@ window.initMap = function() {
     map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
 
     // 経路を取得
-    directionsDisplay = new google.maps.DirectionsRenderer();
+    if (!directionsDisplay) {
+        directionsDisplay = new google.maps.DirectionsRenderer();
+    }
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directionsPanel'));     // 経路詳細
 }
@@ -70,13 +72,20 @@ function calcRoute(begin, end) {
     };
 
     // インスタンス作成
-    directionsService = new google.maps.DirectionsService();
+    if (!directionsService) {
+        directionsService = new google.maps.DirectionsService();
+    }
 
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
             var route = response.routes[0];
             var leg = route.legs[0];
+
+            var km = leg.distance.text;   //距離
+            var time = leg.duration.text; //時間
+
+            $('#routeInfo').text(km + '(所要時間：' + time + ')');
         } else {
             alert('ルートが見つかりませんでした…');
         }

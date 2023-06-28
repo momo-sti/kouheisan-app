@@ -9,19 +9,19 @@
 
 <div id="routeSearchForm">
   <div class ="inputForm">
-    <div><input id="inputBegin" type="text" placeholder="出発地"></div>
-    <div><input id="inputEnd" type="text" placeholder="目的地"></div>
+    <div><input id="inputBegin", type="text" placeholder="出発地" class="input input-bordered input-accent w-full max-w-xs" /></div>
+    <div><input id="inputEnd", type="text" placeholder="目的地" class="input input-bordered input-accent w-full max-w-xs" /></div>
   </div>
   <div class="flex flex-col">
     <div class="form-control w-52">
       <label class="cursor-pointer label">
-        <span class="label-text">高速道路を使用する</span> 
-        <input type="checkbox" class="toggle toggle-primary" checked />
+        <span class="label-text">高速道路を使用</span> 
+        <input type="checkbox" class="toggle toggle-secondary" checked />
       </label>
     </div>
   </div>
-    
-    <button id="searchButton">検索</button>
+    <button id="searchButton", class="btn btn-active btn-accent">検索</button>
+    <div id="routeInfo"></div>
     <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "button"} %>
 
 
