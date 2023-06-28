@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/d3b7736f3b.js" crossorigin="anonymous"></script>
 <%= stylesheet_link_tag 'top' %>
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
@@ -21,9 +22,12 @@
     </div>
   </div>
     <button id="searchButton", class="btn btn-active btn-accent">検索</button>
-    <div id="routeInfo"></div>
-    <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "button"} %>
+    <div id="routeInfo">
+      <i class="fa-solid fa-car" style="color: #d75050;"></i>
+      <span id="routeDetails"></span>
+    </div>
 
+    <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "btn btn-active btn-accent fixed-button"} %>
 
 </div>
 

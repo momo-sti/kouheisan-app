@@ -85,7 +85,7 @@ function calcRoute(begin, end) {
             var km = leg.distance.text;   //距離
             var time = leg.duration.text; //時間
 
-            $('#routeInfo').text(km + '(所要時間：' + time + ')');
+            $('#routeDetails').text(km + '(所要時間：' + time + ')');
         } else {
             alert('ルートが見つかりませんでした…');
         }
