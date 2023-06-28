@@ -1,35 +1,41 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%= stylesheet_link_tag 'gasoline' %>
 <% content_for :title, "ガソリン代の計算" %>
-
-<h1>ガソリン代の計算</h1>
-
-<div id="route-info">
-    <p>距離: <span id="distance"></span></p>
-    <p>時間: <span id="duration"></span></p>
-</div>
-
-
 <%= javascript_include_tag "gasolines_new", "data-turbo-track": "reload", defer: true %>
 
-<%= form_with model: @gasoline, url: gasolines_path, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.label :total_distance %>
-  <%= f.number_field :total_distance, value: session[:gasoline]['total_distance'] %>
 
-  <%= f.label :fuel_efficiency %>
-  <%= f.number_field :fuel_efficiency, value: session[:gasoline]['fuel_efficiency'] %>
-
-  <%= f.label :price_per_liter %>
-  <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'] %>
-
-  <%= f.submit %>
-<% end %>
-
-<%= turbo_frame_tag @gasoline_cost  do %>
-  <div id="result">
-    <%= render 'result' %>
+<div class="container">
+  <div id="route-info">
+      <p><i class="fa-solid fa-car fa-xl" style="color: #d75050;"></i>&nbsp;<span id="distance"></span>&emsp;<i class="fa-regular fa-clock fa-xl" style="color: #d75050;"></i>&nbsp;<span id="duration"></span></p>
   </div>
-<% end %>
 
-<%= link_to "次へ",  reset_and_redirect_highways_path, class: "next" %>
+  <%= form_with model: @gasoline, url: gasolines_path, local: true, html: { class: "gas-form" } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div>
+      <%= f.label :total_distance, class: 'form-label' %>
+      <%= f.number_field :total_distance, value: session[:gasoline]['total_distance'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">km</p>
+    </div>
+    <div>
+      <%= f.label :fuel_efficiency, class: 'form-label' %>
+      <%= f.number_field :fuel_efficiency, value: session[:gasoline]['fuel_efficiency'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">L/km</p>
+    </div>
+    <div>
+      <%= f.label :price_per_lite, class: 'form-label' %>
+      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">円/L</p>
+    </div>
+    <div class="cal-button">
+      <%= f.submit class: "btn btn-active btn-accent fixed-button" %>
+    </div>
+  <% end %>
 
+  <%= turbo_frame_tag @gasoline_cost  do %>
+    <div id="result">
+      <%= render 'result' %>
+    </div>
+  <% end %>
+  <div class="button-wrapper">
+    <div class="next">
+      <%= link_to "次へ",  reset_and_redirect_highways_path, class: "btn btn-active btn-accent fixed-button" %>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,4 @@
-<p>計算結果: <%= @result %></p>
+<%= stylesheet_link_tag 'gasoline' %>
+<div class="result">
+  <h1 class="text-xl">ガソリン代金<p class="gas-cost"><%= @result.present? ? @result : 0 %></p><p class="yen", style="display:inline">円</p></h1>
+</div>
