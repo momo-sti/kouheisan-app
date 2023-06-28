@@ -20,7 +20,9 @@ window.initMap = function() {
 
     // 経路を取得
     if (!directionsDisplay) {
-        directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true //デフォルトのマーカーを消す
+        });
     }
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directionsPanel'));     // 経路詳細
@@ -79,6 +81,41 @@ function calcRoute(begin, end) {
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
+
+            // 新しいマーカーの作成
+            var EndIcon = {
+                path: "M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z",
+                fillColor: '#d75050',
+                fillOpacity: 1,
+                strokeWeight: 0,
+                scale: 0.06,
+                anchor: new google.maps.Point(192, 512),
+            };
+
+            var startIcon = {
+                path: "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z",
+                fillColor: '#0084ff',
+                fillOpacity: 1,
+                strokeWeight: 0,
+                scale: 0.06,
+                anchor: new google.maps.Point(256, 256)
+            };
+            
+            
+            var startMarker = new google.maps.Marker({
+                position: response.routes[0].legs[0].start_location,
+                map: map,
+                icon: startIcon
+            });
+            
+            
+        
+            var endMarker = new google.maps.Marker({
+                position: response.routes[0].legs[0].end_location,
+                map: map,
+                icon: EndIcon
+            });
+        
             var route = response.routes[0];
             var leg = route.legs[0];
 

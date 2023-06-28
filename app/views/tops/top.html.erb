@@ -10,8 +10,8 @@
 
 <div id="routeSearchForm">
   <div class ="inputForm">
-    <div><input id="inputBegin", type="text" placeholder="出発地" class="input input-bordered input-accent w-full max-w-xs" /></div>
-    <div><input id="inputEnd", type="text" placeholder="目的地" class="input input-bordered input-accent w-full max-w-xs" /></div>
+    <div><i class="fa-solid fa-circle fa-lg" style="color: #0084ff;"></i><input id="inputBegin", type="text" placeholder="出発地" class="input input-bordered input-accent w-full max-w-xs" /></div>
+    <div><i class="fa-solid fa-location-dot fa-xl" style="color: #d75050;"></i><input id="inputEnd", type="text" placeholder="目的地" class="input input-bordered input-accent w-full max-w-xs" /></div>
   </div>
   <div class="flex flex-col">
     <div class="form-control w-52">
@@ -36,4 +36,4 @@
 <div id="directionsPanel"></div>
 
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
