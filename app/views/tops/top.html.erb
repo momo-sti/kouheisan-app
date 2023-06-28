@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <%= stylesheet_link_tag 'top' %>
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
@@ -11,10 +12,15 @@
     <div><input id="inputBegin" type="text" placeholder="出発地"></div>
     <div><input id="inputEnd" type="text" placeholder="目的地"></div>
   </div>
-    <div class="toggle-container">
-        <input type="checkbox" id="highwaysToggle" class="toggle">
-        <label for="highwaysToggle">高速道路を使用する</label>
+  <div class="flex flex-col">
+    <div class="form-control w-52">
+      <label class="cursor-pointer label">
+        <span class="label-text">高速道路を使用する</span> 
+        <input type="checkbox" class="toggle toggle-primary" checked />
+      </label>
     </div>
+  </div>
+    
     <button id="searchButton">検索</button>
     <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "button"} %>
 
@@ -27,4 +33,3 @@
 
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
