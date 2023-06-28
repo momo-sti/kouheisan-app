@@ -1,7 +1,7 @@
-@import 'header';
-@import 'footer';
-@import 'top';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import 'header';
+@import 'footer';
+@import 'top';

@@ -24,7 +24,7 @@ window.initMap = function() {
     directionsDisplay.setPanel(document.getElementById('directionsPanel'));     // 経路詳細
 }
 
-window.onload = function() {
+$(document).ready(function() {
     // searchButtonがクリックされたら関数発火
     $('#searchButton').click(function(e) {
         e.preventDefault();
@@ -35,7 +35,30 @@ window.onload = function() {
         window.initMap();
         calcRoute(begin, end); // ルート計算
     });
-}
+
+    // 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
+    $('#confirmButton').click(function(e) {
+        e.preventDefault();
+
+        // 距離と時間を取得
+        var km = $('.adp-summary span[jstcache="25"]').text();
+        var time = $('.adp-summary span[jstcache="51"]').text();
+
+        // セッションストレージに保存
+        sessionStorage.setItem('km', km);
+        sessionStorage.setItem('time', time);
+        // extraのセッションをリセット
+        $.ajax({
+            type: 'POST',
+            url: '/tops/reset_session',
+            data: { authenticity_token: $('meta[name="csrf-token"]').attr('content') },
+            success: function() {
+                // km,timeの保存とextraのリセットが完了したら、画面遷移を行う
+                window.location.href = "/gasolines/new";
+            }
+        });
+    });
+});
 
 // ルート取得
 function calcRoute(begin, end) {
@@ -59,26 +82,3 @@ function calcRoute(begin, end) {
         }
     });
 }
-
-// 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
-$('#confirmButton').click(function(e) {
-    e.preventDefault();
-
-    // 距離と時間を取得
-    var km = $('.adp-summary span[jstcache="25"]').text();
-    var time = $('.adp-summary span[jstcache="51"]').text();
-
-    // セッションストレージに保存
-    sessionStorage.setItem('km', km);
-    sessionStorage.setItem('time', time);
-    // extraのセッションをリセット
-    $.ajax({
-        type: 'POST',
-        url: '/tops/reset_session',
-        data: { authenticity_token: $('meta[name="csrf-token"]').attr('content') },
-        success: function() {
-            // km,timeの保存とextraのリセットが完了したら、画面遷移を行う
-            window.location.href = "/gasolines/new";
-        }
-    });
-});

@@ -3,9 +3,9 @@ class ExtrasController < ApplicationController
 
   def index
     @result = (session[:result] || 0).to_f
-    @total_distance = (session[:total_distance])
-    @fuel_efficiency = (session[:fuel_efficiency])
-    @price_per_liter = (session[:price_per_liter])
+    @total_distance = session[:gasoline]['total_distance']
+    @fuel_efficiency = session[:gasoline]['fuel_efficiency']
+    @price_per_liter = session[:gasoline]['price_per_liter']
     @start_place = session[:start_place]
     @arrive_place = session[:arrive_place]
     @highway_cost = (session[:highway_cost] || 0).to_f
