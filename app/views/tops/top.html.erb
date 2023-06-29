@@ -6,28 +6,29 @@
 
 <% content_for :title, "距離を計算する" %>
 
-
-<div id="routeSearchForm">
-  <div class ="inputForm">
-    <div><i class="fa-solid fa-circle fa-lg" style="color: #0084ff;"></i><input id="inputBegin", type="text" placeholder="出発地" class="input input-bordered input-accent w-full max-w-xs" /></div>
-    <div><i class="fa-solid fa-location-dot fa-xl" style="color: #d75050;"></i><input id="inputEnd", type="text" placeholder="目的地" class="input input-bordered input-accent w-full max-w-xs" /></div>
-  </div>
-  <div class="flex flex-col">
-    <div class="form-control w-52">
-      <label class="cursor-pointer label">
-        <span class="label-text">高速道路を使用</span> 
-        <input type="checkbox" class="toggle toggle-secondary" checked />
-      </label>
+<div class="container">
+  <div id="routeSearchForm">
+    <div class ="inputForm">
+      <div><i class="fa-solid fa-circle fa-lg" style="color: #0084ff;"></i><input id="inputBegin", type="text" placeholder="出発地" class="input input-bordered input-accent w-full max-w-xs" /></div>
+      <div><i class="fa-solid fa-location-dot fa-xl" style="color: #d75050;"></i><input id="inputEnd", type="text" placeholder="目的地" class="input input-bordered input-accent w-full max-w-xs" /></div>
     </div>
-  </div>
-    <button id="searchButton", class="btn btn-active btn-accent">検索</button>
-    <div id="routeInfo">
-      <i class="fa-solid fa-car fa-xl" style="color: #d75050;"></i>
-      <span id="routeDetails"></span>
+    <div class="flex flex-col">
+      <div class="form-control w-52">
+        <label class="cursor-pointer label">
+          <span class="label-text">高速道路を使用</span> 
+          <input type="checkbox" class="toggle toggle-secondary" checked />
+        </label>
+      </div>
     </div>
+      <button id="searchButton", class="btn btn-active btn-accent">検索</button>
+      <div id="routeInfo">
+        <i class="fa-solid fa-car fa-xl" style="color: #d75050;"></i>
+        <span id="routeDetails"></span>
+      </div>
 
-    <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "btn btn-active btn-accent fixed-button"} %>
+      <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "btn btn-active btn-accent fixed-button"} %>
 
+  </div>
 </div>
 
 
