@@ -34,7 +34,7 @@ $(document).ready(function() {
         e.preventDefault();
         begin = $('#inputBegin').val(); // 開始地点
         end   = $('#inputEnd').val(); // 終了地点
-        avoidHighways = $('input[name="highways"]:checked').val() === 'no'; // トグルで判断
+        avoidHighways = !$('input[type="checkbox"]').is(':checked'); // トグルで高速道路の使用有無判断
         $('#directionsPanel').text(' ');
         window.initMap();
         calcRoute(begin, end); // ルート計算
