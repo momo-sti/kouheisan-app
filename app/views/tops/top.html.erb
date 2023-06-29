@@ -35,4 +35,4 @@
 <div id="directionsPanel"></div>
 
 
-<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
+<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_map_api_key %>&callback=initMap"></script>

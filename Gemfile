@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 gem 'dotenv-rails'
 gem 'sassc'
 gem 'font-awesome-sass'
+gem 'geocoder'
 
 
 # Use Sass to process CSS
