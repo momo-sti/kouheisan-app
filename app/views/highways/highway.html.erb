@@ -1,6 +1,7 @@
 <%= javascript_include_tag "highway", "data-turbo-track": "reload" %>
 <%= stylesheet_link_tag 'highway' %>
 <% content_for :title, "高速料金の計算" %>
+<% content_for :back_path, new_gasoline_path %>
 
 <div class="container">
   <%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false } do |f| %>

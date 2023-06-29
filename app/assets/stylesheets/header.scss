@@ -16,11 +16,12 @@ header {
 
 .back {
   position: relative;
-  top: 40px;
+  top: 25px;
+  left: 5px;
   text-align: left;
 }
 
-h1 {
+.text-lg {
   margin: 0;
   padding: 0;
   font-size: 20px;
@@ -61,4 +62,9 @@ li {
   position: absolute;
       top: 10px;
       right: 10px;
+}
+
+.subtitle .text-xl {
+  text-align: center;
+  font-weight: bold;
 }
