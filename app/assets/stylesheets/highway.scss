@@ -1,0 +1,68 @@
+.container {
+  position: relative;
+  top: 20px;
+}
+
+.place .input-accent{
+  width: 180px;
+  margin-bottom: 5px;
+}
+
+.car {
+  position: relative;
+  top: 20px;
+}
+.car .select-accent{
+  width: 100px;
+}
+
+.date {
+  position: relative;
+  top: 40px;
+}
+
+.date .input-accent {
+  width: 180px;
+}
+
+.time {
+  position: relative;
+  top: 60px;
+}
+
+.time .select-accent{
+  width: 80px;
+}
+.kind {
+  position: relative;
+  top: 80px;
+}
+.radio-accent {
+  position: relative;
+  top: 5px;
+}
+
+.btn-accent {
+  width: 100%;
+}
+
+.search {
+  position: relative;
+  top: 100px;
+}
+
+.cost {
+  position: relative;
+  top: 130px;
+}
+
+.cost .input-accent {
+  width: 150px;
+  margin: 5px;
+  text-align: right;
+}
+
+.next .btn-accent {
+  position: relative;
+  top: 192px;
+}
