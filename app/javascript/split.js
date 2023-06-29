@@ -42,8 +42,10 @@ function setupSplitAmountUpdater() {
 
   function updateSplitAmount() {
     const personCount = parseInt(personCountInput.value);
-    const splitAmount = (totalAmount / personCount).toFixed(1);
-    splitAmountDiv.textContent = `割り勘額: ¥${splitAmount}`;
+    const splitAmount = totalAmount / personCount;
+    // splitAmountの値を小数点第一位まで表示、整数であれば小数点以下を表示しない
+    const displaySplitAmount = splitAmount % 1 === 0 ? splitAmount.toFixed(0) : splitAmount.toFixed(1);
+    splitAmountDiv.textContent = `${displaySplitAmount}`;
   }
 
   updateSplitAmount();
