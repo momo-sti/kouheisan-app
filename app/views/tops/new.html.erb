@@ -14,11 +14,28 @@
 
 
 <!-- Open the modal using ID.showModal() method -->
-<button class="btn" onclick="my_modal_2.showModal()">open modal</button>
+<button class="btn btn-primary" onclick="my_modal_2.showModal()">＋</button>
 <dialog id="my_modal_2" class="modal">
   <form method="dialog" class="modal-box">
     <h3 class="font-bold text-lg">Hello!</h3>
-    <p class="py-4">Press ESC key or click outside to close</p>
+    <p class="py-4">
+    
+    <form action="" method="get" class="form-example">
+      <div class="form-example">
+        <label for="name">Enter your name: </label>
+        <input type="text" name="name" id="name" required, class="input input-bordered input-accent w-full max-w-xs">
+      </div>
+      <div class="form-example">
+        <label for="email">Enter your email: </label>
+        <input type="email" name="email" id="email" required, class="input input-bordered input-accent w-full max-w-xs">
+      </div>
+      <div class="form-example">
+        <input type="submit" value="Subscribe!", class="btn btn-primary">
+      </div>
+    </form>
+
+    
+    </p>
   </form>
   <form method="dialog" class="modal-backdrop">
     <button>close</button>
@@ -41,3 +58,72 @@
 <button class="btn btn-active btn-accent">Accent</button>
 <button class="btn btn-active btn-ghost">Ghost</button>
 <button class="btn btn-active btn-link">Link</button>
+
+<div class="overflow-x-auto h-96">
+  <table class="table table-pin-rows">
+  <thead>
+    <tr>
+      <th>A</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ant-Man</td></tr>
+    <tr><td>Aquaman</td></tr>
+    <tr><td>Asterix</td></tr>
+    <tr><td>The Atom</td></tr>
+    <tr><td>The Avengers</td></tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Batgirl</td></tr>
+    <tr><td>Batman</td></tr>
+    <tr><td>Batwoman</td></tr>
+    <tr><td>Black Canary</td></tr>
+    <tr><td>Black Panther</td></tr>
+  </tbody>
+  <thead>
+    <tr>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Captain America</td></tr>
+    <tr><td>Captain Marvel</td></tr>
+    <tr><td>Catwoman</td></tr>
+    <tr><td>Conan the Barbarian</td></tr>
+  </tbody>
+  </table>
+</div>
+
+
+<div class="overflow-x-auto">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Favorite Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-base-200 text-lg">
+        <th>ガソリン代金</th>
+        <th>4000円</th>
+      </tr>
+      <!-- row 2 -->
+      <tr>
+        <td>ガソリン単価</td>
+        <td>155円/L</td>
+      </tr>
+      <!-- row 3 -->
+      <tr>
+        <td>燃費</td>
+        <td>15km/L</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

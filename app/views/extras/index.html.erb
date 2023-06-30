@@ -1,21 +1,81 @@
+<%= stylesheet_link_tag 'extra' %>
+<%= javascript_include_tag "extra_bottom", "data-turbo-track": "reload" %>
 <% content_for :title, "計算結果" %>
 <% content_for :back_path, highway_highways_path %>
 
-<h3 id="total-amount">合算金額: <span class="result"><%= display_number(@total_amount) %></span>円</h5>
+<div class="overflow-x-auto">
+  <table class="table">
+    <!-- head -->
+    <tbody>
+      <tr id="total-amount", class="text-2xl">
+        <th>合計</th>
+        <th class="right-align"><%= display_number(@total_amount) %>円</th>
+      </tr>
+      <!-- row 1 -->
+      <tr id="gasoline-cost", class="text-xl font-bold">
+        <td>ガソリン代金</td>
+        <td class="right-align"><%= display_number(@result) %>円</td>
+      </tr>
+      <!-- row 2 -->
+      <tr id="total-distance-result">
+        <td>距離</td>
+        <td class="right-align"><%= display_number(@total_distance) %>km</td>
+      </tr>
+      <!-- row 3 -->
+      <tr id="fuel-efficiency-result">
+        <td>燃費</td>
+        <td class="right-align"><%= display_number(@fuel_efficiency) %>L/km</td>
+      </tr>
+      <!-- row 4 -->
+      <tr id="price-per-liter-result">
+        <td>ガソリン単価</td>
+        <td class="right-align"><%= display_number(@price_per_liter) %>L/円</td>
+      </tr>
+      <!-- row 1 -->
+      <tr id="highway-cost", class="text-xl font-bold">
+        <td>高速料金</td>
+        <td class="right-align"><%= display_number(@highway_cost) %>円</td>
+      </tr>
+      <!-- row 2 -->
+      <tr id="start-place-result">
+        <td>出発IC : <%= @start_place %></td>
+      </tr>
+      <!-- row 3 -->
+      <tr  id="arrive-place-result">
+        <td>到着IC : <%= @arrive_place %></td>
+      </tr>
+      <!-- row extra -->
+      <% @extras.each do |extra| %>
+        <%= render partial: 'extra', locals: { extra: extra } %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<h5 id="gasoline-cost">ガソリン代金 <span class="result"><%= display_number(@result) %></span>円</h5>
-<p id="total-distance-result">距離: <span class="detail"><%= @total_distance %></span>km</p>
-<p id="fuel-efficiency-result">燃費: <span class="detail"><%= @fuel_efficiency %></span>L/km</p>
-<p id="price-per-liter-result">ガソリン単価: <span class="detail"><%= @price_per_liter %></span>L/円</p>
+<div class="modal-extra">
+  <!-- Open the modal using ID.showModal() method -->
+  <button class="btn btn-active btn-accent text-xl" onclick="my_modal_2.showModal()">＋</button>
+  <dialog id="my_modal_2" class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Hello!</h3>
+      <%= render 'form', extra: @extra %>
+      <button onclick="my_modal_2.close()">close</button>
+    </div>
+  </dialog>
+</div>
 
-<h5 id="highway-cost">高速料金: <span class="result"><%= display_number(@highway_cost) %></span>円</h5>
-<p id="start-place-result">出発IC: <span class="detail"><%= @start_place %></span></p>
-<p id="arrive-place-result">到着IC: <span class="detail"><%= @arrive_place %></span></p>
 
-<%= render @extras %>
-
-<%= link_to 'New Extra', new_extra_path %>
 
 <div>
-<%= render "splits/form" %>
+    <%= link_to 'New Extra', new_extra_path %>
+</div>
+    <div>
+    <%= render "splits/form" %>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-sheet" class="fixed bottom-0 left-0 right-0 bg-white p-4 rounded-t-lg shadow-lg transform transition-transform duration-300 ease-in-out" style="height: 20%; bottom: 0;">
+  <h2 class="text-lg font-semibold">ボトムシート</h2>
+  <p>ここにコンテンツを書く。</p>
 </div>

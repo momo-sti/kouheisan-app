@@ -1,5 +1,9 @@
-<p>
-  <h5><%= extra.category %>: <%= extra.amount %>円</h5>
-  <%= link_to 'Edit', edit_extra_path(id: @extras.index(extra)) %>
-  <%= button_to 'Destroy', extra_path(id: @extras.index(extra)), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+<%= stylesheet_link_tag 'extra' %>
+
+<tr class="text-xl font-bold">
+  <td><%= extra.category %></td>
+  <td class="right-align"><%= extra.amount %>円</td>
+</tr>
+
+<%#= link_to 'Edit', edit_extra_path(id: @extras.index(extra)) %>
+<%#= button_to 'Destroy', extra_path(id: @extras.index(extra)), method: :delete, data: { confirm: 'Are you sure?' } %>
