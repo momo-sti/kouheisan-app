@@ -2,3 +2,11 @@
   text-align: right;
   padding-right: 40px;
 }
+
+.open {
+  transform: translateY(0);
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
