@@ -1,14 +1,19 @@
 <%= javascript_include_tag "split", "data-turbo-track": "reload", defer: true %>
+<%= stylesheet_link_tag 'split' %>
 
-<div id="split-container" data-total-amount="<%= @total_amount %>">
-  <button id="decrement-button">-</button>
-  <input type="number" id="person-count" value="1" min="1">
-  <button id="increment-button">+</button>
-  <div>
-    <span>割り勘額</span><span id="split-amount">0</span><span>円</span>
+<div class="container">
+  <div id="split-container" data-total-amount="<%= @total_amount %>">
+    <div class="counter">
+      <button id="decrement-button"><i class="fa-solid fa-square-minus fa-2xl" style="color: #ce8950;"></i></button>
+      <input type="number" id="person-count" value="1" min="1" class="input input-bordered input-accent w-full max-w-xs">
+      <button id="increment-button"><i class="fa-solid fa-square-plus fa-2xl" style="color: #ce8950;"></i></button>
+    </div>
+    <div>
+      <span>割り勘額</span><span id="split-amount">0</span><span>円</span>
+    </div>
   </div>
-</div>
 
-<div>
-  <a href="#">共有する</a>
+  <div>
+    <a href="#">共有する</a>
+  </div>
 </div>
