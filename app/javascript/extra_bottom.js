@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // bottomSheet と arrowButton が存在することを確認する
   if (bottomSheet && arrowButton) {
-    // 初期状態はボトムシートが開いているとする
+    // 初期状態はボトムシートが開いておく
     let isOpen = true;
 
     const openBottomSheet = () => {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
     const closeBottomSheet = () => {
-        bottomSheet.style.transform = `translateY(calc(100% - 2.5rem))`; // 2.5rem はボタンの高さに相当
+        bottomSheet.style.transform = `translateY(calc(100% - 4.5rem))`;
         arrowButton.style.transform = 'rotate(180deg)';
         isOpen = false;
     };
