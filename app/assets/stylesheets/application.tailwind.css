@@ -10,6 +10,7 @@
 @import 'gasoline';
 @import 'highway';
 @import 'extra';
+@import 'split';
 
 .container {
   max-width: 960px;

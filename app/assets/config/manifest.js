@@ -7,4 +7,5 @@
 //= link gasoline.css
 //= link highway.css
 //= link extra.css
+//= link split.css
 
