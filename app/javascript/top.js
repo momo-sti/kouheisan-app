@@ -29,39 +29,42 @@ window.initMap = function() {
 }
 
 $(document).ready(function() {
-    // searchButtonがクリックされたら関数発火
-    $('#searchButton').click(function(e) {
-        e.preventDefault();
-        begin = $('#inputBegin').val(); // 開始地点
-        end   = $('#inputEnd').val(); // 終了地点
-        avoidHighways = !$('input[type="checkbox"]').is(':checked'); // トグルで高速道路の使用有無判断
-        $('#directionsPanel').text(' ');
-        window.initMap();
-        calcRoute(begin, end); // ルート計算
-    });
-
-    // 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
-    $('#confirmButton').click(function(e) {
-        e.preventDefault();
-
-        // 距離と時間を取得
-        var km = $('.adp-summary span[jstcache="25"]').text();
-        var time = $('.adp-summary span[jstcache="51"]').text();
-
-        // セッションストレージに保存
-        sessionStorage.setItem('km', km);
-        sessionStorage.setItem('time', time);
-        // extraのセッションをリセット
-        $.ajax({
-            type: 'POST',
-            url: '/tops/reset_session',
-            data: { authenticity_token: $('meta[name="csrf-token"]').attr('content') },
-            success: function() {
-                // km,timeの保存とextraのリセットが完了したら、画面遷移を行う
-                window.location.href = "/gasolines/new";
-            }
+    // 'map_canvas'の要素が存在する場合のみ実行
+    if ($('#map_canvas').length > 0) {
+        // searchButtonがクリックされたら関数発火
+        $('#searchButton').click(function(e) {
+            e.preventDefault();
+            begin = $('#inputBegin').val(); // 開始地点
+            end   = $('#inputEnd').val(); // 終了地点
+            avoidHighways = !$('input[type="checkbox"]').is(':checked'); // トグルで高速道路の使用有無判断
+            $('#directionsPanel').text(' ');
+            window.initMap();
+            calcRoute(begin, end); // ルート計算
         });
-    });
+
+        // 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
+        $('#confirmButton').click(function(e) {
+            e.preventDefault();
+
+            // 距離と時間を取得
+            var km = $('.adp-summary span[jstcache="25"]').text();
+            var time = $('.adp-summary span[jstcache="51"]').text();
+
+            // セッションストレージに保存
+            sessionStorage.setItem('km', km);
+            sessionStorage.setItem('time', time);
+            // extraのセッションをリセット
+            $.ajax({
+                type: 'POST',
+                url: '/tops/reset_session',
+                data: { authenticity_token: $('meta[name="csrf-token"]').attr('content') },
+                success: function() {
+                    // km,timeの保存とextraのリセットが完了したら、画面遷移を行う
+                    window.location.href = "/gasolines/new";
+                }
+            });
+        });
+    }
 });
 
 // ルート取得
