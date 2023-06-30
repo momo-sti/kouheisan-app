@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const openBottomSheet = () => {
         bottomSheet.style.transform = 'translateY(0)';
         arrowButton.style.transform = 'rotate(0deg)';
+        bottomSheet.style.height = 'calc(25%)';
         isOpen = true;
     };
 
