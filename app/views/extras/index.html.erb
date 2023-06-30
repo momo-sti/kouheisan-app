@@ -39,10 +39,12 @@
       <!-- row 2 -->
       <tr id="start-place-result">
         <td>出発IC : <%= @start_place %></td>
+        <td></td>
       </tr>
       <!-- row 3 -->
       <tr  id="arrive-place-result">
         <td>到着IC : <%= @arrive_place %></td>
+        <td></td>
       </tr>
       <!-- row extra -->
       <% @extras.each do |extra| %>
@@ -53,31 +55,26 @@
 </div>
 
 <div class="modal-extra">
-  <!-- Open the modal using ID.showModal() method -->
-  <button class="btn btn-active btn-accent text-xl" onclick="my_modal_2.showModal()">＋</button>
-  <dialog id="my_modal_2" class="modal">
+  <!-- The button to open modal -->
+  <label for="my_modal_7" class="btn btn-active btn-accent text-xl">＋</label>
+
+  <!-- Put this part before </body> tag -->
+  <input type="checkbox" id="my_modal_7" class="modal-toggle" />
+  <div class="modal">
     <div class="modal-box">
-      <h3 class="font-bold text-lg">Hello!</h3>
+      <h3 class="text-base">費用を追加する</h3>
       <%= render 'form', extra: @extra %>
-      <button onclick="my_modal_2.close()">close</button>
     </div>
-  </dialog>
-</div>
-
-
-
-<div>
-    <%= link_to 'New Extra', new_extra_path %>
-</div>
-    <div>
-    <%= render "splits/form" %>
-    </div>
+    <label class="modal-backdrop" for="my_modal_7">Close</label>
   </div>
 </div>
 
+
+
+
 <div id="bottomSheet" class="fixed bottom-0 left-0 right-0 bg-white p-4 rounded-t-lg shadow-lg transform transition-transform duration-300 ease-in-out" style="height: 20%; bottom: 0;">
   <h2 class="text-lg font-semibold">ボトムシート</h2>
-  <p>ここにコンテンツを書く。</p>
+  <%= render "splits/form" %>
   <button id="arrowButton" class="absolute top-0 right-0 p-2">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>

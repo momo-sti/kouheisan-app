@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'extra' %>
+
 <%= form_with(model: extra, url: extra.persisted? ? extra_path(id: @extras.index(extra)) : extras_path, local: true) do |f| %>
   <% if extra.errors.any? %>
       <div id="error_explanation">
@@ -11,16 +13,17 @@
   <% end %>
 
     <div class="field">
-      <%= f.label :category %>
-      <%= f.text_field :category %>
+      <div><%= f.label :category %></div>
+      <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
     </div>
 
     <div class="field">
-      <%= f.label :amount %>
-      <%= f.number_field :amount %>
+      <div><%= f.label :amount %></div>
+      <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
     </div>
+    <p class="field-yen">円</p>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit '追加',  class:"btn btn-active btn-accent"%>
     </div>
 <% end %>

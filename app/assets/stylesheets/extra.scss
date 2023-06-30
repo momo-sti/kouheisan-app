@@ -10,3 +10,17 @@
 .rotate {
   transform: rotate(180deg);
 }
+
+.field {
+  text-align: center;
+}
+
+.field .input-accent {
+  width: 180px;
+}
+
+.field-yen {
+  position: relative;
+  right: 45px;
+  bottom: 30px;
+}
