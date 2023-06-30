@@ -33,3 +33,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
   closeBottomSheet(); // ページが読み込まれたときにボトムシートを閉じる
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  const bottomSheet = document.querySelector('#bottomSheet');
+  const arrowButton = document.querySelector('#arrowButton');
+
+  arrowButton.addEventListener('click', () => {
+    bottomSheet.classList.toggle('open');
+    arrowButton.classList.toggle('rotate');
+  });
+});
