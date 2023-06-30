@@ -48,6 +48,8 @@ gem 'dotenv-rails'
 gem 'sassc'
 gem 'font-awesome-sass'
 gem 'geocoder'
+gem 'jquery-rails'
+
 
 
 # Use Sass to process CSS
