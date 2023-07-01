@@ -2,3 +2,34 @@
   width: 60px;
   text-align: center;
 }
+
+#person-count {
+  font-size: 20px;
+}
+
+.split-amount {
+  position: relative;
+  top: 15px;
+}
+
+#split-amount {
+  font-size: 30px;
+  color: #d75050;
+  border-bottom:solid #d75050;
+}
+
+.share .btn-accent {
+  width: 100%;
+  position: relative;
+  top: 30px;
+}
+
+.counter {
+  position: relative;
+  top: 5px;
+}
+
+#decrement-button, #increment-button {
+  position: relative;
+  top: 10px;
+}
