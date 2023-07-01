@@ -17,10 +17,15 @@
 
 .field .input-accent {
   width: 180px;
+  text-align: center;
 }
 
 .field-yen {
   position: relative;
   right: 45px;
   bottom: 30px;
+}
+
+.modal-extra .btn-accent {
+  color: white;
 }
