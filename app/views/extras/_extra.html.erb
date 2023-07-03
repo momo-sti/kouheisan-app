@@ -5,12 +5,18 @@
   <td><%= extra.category %></td>
   <td class="right-align">
     <%= extra.amount %>円
-    <div class="action-button">
+    <div class="action-buttons">
       <!-- The button to open modal -->
-      <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-active btn-accent">編集</label>
-      <%= button_to '削除', extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent", method: :delete, data: { confirm: 'Are you sure?' } %>
-
-      <!-- Put this part before </body> tag -->
+      <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-active btn-success">
+        <i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
+      </label>
+      <%= button_to extra_path(id: @extras.index(extra)), class: "btn btn-active btn-secondary", method: :delete do %>
+        <i class="fa-regular fa-trash-can fa-lg" style="color: #ffffff;"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
+<!-- Put this part before </body> tag -->
       <input type="checkbox" id="my_modal_<%= @extras.index(extra) %>" class="modal-toggle" />
       <div class="modal">
         <div class="modal-box">
@@ -19,7 +25,4 @@
         </div>
         <label class="modal-backdrop" for="my_modal_<%= @extras.index(extra) %>">Close</label>
       </div>
-    </div>
-  </td>
-</tr>
 

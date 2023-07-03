@@ -28,19 +28,27 @@
 
 .modal-extra .btn-accent {
   color: white;
+  margin: 10px 0;
 }
 
-// swipeで出てくる削除・編集ボタン
-// 初期状態：ボタンは非表示
+.edit_button .actions {
+  text-align: right;
+}
+
+.new_button .btn-accent {
+  color: black;
+}
+
+.btn.btn-active.btn-success {
+  width: 10px;
+  height: 5px;
+}
+
+.btn.btn-active.btn-secondary {
+  width: 10px;
+  height: 5px;
+}
+
 .action-buttons {
-  display: none;
-}
-
-// show-buttonsクラスが適用された要素の中のボタンは表示
-.swipeable-row.show-buttons .action-buttons {
-  display: block;
-}
-
-.swipeable-row.show-buttons {
-  transform: translateX(-100px);  // 100px左にずれる
+  display: flex;
 }
