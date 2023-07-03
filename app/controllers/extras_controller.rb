@@ -55,7 +55,10 @@ class ExtrasController < ApplicationController
 
   def destroy
     session[:extras].delete_at(params[:id].to_i)
-    redirect_to extras_path, success: "削除しました"
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to extras_path, success: "削除しました" }
+    end
   end
 
   private

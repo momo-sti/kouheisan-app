@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'extra' %>
 <%= javascript_include_tag "extra_swipe", "data-turbo-track": "reload" %>
 
-<tr class="swipeable-row text-xl font-bold">
+<tr class="swipeable-row text-xl font-bold" id="extra_<%= @extras.index(extra) %>">
   <td><%= extra.category %></td>
   <td class="right-align">
     <%= extra.amount %>円
