@@ -1,14 +1,4 @@
 <%= stylesheet_link_tag 'extra' %>
-
-<tr class="text-xl font-bold">
-  <td><%= extra.category %></td>
-  <td class="right-align"><%= extra.amount %>円</td>
-</tr>
-
-<%#= link_to 'Edit', edit_extra_path(id: @extras.index(extra)) %>
-<%#= button_to 'Destroy', extra_path(id: @extras.index(extra)), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%= stylesheet_link_tag 'extra' %>
 <%= javascript_include_tag "extra_swipe", "data-turbo-track": "reload" %>
 
 <tr class="swipeable-row text-xl font-bold">
@@ -16,11 +6,20 @@
   <td class="right-align">
     <%= extra.amount %>円
     <div class="action-buttons">
-      <%= link_to 'Edit', edit_extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent"%>
-      <%= button_to 'Destroy', extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <!-- The button to open modal -->
+      <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-active btn-accent">編集</label>
+      <%= button_to '削除', extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent", method: :delete, data: { confirm: 'Are you sure?' } %>
 
-      <button class="edit-button">編集</button>
-      <button class="delete-button">削除</button>
+      <!-- Put this part before </body> tag -->
+      <input type="checkbox" id="my_modal_<%= @extras.index(extra) %>" class="modal-toggle" />
+      <div class="modal">
+        <div class="modal-box">
+          <h3 class="text-base">費用を追加する</h3>
+          <%= render 'form_edit', extra: extra %>
+        </div>
+        <label class="modal-backdrop" for="my_modal_<%= @extras.index(extra) %>">Close</label>
+      </div>
     </div>
   </td>
 </tr>
+

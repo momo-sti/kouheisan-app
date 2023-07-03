@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'extra' %>
 
-<%= form_with(model: extra, url: extra.persisted? ? extra_path(id: @extras.index(extra)) : extras_path, local: true) do |f| %>
+<%= form_with(model: extra, url: extras_path, local: true) do |f| %>
   <% if extra.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(extra.errors.count, "error") %> prohibited this extra from being saved:</h2>
