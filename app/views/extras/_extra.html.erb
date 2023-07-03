@@ -5,7 +5,7 @@
   <td><%= extra.category %></td>
   <td class="right-align">
     <%= extra.amount %>円
-    <div class="action-buttons">
+    <div class="action-button">
       <!-- The button to open modal -->
       <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-active btn-accent">編集</label>
       <%= button_to '削除', extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent", method: :delete, data: { confirm: 'Are you sure?' } %>
