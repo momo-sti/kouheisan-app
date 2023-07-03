@@ -40,3 +40,7 @@
 .swipeable-row.show-buttons .action-buttons {
   display: block;
 }
+
+.swipeable-row.show-buttons {
+  transform: translateX(-100px);  // 100px左にずれる
+}
