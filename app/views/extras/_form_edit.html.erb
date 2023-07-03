@@ -12,18 +12,20 @@
       </div>
   <% end %>
 
-    <div class="field">
-      <div><%= f.label :category %></div>
-      <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
-    </div>
+    <div class="edit_button">
+      <div class="field">
+        <div><%= f.label :category %></div>
+        <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
+      </div>
 
-    <div class="field">
-      <div><%= f.label :amount %></div>
-      <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
-    </div>
-    <p class="field-yen">円</p>
+      <div class="field">
+        <div><%= f.label :amount %></div>
+        <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
+      </div>
+      <p class="field-yen">円</p>
 
-    <div class="actions">
-      <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
+      <div class="actions">
+        <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
+      </div>
     </div>
 <% end %>
