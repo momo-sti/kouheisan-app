@@ -1,4 +1,14 @@
 <%= stylesheet_link_tag 'extra' %>
+
+<tr class="text-xl font-bold">
+  <td><%= extra.category %></td>
+  <td class="right-align"><%= extra.amount %>円</td>
+</tr>
+
+<%#= link_to 'Edit', edit_extra_path(id: @extras.index(extra)) %>
+<%#= button_to 'Destroy', extra_path(id: @extras.index(extra)), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= stylesheet_link_tag 'extra' %>
 <%= javascript_include_tag "extra_swipe", "data-turbo-track": "reload" %>
 
 <tr class="swipeable-row text-xl font-bold">
@@ -6,6 +16,9 @@
   <td class="right-align">
     <%= extra.amount %>円
     <div class="action-buttons">
+      <%= link_to 'Edit', edit_extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent"%>
+      <%= button_to 'Destroy', extra_path(id: @extras.index(extra)), class:"btn btn-active btn-accent", method: :delete, data: { confirm: 'Are you sure?' } %>
+
       <button class="edit-button">編集</button>
       <button class="delete-button">削除</button>
     </div>

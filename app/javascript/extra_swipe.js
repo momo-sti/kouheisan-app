@@ -14,9 +14,13 @@ swipeableRows.forEach(function(row) {
     }, false);
 
     function handleSwipe(row) {
-        if (touchEndX < touchStartX) {
-            // left swipe
-            row.classList.add('show-buttons');
-        }
+      if (touchEndX < touchStartX) {
+        // left swipe
+        row.classList.add('show-buttons');
+      } else if (touchEndX > touchStartX) {
+        // right swipe
+        row.classList.remove('show-buttons');
+      }
     }
+    
 });
