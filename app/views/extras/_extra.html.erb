@@ -1,9 +1,13 @@
 <%= stylesheet_link_tag 'extra' %>
+<%= javascript_include_tag "extra_swipe", "data-turbo-track": "reload" %>
 
-<tr class="text-xl font-bold">
+<tr class="swipeable-row text-xl font-bold">
   <td><%= extra.category %></td>
-  <td class="right-align"><%= extra.amount %>円</td>
+  <td class="right-align">
+    <%= extra.amount %>円
+    <div class="action-buttons">
+      <button class="edit-button">編集</button>
+      <button class="delete-button">削除</button>
+    </div>
+  </td>
 </tr>
-
-<%#= link_to 'Edit', edit_extra_path(id: @extras.index(extra)) %>
-<%#= button_to 'Destroy', extra_path(id: @extras.index(extra)), method: :delete, data: { confirm: 'Are you sure?' } %>
