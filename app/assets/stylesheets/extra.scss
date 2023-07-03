@@ -29,3 +29,14 @@
 .modal-extra .btn-accent {
   color: white;
 }
+
+// swipeで出てくる削除・編集ボタン
+// 初期状態：ボタンは非表示
+.action-buttons {
+  display: none;
+}
+
+// show-buttonsクラスが適用された要素の中のボタンは表示
+.swipeable-row.show-buttons .action-buttons {
+  display: block;
+}
