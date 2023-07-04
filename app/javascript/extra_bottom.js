@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('turbo:load', (event) => {
+  // console.log('a')
   const bottomSheet = document.getElementById('bottomSheet');
   const arrowButton = document.getElementById('arrowButton');
 
