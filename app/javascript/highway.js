@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOMContentLoaded event fired'); 
+window.addEventListener('DOMContentLoaded', function() {
+  // console.log('DOMContentLoaded event fired'); 
   const mainForm = document.getElementById('main_form');
   const externalForm = document.getElementById('external_form');
   
   if (mainForm) {
     mainForm.addEventListener('submit', function(event) {
-      console.log('mainForm submit event fired');
+      // console.log('mainForm submit event fired');
+      // console.log(mainForm);
       event.preventDefault();
 
       // メインのフォームのデータを取得
@@ -43,5 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('There has been a problem with your fetch operation:', error);
       });
     });
+
   }
+  else{
+    // console.log('失敗')
+  }
+  // console.log('終了')
 });
