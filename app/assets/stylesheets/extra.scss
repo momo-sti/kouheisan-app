@@ -1,6 +1,6 @@
 .right-align, .modal-extra {
   text-align: right;
-  padding-right: 40px;
+  padding-right: 30px;
 }
 
 .open {
@@ -40,15 +40,33 @@
 }
 
 .btn.btn-active.btn-success {
-  width: 10px;
-  height: 5px;
+  padding: 13px 8px;
+  margin: 0 3px;
 }
 
 .btn.btn-active.btn-secondary {
-  width: 10px;
-  height: 5px;
+  padding: 13px 8px;
 }
 
-.action-buttons {
+.action-buttons .btn-success, .btn-secondary {
+  float: left;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
   display: flex;
+}
+
+.action-area {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.action-area .amount {
+  margin-right: 10px;
 }

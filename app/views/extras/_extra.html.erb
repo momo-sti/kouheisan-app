@@ -1,20 +1,24 @@
 <%= stylesheet_link_tag 'extra' %>
-<%= javascript_include_tag "extra_swipe", "data-turbo-track": "reload" %>
+<%= javascript_include_tag "extra_button", "data-turbo-track": "reload" %>
 
 <tr class="swipeable-row text-xl font-bold" id="extra_<%= @extras.index(extra) %>">
   <td><%= extra.category %></td>
-  <td class="right-align">
-    <%= extra.amount %>円
-    <div class="action-buttons">
-      <!-- The button to open modal -->
-      <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-active btn-success">
-        <i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
-      </label>
-      <%= button_to extra_path(id: @extras.index(extra)), class: "btn btn-active btn-secondary", method: :delete do %>
-        <i class="fa-regular fa-trash-can fa-lg" style="color: #ffffff;"></i>
-      <% end %>
-    </div>
-  </td>
+    <td class="right-align">
+      <div class="action-area">
+        <span class="amount"><%= extra.amount %>円</span>
+        <div class="action-buttons hidden">
+          <!-- The button to open modal -->
+          <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-xs btn-active btn-success">
+            <i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
+          </label>
+          <%= button_to extra_path(id: @extras.index(extra)), class: "btn btn-xs btn-active btn-secondary", method: :delete do %>
+            <i class="fa-regular fa-trash-can fa-lg" style="color: #ffffff;"></i>
+          <% end %>
+        </div>
+      </div>
+    </td>
+
+
 </tr>
 <!-- Put this part before </body> tag -->
       <input type="checkbox" id="my_modal_<%= @extras.index(extra) %>" class="modal-toggle" />

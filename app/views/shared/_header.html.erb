@@ -13,6 +13,11 @@
     <div class="subtitle">
         <h1 class="text-xl"><%= content_for?(:title) ? yield(:title) : "デフォルトのタイトル" %></h1>
     </div>
+
+    <% if current_page?(extras_path) %>
+        <button id="edit-toggle-button">編集</button>
+    <% end %>
+    
     <nav class="login">
         <ul>
             <li><a href="#">ログイン</a></li>
