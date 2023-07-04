@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // bottomSheet と arrowButton が存在することを確認する
   if (bottomSheet && arrowButton) {
-    // 初期状態はボトムシートが開いておく
+    // 初期状態はボトムシートを開いておく
     let isOpen = true;
 
     const openBottomSheet = () => {
