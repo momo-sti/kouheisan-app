@@ -5,63 +5,83 @@ var avoidHighways = true; // 高速道路使用有無（デフォルトは使用
 
 // initMapをグローバルスコープに公開
 window.initMap = function() {
-    var latlng = new google.maps.LatLng(35.6895, 139.6917);  // マップの中心点（東京）
+    return new Promise((resolve, reject) => {
+        var latlng = new google.maps.LatLng(35.6895, 139.6917);  // マップの中心点（東京）
 
-    // オプション
-    var myOptions = {
-        zoom: 14,
-        center: latlng,
-        scrollwheel: false,     // ホイールでの拡大・縮小
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-    };
+        // オプション
+        var myOptions = {
+            zoom: 14,
+            center: latlng,
+            scrollwheel: false,     // ホイールでの拡大・縮小
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        };
 
-    // #map_canvasを取得し、[mapOptions]の内容の、地図のインスタンス([map])を作成する
-    map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+        // #map_canvasを取得し、[mapOptions]の内容の、地図のインスタンス([map])を作成する
+        map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
 
-    // 経路を取得
-    if (!directionsDisplay) {
-        directionsDisplay = new google.maps.DirectionsRenderer({
-            suppressMarkers: true //デフォルトのマーカーを消す
-        });
-    }
-    directionsDisplay.setMap(map);
-    directionsDisplay.setPanel(document.getElementById('directionsPanel'));     // 経路詳細
+        // 経路を取得
+        if (!directionsDisplay) {
+            directionsDisplay = new google.maps.DirectionsRenderer({
+                suppressMarkers: true //デフォルトのマーカーを消す
+            });
+        }
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));     // 経路詳細
+
+        resolve();
+    });
 }
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // 'map_canvas'の要素が存在する場合のみ実行
-    if ($('#map_canvas').length > 0) {
+    if (document.getElementById('map_canvas')) {
         // searchButtonがクリックされたら関数発火
-        $('#searchButton').click(function(e) {
+        document.getElementById('searchButton').addEventListener('click', function(e) {
             e.preventDefault();
-            begin = $('#inputBegin').val(); // 開始地点
-            end   = $('#inputEnd').val(); // 終了地点
-            avoidHighways = !$('input[type="checkbox"]').is(':checked'); // トグルで高速道路の使用有無判断
-            $('#directionsPanel').text(' ');
-            window.initMap();
-            calcRoute(begin, end); // ルート計算
+            begin = document.getElementById('inputBegin').value; // 開始地点
+            end = document.getElementById('inputEnd').value; // 終了地点
+            avoidHighways = !document.querySelector('input[type="checkbox"]').checked; // トグルで高速道路の使用有無判断
+            document.getElementById('directionsPanel').textContent = ' ';
+            window.initMap().then(() => {
+                calcRoute(begin, end); // ルート計算
+            });
         });
 
-        // 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
-        $('#confirmButton').click(function(e) {
-            e.preventDefault();
+// 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
+document.getElementById('confirmButton').addEventListener('click', function(e) {
+    e.preventDefault();
 
-            // 距離と時間を取得
-            var km = $('.adp-summary span[jstcache="25"]').text();
-            var time = $('.adp-summary span[jstcache="51"]').text();
+    // 距離と時間を取得
+    var km = document.querySelector('.adp-summary span[jstcache="25"]').textContent;
+    var time = document.querySelector('.adp-summary span[jstcache="51"]').textContent;
 
-            // セッションストレージに保存
-            sessionStorage.setItem('km', km);
-            sessionStorage.setItem('time', time);
-            // extraのセッションをリセット
-            $.ajax({
-                type: 'POST',
-                url: '/tops/reset_session',
-                data: { authenticity_token: $('meta[name="csrf-token"]').attr('content') },
-                success: function() {
-                    // km,timeの保存とextraのリセットが完了したら、画面遷移を行う
-                    window.location.href = "/gasolines/new";
-                }
+    // セッションストレージに保存
+    sessionStorage.setItem('km', km);
+    sessionStorage.setItem('time', time);
+
+    // CSRFトークンの取得
+    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    fetch('/tops/reset_session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRF-Token': token
+        },
+        body: new URLSearchParams({
+            'authenticity_token': token
+        })
+    })
+    .then(function(response) {
+        if (response.ok) {
+            // km,timeの保存とextraのリセットが完了したら、画面遷移を行う
+            window.location.href = "/gasolines/new";
+        } else {
+            throw new Error('Request failed.');
+        }
+    })
+    .catch(function(error) {
+        console.error(error);
             });
         });
     }
@@ -125,7 +145,8 @@ function calcRoute(begin, end) {
             var km = leg.distance.text;   //距離
             var time = leg.duration.text; //時間
 
-            $('#routeDetails').text(km + '(所要時間：' + time + ')');
+            document.getElementById('routeDetails').textContent = km + '(所要時間：' + time + ')';
+
         } else {
             alert('ルートが見つかりませんでした…');
         }
