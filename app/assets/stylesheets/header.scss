@@ -9,6 +9,11 @@ body,
   min-height: 100vh;
 }
 
+// safariのみ適用
+::-webkit-full-page-media, :future, :root #wrapper {
+  min-height: 115vh;
+}
+
 header {
   width: 100%;
   padding: 10px 4% 10px;
@@ -73,4 +78,8 @@ li {
 #edit-toggle-button {
   position: relative;
   left: 320px;
+}
+
+::-webkit-full-page-media, :future, :root #edit-toggle-button {
+  left: 345px;
 }
