@@ -167,17 +167,24 @@ function calcRoute(begin, end) {
     });
 }
 
-document.getElementById('confirmButton').addEventListener('click', function(e) {
-    // 開始地点と終了地点を取得
-    var begin = document.getElementById('inputBegin').value;
-    var end = document.getElementById('inputEnd').value;
 
-    // 出発地と目的地が両方とも入力されているかチェック
-    if (begin === '' || end === '') {
-        // 入力が足りない場合はエラーメッセージを表示
-        var errorMessageDiv = document.getElementById('error-message');
-        errorMessageDiv.classList.remove('hidden');  // divを表示
-        document.getElementById('error-text').textContent = '出発地と目的地を入力してください';
-        e.preventDefault(); // ボタンのGETリクエストの送信
+document.addEventListener('DOMContentLoaded', function() {
+    const searchButton = document.getElementById('searchButton');
+    const confirmButton = document.getElementById('confirmButton');
+    const errorMessage = document.getElementById('error-message');
+    const errorText = document.getElementById('error-text');
+  
+    function showAlertIfInputEmpty(e) {
+      const start = document.getElementById('inputBegin').value;
+      const end = document.getElementById('inputEnd').value;
+      if (start === '' || end === '') {
+        e.preventDefault();
+        errorMessage.classList.remove('hidden');
+        errorText.textContent = '出発地と目的地を入力してください。';
+      }
     }
-});
+  
+    searchButton.addEventListener('click', showAlertIfInputEmpty);
+    confirmButton.addEventListener('click', showAlertIfInputEmpty);
+  });
+  
