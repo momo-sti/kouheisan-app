@@ -1,141 +1,32 @@
-<input type="checkbox" class="toggle toggle-success" checked />
-<input type="checkbox" class="toggle toggle-warning" checked />
-<input type="checkbox" class="toggle toggle-info" checked />
-<input type="checkbox" class="toggle toggle-error" checked />
-
-<details class="dropdown mb-32">
-  <summary class="m-1 btn">open or close</summary>
-  <ul class="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </ul>
-</details>
-
-<button class="btn btn-sm btn-primary">Small</button>
-
 
 
 <!-- Open the modal using ID.showModal() method -->
-<button class="btn btn-primary" onclick="my_modal_2.showModal()">＋</button>
+<button class="btn" onclick="my_modal_2.showModal()">open modal</button>
 <dialog id="my_modal_2" class="modal">
   <form method="dialog" class="modal-box">
     <h3 class="font-bold text-lg">Hello!</h3>
-    <p class="py-4">
-    
-    <form action="" method="get" class="form-example">
-      <div class="form-example">
-        <label for="name">Enter your name: </label>
-        <input type="text" name="name" id="name" required, class="input input-bordered input-accent w-full max-w-xs">
+    <div class="carousel w-full ">
+      <div id="item1" class="carousel-item w-full">
+        <%=image_tag('demo.png', class:"w-full") %>
+      </div> 
+      <div id="item2" class="carousel-item w-full">
+        <%=image_tag('demo1.png', class:"w-full") %>
+      </div> 
+      <div id="item3" class="carousel-item w-full">
+        <%=image_tag('demo1.png', class:"w-full") %>
+      </div> 
+      <div id="item4" class="carousel-item w-full">
+        <%=image_tag('demo1.png', class:"w-full") %>
       </div>
-      <div class="form-example">
-        <label for="email">Enter your email: </label>
-        <input type="email" name="email" id="email" required, class="input input-bordered input-accent w-full max-w-xs">
-      </div>
-      <div class="form-example">
-        <input type="submit" value="Subscribe!", class="btn btn-primary">
-      </div>
-    </form>
-
-    
-    </p>
+    </div> 
+    <div class="flex justify-center w-full py-2 gap-2">
+      <a href="#item1" class="btn btn-xs">1</a> 
+      <a href="#item2" class="btn btn-xs">2</a> 
+      <a href="#item3" class="btn btn-xs">3</a> 
+      <a href="#item4" class="btn btn-xs">4</a>
+    </div>
   </form>
   <form method="dialog" class="modal-backdrop">
     <button>close</button>
   </form>
 </dialog>
-
-
-<div class="m-3">
-    <button class="w-12 h-12  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500">1</button>
-</div>
-
-<div class="m-3">
-    <button class="px-2 py-1  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500">端が丸い</button>
-</div>
-
-<button class="btn btn-active">Default</button>
-<button class="btn btn-active btn-neutral">Neutral</button>
-<button class="btn btn-active btn-primary">Primary</button>
-<button class="btn btn-active btn-secondary">Secondary</button>
-<button class="btn btn-active btn-accent">Accent</button>
-<button class="btn btn-active btn-ghost">Ghost</button>
-<button class="btn btn-active btn-link">Link</button>
-
-<div>
-  <button class="btn">Button</button>
-  <button class="btn btn-neutral">Neutral</button>
-  <button class="btn btn-primary">Button</button>
-  <button class="btn btn-secondary">Button</button>
-  <button class="btn btn-accent">Button</button>
-  <button class="btn btn-ghost">Button</button>
-  <button class="btn btn-link">Button</button>
-</div>
-
-<div class="overflow-x-auto h-96">
-  <table class="table table-pin-rows">
-  <thead>
-    <tr>
-      <th>A</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Ant-Man</td></tr>
-    <tr><td>Aquaman</td></tr>
-    <tr><td>Asterix</td></tr>
-    <tr><td>The Atom</td></tr>
-    <tr><td>The Avengers</td></tr>
-  </tbody>
-  <thead>
-    <tr>
-      <th>B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Batgirl</td></tr>
-    <tr><td>Batman</td></tr>
-    <tr><td>Batwoman</td></tr>
-    <tr><td>Black Canary</td></tr>
-    <tr><td>Black Panther</td></tr>
-  </tbody>
-  <thead>
-    <tr>
-      <th>C</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Captain America</td></tr>
-    <tr><td>Captain Marvel</td></tr>
-    <tr><td>Catwoman</td></tr>
-    <tr><td>Conan the Barbarian</td></tr>
-  </tbody>
-  </table>
-</div>
-
-
-<div class="overflow-x-auto">
-  <table class="table">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Favorite Color</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="bg-base-200 text-lg">
-        <th>ガソリン代金</th>
-        <th>4000円</th>
-      </tr>
-      <!-- row 2 -->
-      <tr>
-        <td>ガソリン単価</td>
-        <td>155円/L</td>
-      </tr>
-      <!-- row 3 -->
-      <tr>
-        <td>燃費</td>
-        <td>15km/L</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
