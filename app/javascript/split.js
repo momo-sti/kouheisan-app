@@ -48,5 +48,14 @@ function setupSplitAmountUpdater() {
     splitAmountDiv.textContent = `${displaySplitAmount}`;
   }
 
+  // splitContainer の data-total-amount 属性の変更を監視する
+  const observer = new MutationObserver(() => {
+    totalAmount = parseFloat(splitContainer.getAttribute('data-total-amount'));
+    updateSplitAmount();
+  });
+
+  // observer が split-container 要素の属性の変更を監視するように設定
+  observer.observe(splitContainer, { attributes: true });
+
   updateSplitAmount();
 }

@@ -1,2 +1,11 @@
 <%# `Extra` 詳細 (`#extra_1`となる要素）を削除する %>
 <%= turbo_stream.remove "extra_#{ params[:id] }" %>
+
+<turbo-stream action="replace" target="total-amount">
+  <template>
+    <tr id="total-amount" class="text-2xl" data-total-amount="<%= @total_amount %>">
+      <th>合計</th>
+      <th class="right-align"><%= display_number(@total_amount) %>円</th>
+    </tr>
+  </template>
+</turbo-stream>
