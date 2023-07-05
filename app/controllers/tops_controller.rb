@@ -1,4 +1,8 @@
 class TopsController < ApplicationController
+  def wakeup
+    render json: { message: 'Server is awake' }
+  end
+
   def new
   end
 
