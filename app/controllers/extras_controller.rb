@@ -55,11 +55,22 @@ class ExtrasController < ApplicationController
 
   def destroy
     session[:extras].delete_at(params[:id].to_i)
+    
+    # 金額の再計算
+    @result = (session[:result] || 0).to_f
+    @total_distance = (session[:gasoline]['total_distance'] || 0).to_f
+    @fuel_efficiency = (session[:gasoline]['fuel_efficiency'] || 0).to_f
+    @price_per_liter = (session[:gasoline]['price_per_liter'] || 0).to_f
+    @highway_cost = (session[:highway_cost] || 0).to_f
+    @extras = session[:extras]&.map { |extra| Extra.new(extra) } || []
+    extras_sum = @extras.sum { |extra| extra.amount.to_f }
+    @total_amount = @result + @highway_cost + extras_sum
+  
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { render turbo_stream: turbo_stream.replace('split-container', partial: 'split_container', locals: { total_amount: @total_amount }) }
       format.html { redirect_to extras_path, success: "削除しました" }
     end
-  end
+  end  
 
   private
 
