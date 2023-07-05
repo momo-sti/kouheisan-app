@@ -76,10 +76,7 @@ li {
 }
 
 #edit-toggle-button {
-  position: relative;
-  left: 320px;
-}
-
-::-webkit-full-page-media, :future, :root #edit-toggle-button {
-  left: 345px;
+  position: absolute;
+      top: 60px;
+      right: 10px;
 }

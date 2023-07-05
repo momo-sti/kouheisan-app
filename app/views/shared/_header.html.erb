@@ -6,7 +6,7 @@
     </h1>
     <div class="back">
         <% if content_for?(:back_path) %>
-            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2xl" style="color: #d75050;"></i>'), content_for(:back_path) %>
+            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2xl" style="color: #8c0327;"></i>'), content_for(:back_path) %>
         <% end %>
 
     </div>
@@ -15,12 +15,13 @@
     </div>
 
     <% if current_page?(extras_path) %>
-        <button id="edit-toggle-button">編集</button>
+        <button id="edit-toggle-button",  class="btn btn-sm btn-outline btn-primary">編集</button>
     <% end %>
     
     <nav class="login">
         <ul>
-            <li><a href="#">ログイン</a></li>
+            <li><a href="#">使い方</a></li>
+            <%# <li><a href="#">ログイン</a></li> %>
         </ul>
     </nav>
 </header>
