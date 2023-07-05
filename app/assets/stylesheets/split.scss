@@ -1,5 +1,5 @@
 .counter .input-accent {
-  width: 60px;
+  width: 75px;
   text-align: center;
 }
 
@@ -30,6 +30,16 @@
 }
 
 #decrement-button, #increment-button {
+  position: relative;
+  top: 10px;
+}
+
+::-webkit-full-page-media, :future, :root .split-safari {
+  position: relative;
+  bottom: 20px;
+}
+
+::-webkit-full-page-media, :future, :root .counter {
   position: relative;
   top: 10px;
 }
