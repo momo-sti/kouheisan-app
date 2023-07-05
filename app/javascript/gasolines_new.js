@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var time = sessionStorage.getItem('time');
 
   // HTMLに表示
-  document.getElementById('distance').textContent = km;
-  document.getElementById('duration').textContent = time;
+  var distanceElement = document.getElementById('distance');
+  var durationElement = document.getElementById('duration');
+  if (distanceElement) {
+    distanceElement.textContent = km;
+  }
+  if (durationElement) {
+    durationElement.textContent = time;
+  }
 });

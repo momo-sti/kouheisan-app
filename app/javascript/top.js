@@ -41,11 +41,25 @@ document.addEventListener('DOMContentLoaded', function() {
             begin = document.getElementById('inputBegin').value; // 開始地点
             end = document.getElementById('inputEnd').value; // 終了地点
             avoidHighways = !document.querySelector('input[type="checkbox"]').checked; // トグルで高速道路の使用有無判断
+        
+            // 出発地と目的地が両方とも入力されているかチェック
+            if (begin === '' || end === '') {
+                // 入力が足りない場合はエラーメッセージを表示
+                var errorMessageDiv = document.getElementById('error-message');
+                errorMessageDiv.classList.remove('hidden');  // divを表示
+                document.getElementById('error-text').textContent = '出発地と目的地を入力してください';
+                return;  // ルート計算の処理は行わない
+            } else {
+                // 入力が足りている場合はエラーメッセージを非表示にする
+                document.getElementById('error-message').classList.add('hidden');
+            }
+        
             document.getElementById('directionsPanel').textContent = ' ';
             window.initMap().then(() => {
                 calcRoute(begin, end); // ルート計算
             });
         });
+        
 
 // 決定ボタンがクリックされたらデータをセッションストレージに保存してから画面遷移
 document.getElementById('confirmButton').addEventListener('click', function(e) {
@@ -152,3 +166,18 @@ function calcRoute(begin, end) {
         }
     });
 }
+
+document.getElementById('confirmButton').addEventListener('click', function(e) {
+    // 開始地点と終了地点を取得
+    var begin = document.getElementById('inputBegin').value;
+    var end = document.getElementById('inputEnd').value;
+
+    // 出発地と目的地が両方とも入力されているかチェック
+    if (begin === '' || end === '') {
+        // 入力が足りない場合はエラーメッセージを表示
+        var errorMessageDiv = document.getElementById('error-message');
+        errorMessageDiv.classList.remove('hidden');  // divを表示
+        document.getElementById('error-text').textContent = '出発地と目的地を入力してください';
+        e.preventDefault(); // ボタンのGETリクエストの送信
+    }
+});
