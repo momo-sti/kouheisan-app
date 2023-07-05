@@ -32,5 +32,5 @@ Rails.application.routes.draw do
 
 
   root 'tops#top'
-
+  get '/wakeup', to: 'tops#wakeup'
 end
