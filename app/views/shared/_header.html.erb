@@ -2,7 +2,10 @@
 
 <header>
     <h1 class="text-lg">
-        <a href="/">交平さん</a>
+        <%= link_to root_path do %>
+            <%= image_tag('toplogo4.png') %>
+        <% end %>
+
     </h1>
     <div class="back">
         <% if content_for?(:back_path) %>

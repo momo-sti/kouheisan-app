@@ -16,22 +16,22 @@ body,
 
 header {
   width: 100%;
-  padding: 10px 4% 10px;
+  padding: 10px 4% 0;
   background-color: #d59d6c;
 }
 
 .back {
   position: relative;
-  top: 25px;
+  top: 10px;
   left: 5px;
   text-align: left;
 }
 
 .text-lg {
+  width: 100px;
+
   margin: 0;
   padding: 0;
-  font-size: 20px;
-  font-weight: bold;
   position: relative;
       top: 0;
       right: 0;
@@ -73,10 +73,12 @@ li {
 .subtitle .text-xl {
   text-align: center;
   font-weight: bold;
+  position: relative;
+  bottom: 15px;
 }
 
 #edit-toggle-button {
   position: absolute;
-      top: 60px;
+      top: 65px;
       right: 10px;
 }
