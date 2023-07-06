@@ -1,11 +1,14 @@
 ja:
-  activerecord:
-    errors:
-      models:
-        extra:
-          attributes:
-            category:
-              blank: "カテゴリーを入力してください"
-            amount:
-              blank: "金額を入力してください"
-              not_a_number: "金額は数値で入力してください"
+  activemodel:
+    attributes:
+      gasoline:
+        total_distance: "距離"
+        fuel_efficiency: "燃費"
+        price_per_liter: "ガソリン単価"
+      extra:
+        category: "カテゴリー"
+        amount: "金額"
+      errors:
+        messages:
+          blank: "を入力してください"
+          not_a_number: "は数値で入力してください"
