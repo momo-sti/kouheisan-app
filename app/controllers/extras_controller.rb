@@ -18,7 +18,7 @@ class ExtrasController < ApplicationController
 
     @extra = Extra.new
     #一意のIDを追加
-    @extras = session[:extras]&.map.with_index { |extra, i| Extra.new(extra.merge(id: i)) } || []
+    @extras = session[:extras]&.map&.with_index { |extra, i| Extra.new(extra.merge(id: i)) } || []
   end
 
   def new

@@ -5,14 +5,15 @@
         <%= link_to root_path do %>
             <%= image_tag('toplogo4.png') %>
         <% end %>
-
     </h1>
-    <div class="back">
-        <% if content_for?(:back_path) %>
-            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2xl" style="color: #8c0327;"></i>'), content_for(:back_path) %>
-        <% end %>
 
+
+    <div class="return">
+        <%= link_to content_for(:back_path) do %>
+            <i class="fa-solid fa-angle-left fa-2xl" style="color: #8c0327;"></i>
+        <% end %>
     </div>
+
     <div class="subtitle">
         <h1 class="text-xl"><%= content_for?(:title) ? yield(:title) : "デフォルトのタイトル" %></h1>
     </div>

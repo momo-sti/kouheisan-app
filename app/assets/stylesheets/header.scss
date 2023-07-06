@@ -20,11 +20,12 @@ header {
   background-color: #d59d6c;
 }
 
-.back {
+.return {
   position: relative;
-  top: 10px;
+  top: 15px;
   left: 5px;
   text-align: left;
+  z-index: 1;
 }
 
 .text-lg {
@@ -49,7 +50,7 @@ h3 {
 
 header a {
   text-decoration: none;
-  color: #4b4b4b;
+  color: #691726;
   
 }
 
