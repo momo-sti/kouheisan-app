@@ -7,10 +7,14 @@
         <% end %>
     </h1>
 
-
     <div class="return">
-        <%= link_to content_for(:back_path) do %>
-            <i class="fa-solid fa-angle-left fa-2xl" style="color: #8c0327;"></i>
+        <% unless current_page?(root_path) %>
+            <%= link_to content_for(:back_path) do %>
+                <i class="fa-solid fa-angle-left fa-2xl" style="color: #8c0327;"></i>
+            <% end %>
+        <% else %>
+            <!-- 空の div により、戻るボタンが存在しない場合でもスペースを確保 -->
+            <div style="width: 20px; height: 25px;"></div>
         <% end %>
     </div>
 
@@ -18,9 +22,14 @@
         <h1 class="text-xl"><%= content_for?(:title) ? yield(:title) : "デフォルトのタイトル" %></h1>
     </div>
 
-    <% if current_page?(extras_path) %>
-        <button id="edit-toggle-button",  class="btn btn-sm btn-outline btn-primary">編集</button>
-    <% end %>
+    <div class="button-wrapper">
+        <% if current_page?(extras_path) %>
+            <button id="edit-toggle-button",  class="btn btn-sm btn-outline btn-primary">編集</button>
+        <% else %>
+            <!-- 空の div により、ボタンが存在しない場合でもスペースを確保 -->
+            <div style="width: 54px; height: 32px;"></div>
+        <% end %>
+    </div>
     
     <nav class="login">
         <ul>

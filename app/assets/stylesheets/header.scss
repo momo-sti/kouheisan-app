@@ -18,6 +18,8 @@ header {
   width: 100%;
   padding: 10px 4% 0;
   background-color: #d59d6c;
+  height: 110px;
+  position: relative;
 }
 
 .return {
@@ -30,7 +32,6 @@ header {
 
 .text-lg {
   width: 100px;
-
   margin: 0;
   padding: 0;
   position: relative;
@@ -51,7 +52,6 @@ h3 {
 header a {
   text-decoration: none;
   color: #691726;
-  
 }
 
 ul {
@@ -72,10 +72,13 @@ li {
 }
 
 .subtitle .text-xl {
-  text-align: center;
   font-weight: bold;
-  position: relative;
-  bottom: 15px;
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+
 }
 
 #edit-toggle-button {
