@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        extra:
+          attributes:
+            category:
+              blank: "カテゴリーを入力してください"
+            amount:
+              blank: "金額を入力してください"
+              not_a_number: "金額は数値で入力してください"

@@ -17,6 +17,8 @@ class ExtrasController < ApplicationController
     @total_amount = @result + @highway_cost + extras_sum
 
     @extra = Extra.new
+    #一意のIDを追加
+    @extras = session[:extras]&.map.with_index { |extra, i| Extra.new(extra.merge(id: i)) } || []
   end
 
   def new
@@ -25,32 +27,47 @@ class ExtrasController < ApplicationController
 
   def create
     @extra = Extra.new(extra_params)
-    if @extra.valid?
-      session[:extras] ||= []
-      session[:extras] << extra_params
-      puts "session[:extras] after create: #{session[:extras].inspect}"
-      redirect_to extras_path, success: "登録しました"
-    else
-      render :new
+    respond_to do |format|
+      if @extra.valid?
+        session[:extras] ||= []
+        session[:extras] << extra_params
+        format.html { redirect_to extras_path, success: "登録しました" }
+        format.turbo_stream { redirect_to extras_path, success: "登録しました" }
+      else
+        format.html { render :new }
+        format.turbo_stream do
+          render :new
+        end
+      end
     end
   end
 
+  
+
   def edit
     @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
-  @extra = @extras.find { |extra| extra.id == params[:id].to_i }
+    @extra = @extras.find { |extra| extra.id == params[:id].to_i }
   end
 
   def update
     @extra.category = extra_params[:category]
     @extra.amount = extra_params[:amount]
   
-    if @extra.valid?
-      session[:extras][params[:id].to_i] = extra_params
-      redirect_to extras_path, success: "更新しました"
-    else
-      render :edit
+    respond_to do |format|
+      if @extra.valid?
+        session[:extras][params[:id].to_i] = extra_params
+        format.html { redirect_to extras_path, success: "更新しました" }
+        format.turbo_stream
+      else
+        @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
+        format.html { render :edit }
+        format.turbo_stream do
+          render :edit
+        end
+      end
     end
   end
+  
   
 
   def destroy

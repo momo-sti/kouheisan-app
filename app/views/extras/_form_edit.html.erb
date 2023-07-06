@@ -1,31 +1,24 @@
 <%= stylesheet_link_tag 'extra' %>
 
-<%= form_with(model: extra, url: extra_path(id: @extras.index(extra)), method: :patch, local: true) do |f| %>
-  <% if extra.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(extra.errors.count, "error") %> prohibited this extra from being saved:</h2>
-        <ul>
-          <% extra.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+<div id="edit_form">
+  <%= form_with(model: extra, url: extra_path(id: extra.id), method: :patch, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: extra %>
+    
+      <div class="edit_button">
+        <div class="field">
+          <div><%= f.label :category %></div>
+          <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
+        </div>
+
+        <div class="field">
+          <div><%= f.label :amount %></div>
+          <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
+        </div>
+        <p class="field-yen">円</p>
+
+        <div class="actions">
+          <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
+        </div>
       </div>
   <% end %>
-
-    <div class="edit_button">
-      <div class="field">
-        <div><%= f.label :category %></div>
-        <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
-      </div>
-
-      <div class="field">
-        <div><%= f.label :amount %></div>
-        <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
-      </div>
-      <p class="field-yen">円</p>
-
-      <div class="actions">
-        <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
-      </div>
-    </div>
-<% end %>
+</div>
