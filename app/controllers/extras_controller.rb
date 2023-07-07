@@ -11,13 +11,13 @@ class ExtrasController < ApplicationController
     @highway_cost = (session[:highway_cost] || 0).to_f
     @extras = session[:extras]&.map { |extra| Extra.new(extra) } || []
 
-    #extra.amountを数値に変換
+    # extra.amountを数値に変換
     extras_sum = @extras.sum { |extra| extra.amount.to_f }
-    #金額を合算
+    # 金額を合算
     @total_amount = @result + @highway_cost + extras_sum
 
     @extra = Extra.new
-    #一意のIDを追加
+    # 一意のIDを追加
     @extras = session[:extras]&.map&.with_index { |extra, i| Extra.new(extra.merge(id: i)) } || []
   end
 
@@ -31,8 +31,8 @@ class ExtrasController < ApplicationController
       if @extra.valid?
         session[:extras] ||= []
         session[:extras] << extra_params
-        format.html { redirect_to extras_path, success: "登録しました" }
-        format.turbo_stream { redirect_to extras_path, success: "登録しました" }
+        format.html { redirect_to extras_path, success: '登録しました' }
+        format.turbo_stream { redirect_to extras_path, success: '登録しました' }
       else
         format.html { render :new }
         format.turbo_stream do
@@ -42,8 +42,6 @@ class ExtrasController < ApplicationController
     end
   end
 
-  
-
   def edit
     @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
     @extra = @extras.find { |extra| extra.id == params[:id].to_i }
@@ -52,11 +50,11 @@ class ExtrasController < ApplicationController
   def update
     @extra.category = extra_params[:category]
     @extra.amount = extra_params[:amount]
-  
+
     respond_to do |format|
       if @extra.valid?
         session[:extras][params[:id].to_i] = extra_params
-        format.html { redirect_to extras_path, success: "更新しました" }
+        format.html { redirect_to extras_path, success: '更新しました' }
         format.turbo_stream
       else
         @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
@@ -67,15 +65,12 @@ class ExtrasController < ApplicationController
       end
     end
   end
-  
-  
 
   def destroy
     session[:extras].delete_at(params[:id].to_i)
-    
-    redirect_to extras_path, success: "削除しました"
+
+    redirect_to extras_path, success: '削除しました'
   end
-  
 
   private
 
