@@ -23,6 +23,6 @@ class GasolinesController < ApplicationController
   private
 
   def gasoline_params
-    params.require(:gasoline).permit(:total_distance, :fuel_efficiency, :price_per_liter)
+    params.require(:gasoline).permit(:total_distance, :fuel_efficiency, :price_per_liter).transform_values(&:to_i)
   end
 end
