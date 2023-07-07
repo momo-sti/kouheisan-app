@@ -66,8 +66,9 @@ README〜ER図作成：6/2 〆切
 - Rails7
 - postgresql
 - JavaScript
-- Bootstrap
-- heroku
+- TailWind CSS
+- daisyUI
+- fly.io
 - LINE Messaging API
 - Google Maps API
 - LINE Login
