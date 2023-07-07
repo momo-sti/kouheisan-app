@@ -11,6 +11,7 @@
 @import 'highway';
 @import 'extra';
 @import 'split';
+@import 'privacy';
 
 .container {
   max-width: 960px;

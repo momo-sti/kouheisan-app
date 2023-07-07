@@ -33,4 +33,6 @@ Rails.application.routes.draw do
 
   root 'tops#top'
   get '/wakeup', to: 'tops#wakeup'
+  get '/privacy', to: 'policies#privacy'
+  get '/kiyaku', to: 'policies#kiyaku'
 end
