@@ -2,7 +2,7 @@ class GasolinesController < ApplicationController
   def new
     if URI(request.referer).path == root_path
       session[:gasoline] = {}
-      session[:result] = ""
+      session[:result] = ''
     end
     @gasoline = Gasoline.new
     @result = session[:result].present? ? session[:result] : 0
