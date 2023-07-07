@@ -20,6 +20,7 @@ header {
   background-color: #d59d6c;
   height: 110px;
   position: relative;
+  color: #691726;
 }
 
 .return {
@@ -78,11 +79,16 @@ li {
   left: 50%;
   transform: translateX(-50%);
   bottom: 10px;
-
+  width: 200px;
+  text-align: center;
 }
 
 #edit-toggle-button {
   position: absolute;
       top: 65px;
       right: 10px;
+}
+
+.head-title {
+  color: #691726;
 }

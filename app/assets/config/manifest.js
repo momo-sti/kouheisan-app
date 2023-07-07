@@ -8,4 +8,5 @@
 //= link highway.css
 //= link extra.css
 //= link split.css
+//= link privacy.css
 
