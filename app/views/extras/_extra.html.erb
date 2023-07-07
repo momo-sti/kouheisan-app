@@ -4,7 +4,7 @@
   <td><%= extra.category %></td>
     <td class="right-align">
       <div class="action-area">
-        <span class="amount"><%= extra.amount %>円</span>
+        <span class="amount" id="extra_amount_<%= extra.id %>"><%= extra.amount %>円</span>
         <div class="action-buttons hidden">
           <!-- The button to open modal -->
           <label for="my_modal_<%= @extras.index(extra) %>" class="btn btn-xs btn-active btn-success">

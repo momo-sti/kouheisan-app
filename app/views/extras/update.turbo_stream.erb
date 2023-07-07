@@ -1,2 +1,19 @@
-<%= turbo_stream.replace @extra %>
-<%= turbo_stream_flash %>
+<%= turbo_stream.update "extra_amount_#{@extra.id}" do %>
+  <%= @extra.amount %>円
+<% end %>
+
+<%= turbo_stream.update "total_amount" do %>
+  <%= display_number(@total_amount) %>円
+<% end %>
+
+<%= turbo_stream.update "split-container-wrapper" do %>
+  <%= render partial: 'splits/form', locals: { total_amount: @total_amount } %>
+<% end %>
+
+<%= turbo_stream.update "js-placeholder" do %>
+  <script>
+    setTimeout(function() {
+      window.setupSplitAmountUpdater();
+    }, 0);
+  </script>
+<% end %>
