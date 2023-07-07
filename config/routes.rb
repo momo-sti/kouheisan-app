@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   get '/wakeup', to: 'tops#wakeup'
   get '/privacy', to: 'policies#privacy'
   get '/kiyaku', to: 'policies#kiyaku'
+  get '/how', to: 'policies#how'
 end
