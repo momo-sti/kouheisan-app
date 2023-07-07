@@ -1,7 +1,7 @@
 
 
 <!-- Open the modal using ID.showModal() method -->
-<!--
+
 <button class="btn" onclick="my_modal_2.showModal()">open modal</button>
 <dialog id="my_modal_2" class="modal">
   <form method="dialog" class="modal-box">
@@ -31,40 +31,6 @@
     <button>close</button>
   </form>
 </dialog>
-
--->
-
-
-<div class="bbb">
-  <!-- Open the modal using ID.showModal() method -->
-  <button class="btn btn-link" onclick="my_modal_1.showModal()">プライバシーポリシー</button>
-  <dialog id="my_modal_1" class="modal">
-    <form method="dialog" class="modal-box">
-      <h3 class="font-bold text-lg">プライバシーポリシー</h3>
-      <p class="py-4" style="width: 100px;">
-        <%= render 'policy/privacy'%>
-      </p>
-    </form>
-    <form method="dialog" class="modal-backdrop">
-      <button>close</button>
-    </form>
-  </dialog>
-</div>
-
-<div class="aaa">
-  <!-- Open the modal using ID.showModal() method -->
-  <button class="btn btn-link" onclick="my_modal_2.showModal()">利用規約</button>
-  <dialog id="my_modal_2" class="modal">
-    <form method="dialog" class="modal-box">
-      <h3 class="font-bold text-lg">Hello!</h3>
-      <p class="py-4">Press ESC key or click outside to close</p>
-    </form>
-    <form method="dialog" class="modal-backdrop">
-      <button>close</button>
-    </form>
-  </dialog>
-</div>
-
 
 <%= link_to 'プライバシーポリシー', privacy_path%>
 <%= link_to '利用規約', kiyaku_path%>
