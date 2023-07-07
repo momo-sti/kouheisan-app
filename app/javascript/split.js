@@ -2,9 +2,8 @@ document.addEventListener("turbo:load", function() {
   setupSplitAmountUpdater();
 });
 
-function setupSplitAmountUpdater() {
+window.setupSplitAmountUpdater = function() {
   const splitContainer = document.getElementById('split-container');
-
   // splitContainerが存在しない場合はここで処理を終了する
   if (!splitContainer) {
     return;
@@ -50,6 +49,7 @@ function setupSplitAmountUpdater() {
 
   // splitContainer の data-total-amount 属性の変更を監視する
   const observer = new MutationObserver(() => {
+    console.log('data-total-amount attribute was modified.');
     totalAmount = parseFloat(splitContainer.getAttribute('data-total-amount'));
     updateSplitAmount();
   });
@@ -58,4 +58,10 @@ function setupSplitAmountUpdater() {
   observer.observe(splitContainer, { attributes: true });
 
   updateSplitAmount();
+  // turbo:loadイベントが発生したとき（ページが初めて読み込まれたとき、部分的に更新されたとき）にも関数を実行
+  document.addEventListener('turbo:render', setupSplitAmountUpdater);
+  
+  document.addEventListener("turbo:load", function() {
+    document.removeEventListener("turbo:load", setupSplitAmountUpdater);
+  });
 }

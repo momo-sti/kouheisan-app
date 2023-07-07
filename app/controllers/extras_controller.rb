@@ -1,24 +1,15 @@
 class ExtrasController < ApplicationController
   before_action :set_extra, only: [:edit, :update, :destroy]
+  before_action :calculate_total_amount, only: [:index]
+  before_action :add_id_to_extras, only: [:index]
 
   def index
-    @result = (session[:result] || 0).to_f
-    @total_distance = (session[:gasoline]['total_distance'] || 0).to_f
-    @fuel_efficiency = (session[:gasoline]['fuel_efficiency'] || 0).to_f
-    @price_per_liter = (session[:gasoline]['price_per_liter'] || 0).to_f
-    @start_place = session[:start_place]
-    @arrive_place = session[:arrive_place]
-    @highway_cost = (session[:highway_cost] || 0).to_f
-    @extras = session[:extras]&.map { |extra| Extra.new(extra) } || []
-
     # extra.amountを数値に変換
     extras_sum = @extras.sum { |extra| extra.amount.to_f }
     # 金額を合算
     @total_amount = @result + @highway_cost + extras_sum
 
     @extra = Extra.new
-    # 一意のIDを追加
-    @extras = session[:extras]&.map&.with_index { |extra, i| Extra.new(extra.merge(id: i)) } || []
   end
 
   def new
@@ -49,13 +40,19 @@ class ExtrasController < ApplicationController
 
   def update
     @extra.category = extra_params[:category]
-    @extra.amount = extra_params[:amount]
-
+    @extra.amount = extra_params[:amount].to_i
+  
     respond_to do |format|
       if @extra.valid?
-        session[:extras][params[:id].to_i] = extra_params
+        session[:extras][params[:id].to_i] = extra_params.merge(amount: @extra.amount)
+        @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
+
+        calculate_total_amount
+  
         format.html { redirect_to extras_path, success: '更新しました' }
-        format.turbo_stream
+        format.turbo_stream do
+          format.turbo_stream
+        end
       else
         @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
         format.html { render :edit }
@@ -65,6 +62,12 @@ class ExtrasController < ApplicationController
       end
     end
   end
+  
+  
+  
+  
+  
+  
 
   def destroy
     session[:extras].delete_at(params[:id].to_i)
@@ -80,5 +83,9 @@ class ExtrasController < ApplicationController
 
   def extra_params
     params.require(:extra).permit(:category, :amount)
+  end
+
+  def add_id_to_extras
+    @extras = session[:extras]&.map&.with_index { |extra, i| Extra.new(extra.merge(id: i)) } || []
   end
 end

@@ -8,7 +8,7 @@
     <tbody>
       <tr id="total-amount", class="text-2xl">
         <th>合計</th>
-        <th class="right-align"><%= display_number(@total_amount) %>円</th>
+        <th class="right-align" id="total_amount"><%= display_number(@total_amount) %>円</th>
       </tr>
       <!-- row 1 -->
       <tr id="gasoline-cost", class="text-xl font-bold">
@@ -72,10 +72,15 @@
 
 
 <div id="bottomSheet" class="fixed bottom-0 left-0 right-0 bg-white p-4 rounded-t-lg shadow-lg transform transition-transform duration-300 ease-in-out" style="height: 20%; bottom: 0;">
-  <%= render "splits/form" %>
+  <div id="split-container-wrapper">
+    <%= render partial: 'splits/form', locals: { total_amount: @total_amount } %>
+  </div>
   <button id="arrowButton" class="absolute top-0 right-0 p-2">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-10 h-10">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
     </svg>
   </button>
 </div>
+
+
+<div id="js-placeholder"></div>

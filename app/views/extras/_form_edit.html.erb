@@ -1,9 +1,9 @@
 <%= stylesheet_link_tag 'extra' %>
 
 <div id="edit_form">
-  <%= form_with(model: extra, url: extra_path(id: extra.id), method: :patch, local: true) do |f| %>
+  <%= form_with(model: extra, url: extra_path(id: extra.id), data: { "form-id": extra.id }, method: :patch, local: true) do |f| %>
     <%= render 'shared/error_messages', object: extra %>
-    
+
       <div class="edit_button">
         <div class="field">
           <div><%= f.label :category %></div>
