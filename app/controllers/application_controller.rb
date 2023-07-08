@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  
   private
 
   def load_session_data

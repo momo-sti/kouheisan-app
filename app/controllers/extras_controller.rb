@@ -41,14 +41,14 @@ class ExtrasController < ApplicationController
   def update
     @extra.category = extra_params[:category]
     @extra.amount = extra_params[:amount].to_i
-  
+
     respond_to do |format|
       if @extra.valid?
         session[:extras][params[:id].to_i] = extra_params.merge(amount: @extra.amount)
         @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
 
         calculate_total_amount
-  
+
         format.html { redirect_to extras_path, success: '更新しました' }
         format.turbo_stream do
           format.turbo_stream
