@@ -62,12 +62,6 @@ class ExtrasController < ApplicationController
       end
     end
   end
-  
-  
-  
-  
-  
-  
 
   def destroy
     session[:extras].delete_at(params[:id].to_i)
