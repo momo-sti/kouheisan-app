@@ -184,7 +184,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   
-    searchButton.addEventListener('click', showAlertIfInputEmpty);
-    confirmButton.addEventListener('click', showAlertIfInputEmpty);
-  });
-  
+    // searchButtonが存在する場合にのみ、イベントリスナーを追加
+    if (searchButton) {
+        searchButton.addEventListener('click', showAlertIfInputEmpty);
+    }
+
+    // confirmButtonが存在する場合にのみ、イベントリスナーを追加
+    if (confirmButton) {
+        confirmButton.addEventListener('click', showAlertIfInputEmpty);
+    }
+});
+
