@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   const mainForm = document.getElementById('main_form');
   const externalForm = document.getElementById('external_form');
   
@@ -41,8 +41,5 @@ window.addEventListener('DOMContentLoaded', function() {
         console.error('There has been a problem with your fetch operation:', error);
       });
     });
-
-  }
-  else{
   }
 });
