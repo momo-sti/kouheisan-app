@@ -2,8 +2,10 @@
 <% content_for :title, "高速料金の計算" %>
 <% content_for :back_path, new_gasoline_path %>
 
+<button class="btn btn-active btn-link" id="start">操作方法</button>
+
 <div class="container">
-  <%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false } do |f| %>
+  <%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false, tg_order: "0", tg_tour: '各項目を入力してください。' } do |f| %>
     <div class="place">
       <%= f.label :start_place, '出発IC' %>
       <%= f.text_field :start_place, id: "start_place", class: "input input-bordered input-accent w-full max-w-xs" %>
@@ -39,7 +41,7 @@
       <%= f.radio_button :kind, '2', class: "radio radio-accent" %>
     </div>
 
-    <div class="search">
+    <div class="search" data-tg-order="1" data-tg-tour='検索ボタンを押すと外部サイトに金額が表示されます。<br>確認したらブラウザバックしてください。'>
       <%= f.submit '検索', class: "btn btn-active btn-accent fixed-button" %>
     </div>
   <% end %>
@@ -47,7 +49,7 @@
 
     <div>
       <%= form_with url: save_highway_info_highways_path, local: true do |f| %>
-        <p class="cost">高速道路料金<%= f.number_field :highway_cost, class:"input input-bordered input-accent w-full max-w-xs" %>円</p>
+        <p class="cost" data-tg-order="2" data-tg-tour='外部サイトで表示された金額を入力してください。'>高速道路料金<%= f.number_field :highway_cost, class:"input input-bordered input-accent w-full max-w-xs" %>円</p>
         <div class="next"><%= f.submit '次へ', class: "btn btn-active btn-accent fixed-button" %></div>
       <% end %>
     </div>

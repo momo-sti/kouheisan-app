@@ -34,3 +34,45 @@
 
 <%= link_to 'プライバシーポリシー', privacy_path%>
 <%= link_to '利用規約', kiyaku_path%>
+
+
+<script src="https://unpkg.com/@sjmc11/tourguidejs@0.0.7/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://unpkg.com/@sjmc11/tourguidejs@0.0.7/dist/css/tour.min.css">
+
+<header>
+  <ol class="nav">
+    <li data-tg-order="0" data-tg-tour='Press next button or right key!'>left top</li>
+    <li data-tg-order="1" data-tg-tour='top' data-tg-title="data-tg-title attribute">top</li>
+    <li data-tg-order="2" data-tg-tour='right top'>right top</li>
+  </ol>
+</header>
+
+<div class="content">
+  <h1 data-tg-order="3"
+      data-tg-tour='<span class="c-red" style="font-size:2rem;"> Set class & style<br>br tag</span>' 
+      >TourGuide.JS 0.0.7</h1>
+  
+  <button id="start">Start Tour</button>
+  <p data-tg-order="9" data-tg-tour="Finish!!"><a href="https://github.com/sjmc11/tourguide-js" target="_blank" rel="noopener">https://github.com/sjmc11/tourguide-js</a></p>
+  
+  <p class="bottom"
+     data-tg-order="4"
+     data-tg-tour="Auto Scroll"
+     >Bottom<p>
+  
+  <div class="left-side"
+       data-tg-order="5"
+       data-tg-tour="Scroll Up Down"
+       >left side (position:absolute)</div>
+  
+  <div class="right-side"
+       data-tg-order="6"
+       data-tg-tour="Scroll Up Down"
+       data-tg-fixed
+       >right side<br>(position:fixed & data-tg-fixed)</div>
+  
+    <div class="right-side2"
+       data-tg-order="7"
+       data-tg-tour="Scroll Up Down"
+       >right side (position:fixed)<br></div>
+</div>

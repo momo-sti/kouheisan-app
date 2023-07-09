@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <meta name="turbo-visit-control" content="reload">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <script src="https://kit.fontawesome.com/d3b7736f3b.js" crossorigin="anonymous"></script>
+
+    <!--TourGuide JS CDN -->
+    <script src="https://unpkg.com/@sjmc11/tourguidejs@0.0.7/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@sjmc11/tourguidejs@0.0.7/dist/css/tour.min.css">
+
   </head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9B4G1LYB9"></script>
