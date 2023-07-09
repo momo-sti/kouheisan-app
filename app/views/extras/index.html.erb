@@ -2,6 +2,8 @@
 <% content_for :title, "計算結果" %>
 <% content_for :back_path, highway_highways_path %>
 
+<button class="btn btn-active btn-link" id="start">操作方法</button>
+
 <div class="overflow-x-auto">
   <table class="table">
     <!-- head -->
@@ -55,7 +57,8 @@
 
 <div class="modal-extra">
   <!-- The button to open modal -->
-  <label for="my_modal_7" class="btn rounded-full btn-active btn-accent text-xl">＋</label>
+  <label for="my_modal_7" class="btn rounded-full btn-active btn-accent text-xl" 
+    data-tg-order="0" data-tg-tour='ガソリン代金と高速料金以外の費用を<br>追加できます。'>＋</label>
 
   <!-- Put this part before </body> tag -->
   <input type="checkbox" id="my_modal_7" class="modal-toggle" />
