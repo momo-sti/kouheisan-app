@@ -7,11 +7,6 @@
   font-size: 20px;
 }
 
-.split-amount {
-  position: relative;
-  top: 15px;
-}
-
 #split-amount {
   font-size: 30px;
   color: #d75050;
@@ -21,12 +16,12 @@
 .share .btn-accent {
   width: 100%;
   position: relative;
-  top: 30px;
+  top: 15px;
 }
 
 .counter {
   position: relative;
-  top: 5px;
+  bottom: 10px;
 }
 
 #decrement-button, #increment-button {
