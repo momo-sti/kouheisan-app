@@ -66,3 +66,13 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+#start {
+  position: relative;
+  left: 308px;
+}
+
+::-webkit-full-page-media, :future, :root #start {
+  position: relative;
+  left: 330px;
+}

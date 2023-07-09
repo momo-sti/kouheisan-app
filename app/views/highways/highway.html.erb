@@ -2,7 +2,7 @@
 <% content_for :title, "高速料金の計算" %>
 <% content_for :back_path, new_gasoline_path %>
 
-<button class="btn btn-active btn-link" id="start">操作方法</button>
+<button class="btn btn-sm btn-link" id="start">操作方法</button>
 
 <div class="container">
   <%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false, tg_order: "0", tg_tour: '各項目を入力してください。' } do |f| %>
@@ -41,7 +41,7 @@
       <%= f.radio_button :kind, '2', class: "radio radio-accent" %>
     </div>
 
-    <div class="search" data-tg-order="1" data-tg-tour='検索ボタンを押すと外部サイトに金額が表示されます。<br>確認したらブラウザバックしてください。'>
+    <div class="search" data-tg-order="1" data-tg-tour='検索ボタンをクリックすると、外部サイトに金額が表示されます。<br>金額を確認したら、ブラウザの戻るボタンを押してください。'>
       <%= f.submit '検索', class: "btn btn-active btn-accent fixed-button" %>
     </div>
   <% end %>
