@@ -167,7 +167,7 @@ function calcRoute(begin, end) {
     });
 }
 
-
+// アラート
 document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     const confirmButton = document.getElementById('confirmButton');

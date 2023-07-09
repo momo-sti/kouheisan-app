@@ -25,7 +25,7 @@
       <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">円/L</p>
     </div>
     <div class="cal-button">
-      <%= f.submit class: "btn btn-active btn-accent fixed-button" %>
+      <%= f.submit "計算", class: "btn btn-active btn-accent fixed-button" %>
     </div>
   <% end %>
 

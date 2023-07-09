@@ -1,12 +1,9 @@
 window.addEventListener('DOMContentLoaded', function() {
-  // console.log('DOMContentLoaded event fired'); 
   const mainForm = document.getElementById('main_form');
   const externalForm = document.getElementById('external_form');
   
   if (mainForm) {
     mainForm.addEventListener('submit', function(event) {
-      // console.log('mainForm submit event fired');
-      // console.log(mainForm);
       event.preventDefault();
 
       // メインのフォームのデータを取得
@@ -47,7 +44,5 @@ window.addEventListener('DOMContentLoaded', function() {
 
   }
   else{
-    // console.log('失敗')
   }
-  // console.log('終了')
 });
