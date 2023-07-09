@@ -9,4 +9,4 @@
 //= link extra.css
 //= link split.css
 //= link privacy.css
-
+//= link how.css
