@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   // セッションストレージからデータを取得
   var km = sessionStorage.getItem('km');
   var time = sessionStorage.getItem('time');
