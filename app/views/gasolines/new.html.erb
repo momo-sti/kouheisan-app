@@ -14,15 +14,15 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div>
       <%= f.label :total_distance, class: 'form-label' %>
-      <%= f.number_field :total_distance, value: session[:gasoline]['total_distance'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">km</p>
+      <%= f.number_field :total_distance, value: session[:gasoline]['total_distance'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">km</p>
     </div>
     <div>
       <%= f.label :fuel_efficiency, class: 'form-label' %>
-      <%= f.number_field :fuel_efficiency, value: session[:gasoline]['fuel_efficiency'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">L/km</p>
+      <%= f.number_field :fuel_efficiency, value: session[:gasoline]['fuel_efficiency'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">L/km</p>
     </div>
     <div>
       <%= f.label :price_per_liter, class: 'form-label' %>
-      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">円/L</p>
+      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">円/L</p>
     </div>
     <div class="cal-button">
       <%= f.submit "計算", class: "btn btn-active btn-accent fixed-button" %>
