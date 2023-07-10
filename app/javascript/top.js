@@ -173,17 +173,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmButton = document.getElementById('confirmButton');
     const errorMessage = document.getElementById('error-message');
     const errorText = document.getElementById('error-text');
-  
+
     function showAlertIfInputEmpty(e) {
-      const start = document.getElementById('inputBegin').value;
-      const end = document.getElementById('inputEnd').value;
-      if (start === '' || end === '') {
+        const start = document.getElementById('inputBegin').value;
+        const end = document.getElementById('inputEnd').value;
+        if (start === '' || end === '') {
         e.preventDefault();
         errorMessage.classList.remove('hidden');
         errorText.textContent = '出発地と目的地を入力してください。';
-      }
+        }
     }
-  
+
     // searchButtonが存在する場合にのみ、イベントリスナーを追加
     if (searchButton) {
         searchButton.addEventListener('click', showAlertIfInputEmpty);
