@@ -2,7 +2,9 @@
 <% content_for :title, "高速料金の計算" %>
 <% content_for :back_path, new_gasoline_path %>
 
-<button class="btn btn-sm btn-link" id="start">操作方法</button>
+<div style="text-align: right;">
+  <button class="btn btn-sm btn-link" id="start">操作方法</button>
+</div>
 
 <div class="container">
   <%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false, tg_order: "0", tg_tour: '各項目を入力してください。' } do |f| %>
