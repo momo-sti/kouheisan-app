@@ -50,6 +50,7 @@ gem 'font-awesome-sass'
 gem 'geocoder'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'rack-cors'
 
 
 
