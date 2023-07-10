@@ -5,6 +5,7 @@
 body,
 #wrapper {
   display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
   min-height: 100vh;
   font-family: 'ヒラギノ丸ゴ ProN', 'Hiragino Maru Gothic ProN', 'YuGothic', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'TsukuARdGothic-Regular', sans-serif;
