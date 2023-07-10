@@ -79,3 +79,19 @@
   color: #d75050;
   font-size: 30px;
 }
+
+@media (max-width: 320px) {
+  ::-webkit-full-page-media, :future, :root #wrapper {
+    min-height: 120vh;
+  }
+
+  ::-webkit-full-page-media, :future, :root .next {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  ::-webkit-full-page-media, :future, :root .next {
+    bottom: 25px;
+  }
+}
