@@ -79,3 +79,15 @@
     height: 610px;
   }
 }
+
+@media (max-width: 375px) {
+  ::-webkit-full-page-media, :future, :root #wrapper {
+    min-height: 130vh;
+  }
+}
+
+@media (max-width: 320px) {
+  ::-webkit-full-page-media, :future, :root #wrapper {
+    min-height: 153vh;
+  }
+}
