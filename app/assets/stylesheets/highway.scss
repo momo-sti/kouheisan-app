@@ -1,3 +1,9 @@
+.container {
+  padding-top: 0;
+  position: relative;
+  bottom: 20px;
+}
+
 .place .input-accent{
   width: 180px;
   margin-bottom: 5px;
@@ -59,15 +65,11 @@
 
 .next .btn-accent {
   position: relative;
-  top: 160px;
+  top: 163px;
 }
 
 #main_form {
   position: relative;
   top: 20px;
   padding-bottom: 25px;
-}
-
-#start {
-  float: right;
 }
