@@ -2,35 +2,7 @@
 
 <!-- Open the modal using ID.showModal() method -->
 
-<button class="btn" onclick="my_modal_2.showModal()">open modal</button>
-<dialog id="my_modal_2" class="modal">
-  <form method="dialog" class="modal-box">
-    <h3 class="font-bold text-lg">Hello!</h3>
-    <div class="carousel w-full ">
-      <div id="item1" class="carousel-item w-full">
-        <%=image_tag('demo.png', class:"w-full") %>
-      </div> 
-      <div id="item2" class="carousel-item w-full">
-        <%=image_tag('demo1.png', class:"w-full") %>
-      </div> 
-      <div id="item3" class="carousel-item w-full">
-        <%=image_tag('demo1.png', class:"w-full") %>
-      </div> 
-      <div id="item4" class="carousel-item w-full">
-        <%=image_tag('demo1.png', class:"w-full") %>
-      </div>
-    </div> 
-    <div class="flex justify-center w-full py-2 gap-2">
-      <a href="#item1" class="btn btn-xs">1</a> 
-      <a href="#item2" class="btn btn-xs">2</a> 
-      <a href="#item3" class="btn btn-xs">3</a> 
-      <a href="#item4" class="btn btn-xs">4</a>
-    </div>
-  </form>
-  <form method="dialog" class="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
+
 
 <%= link_to 'プライバシーポリシー', privacy_path%>
 <%= link_to '利用規約', kiyaku_path%>
