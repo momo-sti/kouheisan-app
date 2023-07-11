@@ -22,8 +22,8 @@ class ExtrasController < ApplicationController
       if @extra.valid?
         session[:extras] ||= []
         session[:extras] << extra_params
-        format.html { redirect_to extras_path, success: '登録しました' }
-        format.turbo_stream { redirect_to extras_path, success: '登録しました' }
+        format.html { redirect_to extras_path }
+        format.turbo_stream { redirect_to extras_path }
       else
         format.html { render :new }
         format.turbo_stream do
@@ -49,7 +49,7 @@ class ExtrasController < ApplicationController
 
         calculate_total_amount
 
-        format.html { redirect_to extras_path, success: '更新しました' }
+        format.html { redirect_to extras_path }
         format.turbo_stream do
           format.turbo_stream
         end
@@ -66,7 +66,7 @@ class ExtrasController < ApplicationController
   def destroy
     session[:extras].delete_at(params[:id].to_i)
 
-    redirect_to extras_path, success: '削除しました'
+    redirect_to extras_path
   end
 
   private
