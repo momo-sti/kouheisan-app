@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'extra' %>
 
 <tr class="swipeable-row text-xl font-bold" id="extra_<%= @extras.index(extra) %>">
-  <td><%= extra.category %></td>
+  <td id="extra_category_<%= extra.id %>"><%= extra.category %></td>
     <td class="right-align">
       <div class="action-area">
         <span class="amount" id="extra_amount_<%= extra.id %>"><%= extra.amount %>円</span>
