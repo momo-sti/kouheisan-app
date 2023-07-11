@@ -1,3 +1,7 @@
+<%= turbo_stream.update "extra_category_#{@extra.id}" do %>
+  <%= @extra.category %>
+<% end %>
+
 <%= turbo_stream.update "extra_amount_#{@extra.id}" do %>
   <%= @extra.amount %>円
 <% end %>
