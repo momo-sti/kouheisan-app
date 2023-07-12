@@ -35,8 +35,28 @@
 
     <nav class="login">
         <ul>
-            <li><%= link_to '使い方', how_path%></a></li>
-            <%# <li><a href="#">ログイン</a></li> %>
+            <li><%= link_to '使い方', how_path%></li>
+            <li>
+                <% if user_signed_in? %>
+                    <details class="dropdown dropdown-end mb-32">
+                        <summary class="m-1 p-0 bg-transparent border-0">
+                            <% if current_user.avatar.attached? %>
+                                <%= image_tag url_for(current_user.avatar), size: "50x50", class: "avatar" %>
+                            <% else %>
+                                <!-- avatarがない場合のフォールバック画像または表示を設定 -->
+                                <%= image_tag "default.png", size: "50x50", class: "avatar" %>
+                            <% end %>
+                        </summary>
+                        <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a>マイページ</a></li>
+                            <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                        </ul>
+                    </details>
+                <% else %>
+                    <%= button_to "ログイン", omniauth_authorize_path(:user, :line), data: { turbo: false } %>
+                <% end %>
+
+            </li>
         </ul>
     </nav>
 
