@@ -2,11 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks"
   }
+  #Webhookから送られてきたリクエストを処理
+  post '/callback' => 'linebot#callback'
   
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   resources :tops, only: [:new, :reset_session] do
     post :reset_session, on: :collection
   end
