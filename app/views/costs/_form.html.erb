@@ -1,0 +1,15 @@
+<%= form_with model: @cost, url: costs_path, data: { turbo_frame: "cost_form" } do |form| %>
+  <%= form.hidden_field :total_amount, value: session[:total_amount] %>
+  <%= form.hidden_field :gasoline_cost, value: session[:gasoline_cost] %>
+  <%= form.hidden_field :distance, value: session[:total_distance] %>
+  <%= form.hidden_field :fuel_efficiency, value: session[:fuel_efficiency] %>
+  <%= form.hidden_field :price_per_liter, value: session[:price_per_liter] %>
+  <%= form.hidden_field :highway_cost, value: session[:highway_cost] %>
+  <%= form.hidden_field :start_place, value: session[:start_place] %>
+  <%= form.hidden_field :arrive_place, value: session[:arrive_place] %>
+
+  <%= form.hidden_field :extra_costs, value: session[:extras].to_json %>
+
+  <%= form.submit "旅行前に保存", name: "save_before" %>
+  <%= form.submit "旅行後に保存", name: "save_after" %>
+<% end %>

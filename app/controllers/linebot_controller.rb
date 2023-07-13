@@ -1,7 +1,6 @@
 require 'line/bot'
 
 class LinebotController < ApplicationController
-  # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
   
   def client
@@ -16,30 +15,67 @@ class LinebotController < ApplicationController
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
-      error 400 do 'Bad Request' end
+      return head :bad_request
     end
 
     events = client.parse_events_from(body)
 
     events.each { |event|
-      #メッセージを送ってきたユーザのuidを特定
       user_id = event['source']['userId']
-      #特定したユーザをuserに格納
-      user = User.where(uid: user_id)[0]
-      #送信されたメッセージに「交平さん！」が入っているかを確認
-      if event.message['text'].include?("交平さん！")
-        message = flex_costs(send_consts(user))
-      elsif event.message['text'].include?("自動購入機能テスト")
-        message = test_selenium(user)
-      end
+      user = User.where(uid: user_id).first
 
       case event
-      # メッセージが送信された場合
       when Line::Bot::Event::Message
         case event.type
-        # メッセージが送られて来た場合
         when Line::Bot::Event::MessageType::Text
-          client.reply_message(event['replyToken'], message)
+          if event.message['text'].include?("交平さん！")
+            if user
+              cost = Cost.where(user_id: user.id).last
+              if cost
+                if cost.is_paid
+                  #旅行後の交通費の場合
+                  messages = [
+                    {
+                      type: 'text',
+                      text: "読んだか？
+                            \n俺がこの旅行でかかった交通費を教えてやるよ。
+                            \nほらよ！"
+                    },
+                    FlexMessageBuilder.new(cost).build,
+                    send_payment_completed_message
+                  ]
+                else
+                  #旅行前の交通費の場合
+                  messages = [
+                    {
+                      type: 'text',
+                      text: "読んだか？
+                            \n俺がどのぐらい交通費がかかるか教えてやるよ。
+                            \nほらよ！"
+                    },
+                    FlexMessageBuilder.new(cost).build
+                  ]
+                end
+              else
+                #ユーザー登録してるけど交通費を計算していない場合
+                messages = [
+                  {
+                    type: 'text',
+                    text: "交通費を計算してから呼んでくれ〜"
+                  }
+                ]
+              end
+            else
+              #新規ユーザーの場合
+              messages = [
+                {
+                  type: 'text',
+                  text: "まずアプリを使ってくれ〜"
+                }
+              ]
+            end
+            client.reply_message(event['replyToken'], messages)
+          end
         end
       end
     }
@@ -49,43 +85,11 @@ class LinebotController < ApplicationController
 
   private
 
-  def send_costs(user)
-    response = "交通費"
-  end
-
-  def flex_costs(response) ##メッセージの形式を作成
+  def send_payment_completed_message
     {
-      type: 'flex',
-      altText: 'お買い物リスト',
-      contents: {
-        type: 'bubble',
-        header:{
-          type: 'box',
-          layout: 'horizontal',
-          contents:[
-            {
-              type: 'text',
-              text: 'お買い物リスト',
-              wrap: true,
-              size: 'md',
-            }
-          ]
-        },
-        body: {
-          type: 'box',
-          layout: 'horizontal',
-          contents: [
-            {
-              type: 'text',
-              text: response,
-              wrap: true,
-              size: 'sm',
-            }
-          ]
-        }
-      }
+      type: 'text',
+      text: "メンバーはドライバーに交通費を払ってくれよな！\n支払いが完了したら⭐️を送ってくれ！"
     }
   end
-
-
+  
 end
