@@ -45,14 +45,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_13_073121) do
   create_table "costs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.float "total_amount", null: false
-    t.string "duration"
     t.float "gasoline_cost", null: false
     t.float "distance", null: false
     t.float "fuel_efficiency", null: false
-    t.float "place_per_liter", null: false
+    t.float "price_per_liter", null: false
     t.float "highway_cost", null: false
     t.string "start_place"
-    t.string "arrival_place"
+    t.string "arrive_place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_paid", default: false
