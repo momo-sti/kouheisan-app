@@ -24,7 +24,7 @@ class FlexMessageBuilder
               {
                 "type": "text",
                 "text": "#{@cost.total_amount}円",
-                "size": "xxl",
+                "size": "xl",
                 "weight": "bold",
                 "align": "end",
                 "gravity": "center",
@@ -62,7 +62,7 @@ class FlexMessageBuilder
                   {
                     "type": "text",
                     "text": "#{@cost.gasoline_cost}円",
-                    "size": "sm",
+                    "size": "lg",
                     "color": "#111111",
                     "align": "end"
                   }
@@ -241,6 +241,10 @@ class FlexMessageBuilder
         message[:body][:contents].push(extra_cost_box)
       end
     end
-    return message
+    return flex_message = {
+      "type": "flex",
+      "altText": 'メッセージを送信しました',
+      "contents": message
+    }
   end
 end

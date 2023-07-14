@@ -37,7 +37,7 @@ class LinebotController < ApplicationController
                   messages = [
                     {
                       type: 'text',
-                      text: "読んだか？
+                      text: "呼んだか？
                             \n俺がこの旅行でかかった交通費を教えてやるよ。
                             \nほらよ！"
                     },
@@ -49,7 +49,7 @@ class LinebotController < ApplicationController
                   messages = [
                     {
                       type: 'text',
-                      text: "読んだか？
+                      text: "呼んだか？
                             \n俺がどのぐらい交通費がかかるか教えてやるよ。
                             \nほらよ！"
                     },

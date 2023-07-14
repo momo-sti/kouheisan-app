@@ -39,4 +39,8 @@ Rails.application.routes.draw do
   get '/privacy', to: 'policies#privacy'
   get '/kiyaku', to: 'policies#kiyaku'
   get '/how', to: 'policies#how'
+  post 'costs/create_before', to: 'costs#create_before', as: 'create_before'
+  post 'costs/create_after', to: 'costs#create_after', as: 'create_after'
+  post '/costs/save_total_amount', to: 'costs#save_total_amount'
+
 end

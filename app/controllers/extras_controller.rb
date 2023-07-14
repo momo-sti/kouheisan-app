@@ -8,6 +8,8 @@ class ExtrasController < ApplicationController
     extras_sum = @extras.sum { |extra| extra.amount.to_f }
     # 金額を合算
     @total_amount = @result + @highway_cost + extras_sum
+    session[:total_amount] = @total_amount
+
 
     @extra = Extra.new
   end
