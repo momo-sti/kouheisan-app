@@ -51,6 +51,12 @@ gem 'geocoder'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'rack-cors'
+gem 'devise'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
+gem 'line-bot-api'
+gem 'pry-rails'
+
 
 
 

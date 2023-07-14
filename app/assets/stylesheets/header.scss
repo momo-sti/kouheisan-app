@@ -94,3 +94,20 @@ li {
 .head-title {
   color: #691726;
 }
+
+.avatar {
+  border-radius: 50%;
+}
+
+.dropdown-content {
+  z-index: 100;
+  background-color: #fff;
+}
+//detailsの三角マーク非表示
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}

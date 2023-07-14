@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    omniauth_callbacks: "omniauth_callbacks"
+  }
+  #Webhookから送られてきたリクエストを処理
+  post '/callback' => 'linebot#callback'
+  
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   resources :tops, only: [:new, :reset_session] do
     post :reset_session, on: :collection
   end
@@ -36,4 +39,8 @@ Rails.application.routes.draw do
   get '/privacy', to: 'policies#privacy'
   get '/kiyaku', to: 'policies#kiyaku'
   get '/how', to: 'policies#how'
+  post 'costs/create_before', to: 'costs#create_before', as: 'create_before'
+  post 'costs/create_after', to: 'costs#create_after', as: 'create_after'
+  post '/costs/save_total_amount', to: 'costs#save_total_amount'
+
 end
