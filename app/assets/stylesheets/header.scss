@@ -87,8 +87,9 @@ li {
 
 #edit-toggle-button {
   position: absolute;
-      top: 65px;
+      top: 70px;
       right: 10px;
+      z-index: 10;
 }
 
 .head-title {
@@ -110,4 +111,8 @@ details > summary {
 
 details > summary::-webkit-details-marker {
   display: none;
+}
+
+.dropdown-end {
+  margin-bottom: 0;
 }
