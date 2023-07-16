@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_13_073121) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_16_162007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,13 +55,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_13_073121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_paid", default: false
+    t.float "per_person_cost"
     t.index ["user_id"], name: "index_costs_on_user_id"
   end
 
   create_table "extra_costs", force: :cascade do |t|
     t.bigint "cost_id", null: false
-    t.string "category", null: false
-    t.float "amount", null: false
+    t.string "category"
+    t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cost_id"], name: "index_extra_costs_on_cost_id"

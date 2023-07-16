@@ -1,5 +1,7 @@
 <div>
   <p class="py-4">交平さんに交通費を伝えます。<br>どちらにしますか？</p>
+  <div id="error_message"></div>
+
   <div>
     <%= link_to "旅行前", create_before_path, data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %>
   </div>

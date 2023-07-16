@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag 'split' %>
+<!-- 計算結果をフォームフィールドに保存 -->
+<input type="hidden" id="per-person-cost" name="cost[per_person_cost]">
 
 <div class="container split-safari">
   <div id="split-container" data-total-amount="<%= @total_amount %>">

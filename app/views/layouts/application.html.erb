@@ -41,6 +41,11 @@
       <%# end %>
       <%#= render 'shared/flash_message' %>
       <main>
+          <% flash.each do |key, message| %>
+            <div class="<%= key %>">
+              <%= message %>
+            </div>
+          <% end %>
           <%= yield %>
       </main>
       <%= render 'shared/footer' %>

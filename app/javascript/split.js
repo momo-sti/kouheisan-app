@@ -45,6 +45,17 @@ window.setupSplitAmountUpdater = function() {
     // splitAmountの値を小数点第一位まで表示、整数であれば小数点以下を表示しない
     const displaySplitAmount = splitAmount % 1 === 0 ? splitAmount.toFixed(0) : splitAmount.toFixed(1);
     splitAmountDiv.textContent = `${displaySplitAmount}`;
+
+    // Ajaxリクエストでサーバに送信
+    savePerPersonCostToSession(displaySplitAmount);
+  }
+
+  function savePerPersonCostToSession(perPersonCost) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/costs/save_per_person_cost');  // サーバ側でこのルートを設定する必要があります
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('X-CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));  // RailsのCSRF対策
+    xhr.send(`per_person_cost=${encodeURIComponent(perPersonCost)}`);
   }
 
   // splitContainer の data-total-amount 属性の変更を監視する

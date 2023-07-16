@@ -32,6 +32,26 @@ class FlexMessageBuilder
             ]
           },
           {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "一人当たり",
+                "size": "lg",
+                "color": "#111111",
+                "flex": 0
+              },
+              {
+                "type": "text",
+                "text": "#{@cost.per_person_cost}円",
+                "size": "lg",
+                "color": "#111111",
+                "align": "end"
+              }
+            ]
+          },
+          {
             "type": "separator",
             "margin": "xxl"
           },
