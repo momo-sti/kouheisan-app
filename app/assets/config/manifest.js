@@ -10,3 +10,4 @@
 //= link split.css
 //= link privacy.css
 //= link how.css
+//= link cost.css

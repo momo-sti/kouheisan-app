@@ -1,0 +1,17 @@
+.share-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cost-button {
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+  margin-bottom: 10px;
+}
+
+.cost-button .btn {
+  width: 80px;
+}

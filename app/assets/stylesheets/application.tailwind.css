@@ -13,6 +13,7 @@
 @import 'split';
 @import 'privacy';
 @import 'how';
+@import 'cost';
 
 .container {
   max-width: 960px;

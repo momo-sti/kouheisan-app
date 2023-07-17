@@ -1,11 +1,11 @@
-<div>
-  <p class="py-4">交平さんに交通費を伝えます。<br>どちらにしますか？</p>
+<%= stylesheet_link_tag 'cost' %>
+
+<div class="share-modal">
+  <p class="py-4">交平さんに交通費を伝えます。<br>どちらの交通費として伝えますか？</p>
   <div id="error_message"></div>
 
-  <div>
-    <%= link_to "旅行前", create_before_path, data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %>
-  </div>
-  <div>
-    <%= link_to "旅行後", create_after_path, data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %> 
+  <div class="cost-button">
+    <%= link_to "旅行前", create_before_path,  class:"btn btn-active btn-accent before", data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %>
+    <%= link_to "旅行後", create_after_path,  class:"btn btn-active btn-accent after", data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %> 
   </div>
 </div>

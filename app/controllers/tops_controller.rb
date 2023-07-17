@@ -1,4 +1,5 @@
 class TopsController < ApplicationController
+  #cron-job
   def wakeup
     render json: { message: 'Server is awake' }
   end
@@ -6,8 +7,9 @@ class TopsController < ApplicationController
   def new
   end
 
+  #TOPページにアクセスするとセッションリセット
   def reset_session
     session.delete(:extras)
-    head :ok  # HTTPステータスコード200を返す
+    head :ok
   end
 end
