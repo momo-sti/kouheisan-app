@@ -10,7 +10,6 @@ class ExtrasController < ApplicationController
     @total_amount = @result + @highway_cost + extras_sum
     session[:total_amount] = @total_amount
 
-
     @extra = Extra.new
   end
 

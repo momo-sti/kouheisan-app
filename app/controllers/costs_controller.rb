@@ -8,14 +8,15 @@ class CostsController < ApplicationController
       end
     else
       puts @cost.errors.full_messages
-      flash[:alert] = @cost.errors.full_messages.join(", ")
+      flash[:alert] = @cost.errors.full_messages.join(', ')
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("error_message", partial: "error_message", locals: { message: flash[:alert] }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('error_message', partial: 'error_message', locals: { message: flash[:alert] })
+        end
         format.html { redirect_to callback_path }
       end
     end
   end
-  
 
   def create_after
     @cost = create_cost(true)
@@ -26,9 +27,11 @@ class CostsController < ApplicationController
       end
     else
       puts @cost.errors.full_messages
-      flash[:alert] = @cost.errors.full_messages.join(", ")
+      flash[:alert] = @cost.errors.full_messages.join(', ')
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("error_message", partial: "error_message", locals: { message: flash[:alert] }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('error_message', partial: 'error_message', locals: { message: flash[:alert] })
+        end
         format.html { redirect_to callback_path }
       end
     end
@@ -47,32 +50,28 @@ class CostsController < ApplicationController
       total_amount: session[:total_amount],
       per_person_cost: session[:per_person_cost],
       gasoline_cost: session[:result],
-      distance: session["gasoline"]["total_distance"],
-      fuel_efficiency: session["gasoline"]["fuel_efficiency"],
-      price_per_liter: session["gasoline"]["price_per_liter"],
+      distance: session['gasoline']['total_distance'],
+      fuel_efficiency: session['gasoline']['fuel_efficiency'],
+      price_per_liter: session['gasoline']['price_per_liter'],
       highway_cost: session[:highway_cost],
       start_place: session[:start_place],
       arrive_place: session[:arrive_place],
-      is_paid: is_paid
+      is_paid:
     )
-    #costが保存されてからextra_costを保存
-    if cost.save
-      if session[:extras]
-        session[:extras].each do |extra|
-          cost.extra_costs.create(
-            category: extra["category"],
-            amount: extra["amount"]
-          )
-        end
+    # costが保存されてからextra_costを保存
+    if cost.save && session[:extras]
+      session[:extras].each do |extra|
+        cost.extra_costs.create(
+          category: extra['category'],
+          amount: extra['amount']
+        )
       end
     end
-    #costとcostに紐づいたextra_costを戻り値として返す
-    #(Costインスタンスのみの状態からCostとそれに紐づいたExtraCostになる)
+    # costとcostに紐づいたextra_costを戻り値として返す
+    # (Costインスタンスのみの状態からCostとそれに紐づいたExtraCostになる)
     cost
   end
 
   def error
-
   end
-  
 end

@@ -5,217 +5,217 @@ class FlexMessageBuilder
 
   def build
     message = {
-      "type": "bubble",
+      "type": 'bubble',
       "body": {
-        "type": "box",
-        "layout": "vertical",
+        "type": 'box',
+        "layout": 'vertical',
         "contents": [
           {
-            "type": "box",
-            "layout": "horizontal",
+            "type": 'box',
+            "layout": 'horizontal',
             "contents": [
               {
-                "type": "text",
-                "text": "合計",
-                "size": "xl",
-                "align": "start",
-                "gravity": "center"
+                "type": 'text',
+                "text": '合計',
+                "size": 'xl',
+                "align": 'start',
+                "gravity": 'center'
               },
               {
-                "type": "text",
+                "type": 'text',
                 "text": "#{@cost.total_amount}円",
-                "size": "xl",
-                "weight": "bold",
-                "align": "end",
-                "gravity": "center",
+                "size": 'xl',
+                "weight": 'bold',
+                "align": 'end',
+                "gravity": 'center'
               }
             ]
           },
           {
-            "type": "box",
-            "layout": "horizontal",
+            "type": 'box',
+            "layout": 'horizontal',
             "contents": [
               {
-                "type": "text",
-                "text": "一人当たり",
-                "size": "lg",
-                "color": "#111111",
+                "type": 'text',
+                "text": '一人当たり',
+                "size": 'lg',
+                "color": '#111111',
                 "flex": 0
               },
               {
-                "type": "text",
+                "type": 'text',
                 "text": "#{@cost.per_person_cost}円",
-                "size": "lg",
-                "color": "#111111",
-                "align": "end"
+                "size": 'lg',
+                "color": '#111111',
+                "align": 'end'
               }
             ]
           },
           {
-            "type": "separator",
-            "margin": "xxl"
+            "type": 'separator',
+            "margin": 'xxl'
           },
           {
-            "type": "text",
-            "text": "内訳",
-            "size": "xs",
-            "color": "#aaaaaa",
+            "type": 'text',
+            "text": '内訳',
+            "size": 'xs',
+            "color": '#aaaaaa',
             "wrap": true
           },
           {
-            "type": "box",
-            "layout": "vertical",
-            "margin": "xxl",
-            "spacing": "sm",
+            "type": 'box',
+            "layout": 'vertical',
+            "margin": 'xxl',
+            "spacing": 'sm',
             "contents": [
               {
-                "type": "box",
-                "layout": "horizontal",
+                "type": 'box',
+                "layout": 'horizontal',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "ガソリン代金",
-                    "size": "lg",
-                    "color": "#555555",
+                    "type": 'text',
+                    "text": 'ガソリン代金',
+                    "size": 'lg',
+                    "color": '#555555',
                     "flex": 0
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.gasoline_cost}円",
-                    "size": "lg",
-                    "color": "#111111",
-                    "align": "end"
+                    "size": 'lg',
+                    "color": '#111111',
+                    "align": 'end'
                   }
                 ]
               },
               {
-                "type": "box",
-                "layout": "horizontal",
+                "type": 'box',
+                "layout": 'horizontal',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "燃費",
-                    "size": "sm",
-                    "color": "#555555",
+                    "type": 'text',
+                    "text": '燃費',
+                    "size": 'sm',
+                    "color": '#555555',
                     "flex": 0
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.fuel_efficiency}km/L",
-                    "size": "sm",
-                    "color": "#111111",
-                    "align": "end"
+                    "size": 'sm',
+                    "color": '#111111',
+                    "align": 'end'
                   }
                 ]
               },
               {
-                "type": "box",
-                "layout": "horizontal",
+                "type": 'box',
+                "layout": 'horizontal',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "距離",
-                    "size": "sm",
-                    "color": "#555555",
+                    "type": 'text',
+                    "text": '距離',
+                    "size": 'sm',
+                    "color": '#555555',
                     "flex": 0
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.distance}km",
-                    "size": "sm",
-                    "color": "#111111",
-                    "align": "end"
+                    "size": 'sm',
+                    "color": '#111111',
+                    "align": 'end'
                   }
                 ]
               },
               {
-                "type": "box",
-                "layout": "horizontal",
+                "type": 'box',
+                "layout": 'horizontal',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "ガソリン単価",
-                    "size": "sm",
-                    "color": "#555555"
+                    "type": 'text',
+                    "text": 'ガソリン単価',
+                    "size": 'sm',
+                    "color": '#555555'
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.price_per_liter}円/L",
-                    "align": "end"
+                    "align": 'end'
                   }
                 ]
               },
               {
-                "type": "separator",
-                "margin": "xxl"
+                "type": 'separator',
+                "margin": 'xxl'
               },
               {
-                "type": "box",
-                "layout": "horizontal",
-                "margin": "xxl",
+                "type": 'box',
+                "layout": 'horizontal',
+                "margin": 'xxl',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "高速料金",
-                    "size": "lg",
-                    "color": "#555555"
+                    "type": 'text',
+                    "text": '高速料金',
+                    "size": 'lg',
+                    "color": '#555555'
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.highway_cost}円",
-                    "size": "lg",
-                    "color": "#111111",
-                    "align": "end"
+                    "size": 'lg',
+                    "color": '#111111',
+                    "align": 'end'
                   }
                 ]
               },
               {
-                "type": "box",
-                "layout": "horizontal",
+                "type": 'box',
+                "layout": 'horizontal',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "出発IC",
-                    "size": "sm",
-                    "color": "#555555"
+                    "type": 'text',
+                    "text": '出発IC',
+                    "size": 'sm',
+                    "color": '#555555'
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.start_place}",
-                    "size": "sm",
-                    "color": "#111111",
-                    "align": "end"
+                    "size": 'sm',
+                    "color": '#111111',
+                    "align": 'end'
                   }
                 ]
               },
               {
-                "type": "box",
-                "layout": "horizontal",
+                "type": 'box',
+                "layout": 'horizontal',
                 "contents": [
                   {
-                    "type": "text",
-                    "text": "到着IC",
-                    "size": "sm",
-                    "color": "#555555"
+                    "type": 'text',
+                    "text": '到着IC',
+                    "size": 'sm',
+                    "color": '#555555'
                   },
                   {
-                    "type": "text",
+                    "type": 'text',
                     "text": "#{@cost.arrive_place}",
-                    "size": "sm",
-                    "color": "#111111",
-                    "align": "end"
+                    "size": 'sm',
+                    "color": '#111111',
+                    "align": 'end'
                   }
                 ]
               }
             ]
           },
           {
-            "type": "separator",
-            "margin": "xxl"
+            "type": 'separator',
+            "margin": 'xxl'
           }
         ],
-        "spacing": "none",
-        "margin": "none"
+        "spacing": 'none',
+        "margin": 'none'
       },
       "styles": {
         "footer": {
@@ -223,46 +223,46 @@ class FlexMessageBuilder
         }
       }
     }
-    
+
     if @cost.extra_costs&.any?
       @cost.extra_costs.each do |extra_cost|
         extra_cost_box = {
-          "type": "box",
-          "layout": "horizontal",
+          "type": 'box',
+          "layout": 'horizontal',
           "contents": [
             {
-              "type": "text",
+              "type": 'text',
               "text": "#{extra_cost.category}",
-              "size": "md",
-              "margin": "none"
+              "size": 'md',
+              "margin": 'none'
             },
             {
-              "type": "text",
+              "type": 'text',
               "text": "#{extra_cost.amount}円",
-              "align": "end",
+              "align": 'end',
               "contents": [
                 {
-                  "type": "span",
+                  "type": 'span',
                   "text": "#{extra_cost.amount}",
-                  "size": "lg"
+                  "size": 'lg'
                 },
                 {
-                  "type": "span",
-                  "text": "円",
-                  "size": "sm"
+                  "type": 'span',
+                  "text": '円',
+                  "size": 'sm'
                 }
               ]
             }
           ],
-          "spacing": "none",
-          "margin": "none"
+          "spacing": 'none',
+          "margin": 'none'
         }
-        #追加費用が存在する場合extra_cost_box を message[:body][:contents] 配列に追加
+        # 追加費用が存在する場合extra_cost_box を message[:body][:contents] 配列に追加
         message[:body][:contents].push(extra_cost_box)
       end
     end
-    return flex_message = {
-      "type": "flex",
+    flex_message = {
+      "type": 'flex',
       "altText": 'メッセージを送信しました',
       "contents": message
     }
