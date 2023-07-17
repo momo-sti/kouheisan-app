@@ -181,7 +181,7 @@ class FlexMessageBuilder
                   },
                   {
                     "type": 'text',
-                    "text": "#{@cost.start_place}",
+                    "text": @cost.start_place.to_s,
                     "size": 'sm',
                     "color": '#111111',
                     "align": 'end'
@@ -200,7 +200,7 @@ class FlexMessageBuilder
                   },
                   {
                     "type": 'text',
-                    "text": "#{@cost.arrive_place}",
+                    "text": @cost.arrive_place.to_s,
                     "size": 'sm',
                     "color": '#111111',
                     "align": 'end'
@@ -232,7 +232,7 @@ class FlexMessageBuilder
           "contents": [
             {
               "type": 'text',
-              "text": "#{extra_cost.category}",
+              "text": extra_cost.category.to_s,
               "size": 'md',
               "margin": 'none'
             },
@@ -243,7 +243,7 @@ class FlexMessageBuilder
               "contents": [
                 {
                   "type": 'span',
-                  "text": "#{extra_cost.amount}",
+                  "text": extra_cost.amount.to_s,
                   "size": 'lg'
                 },
                 {
@@ -261,7 +261,7 @@ class FlexMessageBuilder
         message[:body][:contents].push(extra_cost_box)
       end
     end
-    flex_message = {
+    {
       "type": 'flex',
       "altText": 'メッセージを送信しました',
       "contents": message
