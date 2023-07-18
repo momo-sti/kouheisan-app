@@ -21,3 +21,7 @@
   margin-left: auto;
   padding: 15px;
 }
+#toast {
+  z-index: 100;
+  transition: opacity 0.05s ease-out, transform 0.5s ease-out;
+}

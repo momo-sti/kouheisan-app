@@ -1,0 +1,7 @@
+<% if session[:toast] %>
+  <div id="toast" class="toast toast-top toast-start">
+    <div class="alert alert-success">
+      <span><%= session.delete(:toast) %></span>
+    </div>
+  </div>
+<% end %>

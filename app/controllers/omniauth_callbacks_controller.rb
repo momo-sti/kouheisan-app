@@ -27,7 +27,7 @@ class OmniauthCallbacksController < ApplicationController
       sign_in(:user, @profile)
     end
     # ログイン後のflash messageとリダイレクト先を設定
-    flash[:notice] = 'ログインしました'
+    session[:toast] = 'ログインしました'
     redirect_to after_sign_in_path_for(:user)
   end
 
