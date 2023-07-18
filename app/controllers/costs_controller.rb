@@ -45,17 +45,18 @@ class CostsController < ApplicationController
   private
 
   def create_cost(is_paid)
+    gasoline_cost = session[:result].presence || 0
     cost = Cost.new(
       user_id: current_user.id,
-      total_amount: session[:total_amount],
-      per_person_cost: session[:per_person_cost],
-      gasoline_cost: session[:result],
-      distance: session['gasoline']['total_distance'],
-      fuel_efficiency: session['gasoline']['fuel_efficiency'],
-      price_per_liter: session['gasoline']['price_per_liter'],
-      highway_cost: session[:highway_cost],
-      start_place: session[:start_place],
-      arrive_place: session[:arrive_place],
+      total_amount: session[:total_amount] || 0,
+      per_person_cost: session[:per_person_cost] || 0,
+      gasoline_cost: gasoline_cost,
+      distance: session['gasoline']['total_distance'] || 0,
+      fuel_efficiency: session['gasoline']['fuel_efficiency'] || 0,
+      price_per_liter: session['gasoline']['price_per_liter'] || 0,
+      highway_cost: session[:highway_cost] || 0,
+      start_place: session[:start_place].present? ? session[:start_place] : "なし",
+      arrive_place: session[:arrive_place].present? ? session[:arrive_place] : "なし",
       is_paid:
     )
     # costが保存されてからextra_costを保存
