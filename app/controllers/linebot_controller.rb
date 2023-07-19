@@ -14,9 +14,10 @@ class LinebotController < ApplicationController
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
-    #署名の検証
+    # 署名の検証
     return head :bad_request unless client.validate_signature(body, signature)
-    #リクエストボディからイベントを解析
+
+    # リクエストボディからイベントを解析
     events = client.parse_events_from(body)
 
     events.each do |event|
@@ -29,7 +30,7 @@ class LinebotController < ApplicationController
   private
 
   def process_event(event)
-    #イベントを送信したユーザーのIDを取得し、そのIDに対応するユーザーをデータベースから検索
+    # イベントを送信したユーザーのIDを取得し、そのIDに対応するユーザーをデータベースから検索
     user_id = event['source']['userId']
     user = User.where(uid: user_id).first
 
@@ -52,10 +53,10 @@ class LinebotController < ApplicationController
   def process_message_event(event, user)
     return unless event.message['text'].include?('交平さん！')
 
-    #ユーザーが存在していればそのユーザーのCost情報を取得
+    # ユーザーが存在していればそのユーザーのCost情報を取得
     cost = user&.costs&.last
     messages = no_user_messages(user, cost)
-    #リプライトークン使用
+    # リプライトークン使用
     client.reply_message(event['replyToken'], messages)
   end
 
