@@ -1,34 +1,32 @@
 class ApplicationController < ActionController::Base
+  after_action :store_location
 
-  after_action  :store_location
- 
   def store_location
-    if (request.fullpath != new_user_registration_path &&
-        request.fullpath != new_user_session_path &&
-        request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
-        !request.xhr?) 
-      
-      session[:third_last_url] = session[:second_last_url] 
-      session[:second_last_url] = session[:previous_url] 
-      session[:previous_url] = request.fullpath 
+    if request.fullpath != new_user_registration_path &&
+       request.fullpath != new_user_session_path &&
+       request.fullpath !~ Regexp.new('\\A/users/password.*\\z') &&
+       !request.xhr?
+
+      session[:third_last_url] = session[:second_last_url]
+      session[:second_last_url] = session[:previous_url]
+      session[:previous_url] = request.fullpath
     end
   end
 
   def after_sign_in_path_for(resource)
     case session[:second_last_url]
-    when "/costs/save_per_person_cost"
+    when '/costs/save_per_person_cost'
       '/extras'
-    when "/"
+    when '/'
       root_path
-    when "/gasolines/new"
+    when '/gasolines/new'
       '/gasolines/new'
-    when "/highways/highway"
+    when '/highways/highway'
       '/highways/highway'
     else
       session[:second_last_url] || super
     end
   end
-  
 
   private
 
