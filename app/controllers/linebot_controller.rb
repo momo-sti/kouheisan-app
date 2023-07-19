@@ -23,6 +23,13 @@ class LinebotController < ApplicationController
       user = User.where(uid: user_id).first
 
       case event
+      when Line::Bot::Event::Join
+        message = {
+          type: 'text',
+          text: "グループに追加してくれてありがとうな〜！\n交通費を共有したい時は俺を呼んでくれよな😉"
+        }
+        client.reply_message(event['replyToken'], message)
+
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
