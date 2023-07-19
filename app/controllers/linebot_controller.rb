@@ -14,8 +14,9 @@ class LinebotController < ApplicationController
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
+    #署名の検証
     return head :bad_request unless client.validate_signature(body, signature)
-
+    #リクエストボディからイベントを解析
     events = client.parse_events_from(body)
 
     events.each do |event|
@@ -28,6 +29,7 @@ class LinebotController < ApplicationController
   private
 
   def process_event(event)
+    #イベントを送信したユーザーのIDを取得し、そのIDに対応するユーザーをデータベースから検索
     user_id = event['source']['userId']
     user = User.where(uid: user_id).first
 
@@ -50,16 +52,18 @@ class LinebotController < ApplicationController
   def process_message_event(event, user)
     return unless event.message['text'].include?('交平さん！')
 
+    #ユーザーが存在していればそのユーザーのCost情報を取得
     cost = user&.costs&.last
     messages = no_user_messages(user, cost)
+    #リプライトークン使用
     client.reply_message(event['replyToken'], messages)
   end
 
+  # 新規ユーザーの場合
   def no_user_messages(user, cost)
     if user
       no_cost_messages(user, cost)
     else
-      # 新規ユーザーの場合
       [
         {
           type: 'text',
@@ -69,11 +73,11 @@ class LinebotController < ApplicationController
     end
   end
 
+  # ユーザー登録してるけど交通費を計算していない場合
   def no_cost_messages(user, cost)
     if cost
       share_cost_messages(user, cost)
     else
-      # ユーザー登録してるけど交通費を計算していない場合
       [
         {
           type: 'text',
