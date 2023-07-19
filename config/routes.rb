@@ -29,26 +29,25 @@ Rails.application.routes.draw do
       get :reset_and_redirect
     end
   end
-  
-  resources :costs do
+
+  resources :extras
+
+  resource :policies, only: [] do
     collection do
-      get :error
+      get :privacy
+      get :kiyaku
+      get :how
+    end
+  end
+
+  resource :costs, only: [] do
+    collection do
       post :create_before
       post :create_after
       post :save_per_person_cost
     end
   end
 
-  resources :extras
-
-
   root 'tops#top'
   get '/wakeup', to: 'tops#wakeup'
-  get '/privacy', to: 'policies#privacy'
-  get '/kiyaku', to: 'policies#kiyaku'
-  get '/how', to: 'policies#how'
-  post 'costs/create_before', to: 'costs#create_before', as: 'create_before'
-  post 'costs/create_after', to: 'costs#create_after', as: 'create_after'
-  post '/costs/save_total_amount', to: 'costs#save_total_amount'
-
 end
