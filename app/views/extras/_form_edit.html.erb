@@ -1,8 +1,11 @@
 <%= stylesheet_link_tag 'extra' %>
 
 <div id="edit_form">
-  <%= form_with(model: extra, url: extra_path(id: extra.id), method: :patch, local: true, html: { "data-form-id" => "my_modal_#{extra.id}" }) do |f| %>
-    <%= render 'shared/error_messages', object: extra %>
+  <%= form_with(model: extra, remote: false, data: { turbo_frame: "edit_form_#{extra.uuid}", turbo_action: 'replace' }, id: "extra_form_#{extra.uuid}", html: { class: "extra_form" }) do |f| %>
+    <div id="error_messages_for_extra_<%= extra.uuid %>">
+      <%= render 'shared/error_messages_for_extra', object: extra, extra_uuid: extra.uuid %>
+    </div>
+
     
       <div class="edit_button">
         <div class="field">

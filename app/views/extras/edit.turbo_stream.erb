@@ -1,1 +1,2 @@
-<%= turbo_stream.replace "edit_form", partial: "form_edit", locals: { extra: @extra } %>
+<%= turbo_stream.replace "edit_form_#{@extra.uuid}", partial: "form_edit", locals: { extra: @extra } %>
+<%= turbo_stream.replace "error_messages_for_extra_#{@extra.uuid}", partial: "shared/error_messages_for_extra", locals: { object: @extra, extra_uuid: @extra.uuid } %>

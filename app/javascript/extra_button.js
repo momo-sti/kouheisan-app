@@ -20,12 +20,3 @@ if (editToggleButton !== null) {
 }
 
 //extrasの更新ボタンを押した後モーダルを閉じる
-document.addEventListener('turbo:submit-end', function(event) {
-  const formId = event.target.dataset.formId;
-  const modalId = formId;
-  const modalCheckbox = document.getElementById(modalId);
-  
-  if (modalCheckbox) {
-    modalCheckbox.checked = false;
-  }
-});
