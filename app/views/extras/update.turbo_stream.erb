@@ -21,3 +21,9 @@
     }, 0);
   </script>
 <% end %>
+
+<%= turbo_stream.update "js-placeholder" do %>
+  <script>
+    document.getElementById("my_modal_<%= @extra.uuid %>").checked = false;
+  </script>
+<% end %>

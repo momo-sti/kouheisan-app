@@ -51,9 +51,7 @@ class ExtrasController < ApplicationController
         calculate_total_amount
 
         format.html { redirect_to extras_path }
-        format.turbo_stream do
           format.turbo_stream
-        end
       else
         @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
         format.turbo_stream do

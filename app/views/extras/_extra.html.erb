@@ -2,30 +2,28 @@
 
 <tr class="swipeable-row text-xl font-bold" id="extra_<%= @extras.index(extra) %>">
   <td id="extra_category_<%= extra.id %>"><%= extra.category %></td>
-    <td class="right-align">
-      <div class="action-area">
-        <span class="amount" id="extra_amount_<%= extra.id %>"><%= extra.amount %>円</span>
-        <div class="action-buttons hidden">
-          <!-- The button to open modal -->
-          <label for="my_modal_<%= extra.uuid %>" class="btn btn-xs btn-active btn-success">
-            <i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
-          </label>
-          <%= button_to extra_path(id: extra.id), class: "btn btn-xs btn-active btn-secondary", method: :delete do %>
-            <i class="fa-regular fa-trash-can fa-lg" style="color: #ffffff;"></i>
-          <% end %>
-        </div>
+  <td class="right-align">
+    <div class="action-area">
+      <span class="amount" id="extra_amount_<%= extra.id %>"><%= extra.amount %>円</span>
+      <div class="action-buttons hidden">
+        <!-- The button to open modal -->
+        <label for="my_modal_<%= extra.uuid %>" class="btn btn-xs btn-active btn-success">
+          <i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
+        </label>
+        <%= button_to extra_path(id: extra.id), class: "btn btn-xs btn-active btn-secondary", method: :delete do %>
+          <i class="fa-regular fa-trash-can fa-lg" style="color: #ffffff;"></i>
+        <% end %>
       </div>
-    </td>
-
-
+    </div>
+  </td>
 </tr>
-<!-- Put this part before </body> tag -->
-      <input type="checkbox" id="my_modal_<%= extra.uuid %>" class="modal-toggle" <%= 'checked' if extra.errors.any? %> />
-      <div class="modal">
-        <div class="modal-box">
-          <h3 class="text-base">費用を追加する</h3>
-          <%= render 'form_edit', extra: extra %>
-        </div>
-        <label class="modal-backdrop" for="my_modal_<%= extra.uuid %>">Close</label>
-      </div>
 
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my_modal_<%= extra.uuid %>" class="modal-toggle"/>
+<div class="modal" data-controller="modal">
+  <div class="modal-box" data-modal-target="modal">
+    <h3 class="text-base">費用を更新する</h3>
+    <%= render 'form_edit', extra: extra %>
+  </div>
+  <label class="modal-backdrop" for="my_modal_<%= extra.uuid %>">Close</label>
+</div>

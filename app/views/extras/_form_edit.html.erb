@@ -1,27 +1,26 @@
 <%= stylesheet_link_tag 'extra' %>
 
 <div id="edit_form">
-  <%= form_with(model: extra, remote: false, data: { turbo_frame: "edit_form_#{extra.uuid}", turbo_action: 'replace' }, id: "extra_form_#{extra.uuid}", html: { class: "extra_form" }) do |f| %>
+  <%= form_with(model: extra, data: { modal_id: "my_modal_#{extra.uuid}" }) do |f| %>
     <div id="error_messages_for_extra_<%= extra.uuid %>">
-      <%= render 'shared/error_messages_for_extra', object: extra, extra_uuid: extra.uuid %>
+      <%= render 'shared/error_messages_for_extra', object: @extra, extra_uuid: extra.uuid %>
     </div>
 
-    
-      <div class="edit_button">
-        <div class="field">
-          <div><%= f.label :category %></div>
-          <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
-        </div>
-
-        <div class="field">
-          <div><%= f.label :amount %></div>
-          <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
-        </div>
-        <p class="field-yen">円</p>
-
-        <div class="actions">
-          <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
-        </div>
+    <div class="edit_button">
+      <div class="field">
+        <div><%= f.label :category %></div>
+        <%= f.text_field :category, class:"input input-bordered input-accent w-full max-w-xs"%>
       </div>
+
+      <div class="field">
+        <div><%= f.label :amount %></div>
+        <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
+      </div>
+      <p class="field-yen">円</p>
+
+      <div class="actions">
+        <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
+      </div>
+    </div>
   <% end %>
 </div>

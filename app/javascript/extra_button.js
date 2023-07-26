@@ -18,5 +18,3 @@ if (editToggleButton !== null) {
     });
   });
 }
-
-//extrasの更新ボタンを押した後モーダルを閉じる

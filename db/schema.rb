@@ -68,6 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_162007) do
     t.index ["cost_id"], name: "index_extra_costs_on_cost_id"
   end
 
+  create_table "extras", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "category", null: false
+    t.float "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_extras_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
@@ -87,4 +96,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_162007) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "costs", "users"
   add_foreign_key "extra_costs", "costs"
+  add_foreign_key "extras", "users"
 end
