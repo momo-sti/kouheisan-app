@@ -9,23 +9,13 @@ Rails.application.routes.draw do
   resources :tops, only: [:new, :reset_session] do
     post :reset_session, on: :collection
   end
-  resources :calculations do
-    get :result, on: :collection
-    post :result, on: :collection
-    post :datasave, on: :collection
-  end
-  resources :gasolines do
-    post :calculate, on: :collection
-    get :calculate, on: :collection
-  end
 
+  resources :gasolines, only: [:new, :create]
 
-  resources :highways do
+  resources :highways, only: [:index, :create] do
     collection do
-      get :create_highway
       post :save_highway_info
       get :highway
-      get :reset_cost
       get :reset_and_redirect
     end
   end
