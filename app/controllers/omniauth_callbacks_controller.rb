@@ -30,8 +30,4 @@ class OmniauthCallbacksController < ApplicationController
     session[:toast] = 'ログインしました'
     redirect_to after_sign_in_path_for(:user)
   end
-
-  def fake_email(_uid, _provider)
-    "#{auth.uid}-#{auth.provider}@example.com"
-  end
 end
