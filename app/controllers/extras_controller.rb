@@ -13,30 +13,16 @@ class ExtrasController < ApplicationController
     @extra = Extra.new
   end
 
-  def new
-    @extra = Extra.new
-  end
 
   def create
     @extra = Extra.new(extra_params)
-    respond_to do |format|
       if @extra.valid?
         session[:extras] ||= []
         session[:extras] << extra_params.merge(uuid: SecureRandom.uuid)
-        format.html { redirect_to extras_path }
-        format.turbo_stream { redirect_to extras_path }
+        redirect_to extras_path
       else
-        format.html { render :new }
-        format.turbo_stream do
-          render :new
-        end
+        render :new
       end
-    end
-  end
-
-  def edit
-    @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
-    @extra = @extras.find { |extra| extra.id == params[:id].to_i }
   end
 
   def update
