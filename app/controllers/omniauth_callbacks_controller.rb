@@ -25,9 +25,13 @@ class OmniauthCallbacksController < ApplicationController
       avatar_image = Net::HTTP.get(URI.parse(avatar_url))
       @profile.avatar.attach(io: StringIO.new(avatar_image), filename: 'avatar.jpg', content_type: 'image/jpg')
       sign_in(:user, @profile)
+    
+      # ログイン後のflash messageとリダイレクト先を設定
+      session[:toast] = 'ログインしました'
+      redirect_to after_sign_in_path_for(:user)
+    else
+      session[:toast] = 'ログインできませんでした'
+      redirect_to after_sign_in_path_for(:user)
     end
-    # ログイン後のflash messageとリダイレクト先を設定
-    session[:toast] = 'ログインしました'
-    redirect_to after_sign_in_path_for(:user)
   end
 end
