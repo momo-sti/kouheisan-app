@@ -5,15 +5,15 @@ class LinebotController < ApplicationController
 
   def client
     @client ||= Line::Bot::Client.new do |config|
-      config.channel_secret = ENV['LINE_CHANNEL_SECRET']
-      config.channel_token = ENV['LINE_CHANNEL_TOKEN']
+      config.channel_secret = Rails.application.credentials.LINE_CHANNEL_SECRET
+      config.channel_token = Rails.application.credentials.LINE_CHANNEL_TOKEN
     end
   end
 
   def callback
     body = request.body.read
 
-    signature = request.env['HTTP_X_LINE_SIGNATURE']
+    signature = Rails.application.credentials.HTTP_X_LINE_SIGNATURE
     # 署名の検証
     return head :bad_request unless client.validate_signature(body, signature)
 
