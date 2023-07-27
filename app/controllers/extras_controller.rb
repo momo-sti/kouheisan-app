@@ -13,16 +13,15 @@ class ExtrasController < ApplicationController
     @extra = Extra.new
   end
 
-
   def create
     @extra = Extra.new(extra_params)
-      if @extra.valid?
-        session[:extras] ||= []
-        session[:extras] << extra_params.merge(uuid: SecureRandom.uuid)
-        redirect_to extras_path
-      else
-        render :new
-      end
+    if @extra.valid?
+      session[:extras] ||= []
+      session[:extras] << extra_params.merge(uuid: SecureRandom.uuid)
+      redirect_to extras_path
+    else
+      render :new
+    end
   end
 
   def update
@@ -37,7 +36,7 @@ class ExtrasController < ApplicationController
         calculate_total_amount
 
         format.html { redirect_to extras_path }
-          format.turbo_stream
+        format.turbo_stream
       else
         @extras = session[:extras].map.with_index { |extra, i| Extra.new(extra.merge(id: i)) }
         format.turbo_stream do
@@ -64,7 +63,7 @@ class ExtrasController < ApplicationController
   end
 
   def add_id_to_extras
-    @extras = session[:extras]&.map&.with_index do |extra, i| 
+    @extras = session[:extras]&.map&.with_index do |extra, i|
       # 既存の UUID が存在しなければ新たに生成
       extra['uuid'] ||= SecureRandom.uuid
       Extra.new(extra.merge(id: i))

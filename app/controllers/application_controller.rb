@@ -2,22 +2,18 @@ class ApplicationController < ActionController::Base
   after_action :store_location
   protect_from_forgery with: :exception
 
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ActionController::RoutingError, with: :render_404
-  rescue_from Exception, with: :render_500
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActionController::RoutingError, with: :render_not_found
+  rescue_from Exception, with: :render_internal_server_error
 
-  def render_404(exception = nil)
-    if exception
-      logger.info "Rendering 404 with exception: #{exception.message}"
-    end
-    render template: "errors/error_404", status: 404, layout: 'application'
+  def render_not_found(exception = nil)
+    logger.info "Rendering 404 with exception: #{exception.message}" if exception
+    render template: 'errors/error_404', status: 404, layout: 'application'
   end
 
-  def render_500(exception = nil)
-    if exception
-      logger.info "Rendering 500 with exception: #{exception.message}"
-    end
-    render template: "errors/error_500", status: 500, layout: 'application'
+  def render_internal_server_error(exception = nil)
+    logger.info "Rendering 500 with exception: #{exception.message}" if exception
+    render template: 'errors/error_500', status: 500, layout: 'application'
   end
 
   def store_location
@@ -32,7 +28,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #ログイン後に直前のページに戻る
+  # ログイン後に直前のページに戻る
   def after_sign_in_path_for(resource)
     case session[:second_last_url]
     when '/costs/save_per_person_cost'
@@ -46,21 +42,6 @@ class ApplicationController < ActionController::Base
     else
       session[:second_last_url] || super
     end
-  end
-
-  #エラーページ
-  def render_404(exception = nil)
-    if exception
-      logger.info "Rendering 404 with exception: #{exception.message}"
-    end
-    render template: "errors/error_404", status: 404, layout: 'application'
-  end
-
-  def render_500(exception = nil)
-    if exception
-      logger.info "Rendering 500 with exception: #{exception.message}"
-    end
-    render template: "errors/error_500", status: 500, layout: 'application'
   end
 
   private
