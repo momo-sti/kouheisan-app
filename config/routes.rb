@@ -40,4 +40,7 @@ Rails.application.routes.draw do
 
   root 'tops#top'
   get '/wakeup', to: 'tops#wakeup'
+  #エラーページ
+  get '/404"', to: 'application#render_404'
+  get '/500', to: 'application#render_500'
 end
