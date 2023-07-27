@@ -14,6 +14,7 @@
 @import 'privacy';
 @import 'how';
 @import 'cost';
+@import 'error';
 
 .container {
   max-width: 960px;
