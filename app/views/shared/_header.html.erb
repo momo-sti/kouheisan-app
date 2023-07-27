@@ -19,7 +19,7 @@
     </div>
 
     <div class="subtitle">
-        <h1 class="text-xl"><%= content_for?(:title) ? yield(:title) : "デフォルトのタイトル" %></h1>
+        <h1 class="text-xl"><%= content_for?(:title) ? yield(:title) : " " %></h1>
     </div>
 
     <div class="button-wrapper">
@@ -48,7 +48,7 @@
                             <% end %>
                         </summary>
                         <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>マイページ</a></li>
+                            <%# <li><a>マイページ</a></li> %>
                             <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
                         </ul>
                     </details>

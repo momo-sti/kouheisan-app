@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #ログイン後に直前のページに戻る
   def after_sign_in_path_for(resource)
     case session[:second_last_url]
     when '/costs/save_per_person_cost'
@@ -45,6 +46,21 @@ class ApplicationController < ActionController::Base
     else
       session[:second_last_url] || super
     end
+  end
+
+  #エラーページ
+  def render_404(exception = nil)
+    if exception
+      logger.info "Rendering 404 with exception: #{exception.message}"
+    end
+    render template: "errors/error_404", status: 404, layout: 'application'
+  end
+
+  def render_500(exception = nil)
+    if exception
+      logger.info "Rendering 500 with exception: #{exception.message}"
+    end
+    render template: "errors/error_500", status: 500, layout: 'application'
   end
 
   private
