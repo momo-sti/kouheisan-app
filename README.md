@@ -1,5 +1,8 @@
 # Kouheisan
 
+アプリを作り直したため以下のリポジトリにREADME・画面遷移図・ER図のレビューがあります。
+https://github.com/momo-sti/kouheisan/pulls?q=is%3Apr+is%3Aclosed
+
 ### ■ サービス概要
 友人との旅行で交通費の負担を公平にしたいが、直接お金を請求しづらい車持ちの人に
 交通費を計算し、間接的に請求をしてくれる交通費計算アプリ。

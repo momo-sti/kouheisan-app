@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for kouheisan-app on 2023-06-27T22:55:09+09:00
+# fly.toml app configuration file generated for kouheisan-app on 2023-07-28T19:40:02+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -13,6 +13,7 @@ console_command = "/rails/bin/rails console"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
+  processes = ["app"]
 
 [[statics]]
   guest_path = "/rails/public"
