@@ -9,6 +9,13 @@
 }
 
 .PNG {
-  padding-top: 30px;
+  position: relative;
+  top: 20px;
   margin: auto;
+}
+
+.line-button {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
