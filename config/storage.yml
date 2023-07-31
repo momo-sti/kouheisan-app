@@ -15,7 +15,7 @@ local:
 #   bucket: your_own_bucket-<%= Rails.env %>
 
 # Remember not to checkin your GCS keyfile to a repository
-# google:
+google:
   service: GCS
   project: kouheisan
   credentials: <%= Rails.root.join("config/kouheisan-c800f64fa4ff.json") %>
