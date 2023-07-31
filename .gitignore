@@ -36,3 +36,5 @@
 /node_modules
 
 .env
+
+/config/kouheisan-c800f64fa4ff.json
