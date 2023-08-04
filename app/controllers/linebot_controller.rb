@@ -1,3 +1,5 @@
+require 'line/bot'
+
 class LinebotController < ApplicationController
   protect_from_forgery except: [:callback]
 
