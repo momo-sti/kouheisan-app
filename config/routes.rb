@@ -30,10 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :costs, only: [] do
+  resource :costs, only: [:create] do
     collection do
-      post :create_before
-      post :create_after
       post :save_per_person_cost
     end
   end

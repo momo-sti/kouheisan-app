@@ -1,12 +1,7 @@
 class CostsController < ApplicationController
-  def create_before
-    @cost = create_cost(false)
-    save_extras if @cost.save
-    save_cost
-  end
-
-  def create_after
-    @cost = create_cost(true)
+  def create
+    is_paid = params[:action_type] == 'before' ? false : true
+    @cost = create_cost(is_paid)
     save_extras if @cost.save
     save_cost
   end
