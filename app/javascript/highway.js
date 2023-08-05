@@ -36,6 +36,7 @@ document.addEventListener('turbo:load', function() {
         }
 
         // 外部サイトへのフォームを送信
+        externalForm.setAttribute('target', '_blank'); // 新しいタブで開く
         externalForm.submit();
       }).catch(function(error) {
         console.error('There has been a problem with your fetch operation:', error);
