@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #Webhookから送られてきたリクエストを処理
   post '/callback' => 'linebot#callback'
   
+  resources :favorite_locations
 
   resources :tops, only: [:new, :reset_session] do
     post :reset_session, on: :collection
