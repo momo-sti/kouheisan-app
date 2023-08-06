@@ -70,8 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_122254) do
 
   create_table "favorite_locations", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "latitude", null: false
-    t.integer "longitude", null: false
+    t.string "address", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

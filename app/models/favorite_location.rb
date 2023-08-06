@@ -1,6 +1,8 @@
 class FavoriteLocation < ApplicationRecord
   belongs_to :user
   validate :limit_favorite_locations
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   private
 

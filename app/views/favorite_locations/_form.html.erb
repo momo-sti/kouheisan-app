@@ -12,23 +12,13 @@
   <% end %>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :latitude, style: "display: block" %>
-    <%= form.number_field :latitude %>
-  </div>
-
-  <div>
-    <%= form.label :longitude, style: "display: block" %>
-    <%= form.number_field :longitude %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :name %>
     <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
   </div>
 
   <div>
