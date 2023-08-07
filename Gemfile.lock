@@ -106,7 +106,6 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (6.4.0)
       sassc (~> 2.0)
-    geocoder (1.8.1)
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-apis-core (0.11.1)
@@ -359,7 +358,6 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   dotenv-rails
   font-awesome-sass
-  geocoder
   google-cloud-storage
   jbuilder
   jquery-rails
