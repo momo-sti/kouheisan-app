@@ -8,6 +8,8 @@
   <% end %>
 </div>
 
-<turbo-frame id="favorite_location_new_frame">
-  <%= link_to "登録する", new_favorite_location_path, data: { turbo_frame: "favorite_location_new_frame" } %>
-</turbo-frame>
+<% if @favorite_locations.count < 3 %>
+  <turbo-frame id="favorite_location_new_frame">
+    <%= link_to "登録する", new_favorite_location_path, data: { turbo_frame: "favorite_location_new_frame" } %>
+  </turbo-frame>
+<% end %>
