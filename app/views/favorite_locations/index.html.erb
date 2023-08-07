@@ -1,15 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<%= stylesheet_link_tag 'favorite_location' %>
 
-<h1>お気に入り地点</h1>
+<% content_for :title, "お気に入り地点" %>
+<% content_for :back_path, root_path %>
 
-<div id="favorite_locations">
-  <% @favorite_locations.each do |favorite_location| %>
-    <%= render favorite_location %>
-  <% end %>
+<div class='container'>
+  <p style="color: green"><%= notice %></p>
+
+  <h1>お気に入り地点</h1>
+
+  <div id="favorite_locations">
+    <% @favorite_locations.each do |favorite_location| %>
+      <%= render favorite_location %>
+    <% end %>
+  </div>
+
+  <%= render "new_button" %>
 </div>
-
-<% if @favorite_locations.count < 3 %>
-  <turbo-frame id="favorite_location_new_frame">
-    <%= link_to "登録する", new_favorite_location_path, data: { turbo_frame: "favorite_location_new_frame" } %>
-  </turbo-frame>
-<% end %>

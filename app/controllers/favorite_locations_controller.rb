@@ -1,5 +1,6 @@
 class FavoriteLocationsController < ApplicationController
   before_action :set_favorite_location, only: [:edit, :update, :destroy]
+  before_action :redirect_index, only: %i[ new show edit ]
 
   def index
     @favorite_locations = current_user.favorite_locations
@@ -12,12 +13,9 @@ class FavoriteLocationsController < ApplicationController
   def create
     @favorite_location = current_user.favorite_locations.build(favorite_location_params)
     if @favorite_location.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to favorite_locations_path, notice: "お気に入り地点を追加しました。" }
-      end
+      render :create
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,21 +24,15 @@ class FavoriteLocationsController < ApplicationController
 
   def update
     if @favorite_location.update(favorite_location_params)
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to favorite_locations_path, notice: "お気に入り地点を更新しました。" }
-      end
+      render :show
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @favorite_location.destroy
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to favorite_locations_path, notice: "お気に入り地点を削除しました。" }
-    end
+    render turbo_stream: turbo_stream.remove(@favorite_location)
   end
 
   private
@@ -51,5 +43,9 @@ class FavoriteLocationsController < ApplicationController
 
   def favorite_location_params
     params.require(:favorite_location).permit(:name, :address)
+  end
+
+  def redirect_index
+    redirect_to favorite_locations_url unless turbo_frame_request?
   end
 end

@@ -1,16 +1,10 @@
-<turbo-frame id="edit_<%= dom_id favorite_location %>">
-  <div id="<%= dom_id favorite_location %>">
+<%= turbo_frame_tag favorite_location do %>
+  <%= favorite_location.name %>
 
-    <p>
-      <%= favorite_location.name %>
-    </p>
+  <%= favorite_location.address %>
 
-    <p>
-      <%= favorite_location.address %>
-    </p>
-    
-      <%= link_to "Edit", edit_favorite_location_path(favorite_location), data: { turbo_frame: "edit_#{dom_id favorite_location}" } %>
-      <%= button_to "Destroy", favorite_location, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-
+  <div>
+    <%= link_to 'Edit', edit_favorite_location_path(favorite_location) %>
+    <%= button_to "Destroy", favorite_location, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   </div>
-</turbo-frame>
+<% end %>

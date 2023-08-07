@@ -1,20 +1,6 @@
-<% if @favorite_location.persisted? %>
-  <turbo-stream action="append" target="favorite_locations">
-    <template>
-      <%= render partial: "favorite_locations/favorite_location", locals: { favorite_location: @favorite_location } %>
-    </template>
-  </turbo-stream>
-
-  <!-- ここを変更します -->
-  <turbo-stream action="replace" target="favorite_location_new_frame">
-    <template>
-      <!-- 中身を空にして、フォームを閉じる効果を得る -->
-    </template>
-  </turbo-stream>
-<% else %>
-  <turbo-stream action="replace" target="favorite_location_new_frame">
-    <template>
-      <%= render partial: "form", locals: { favorite_location: @favorite_location } %>
-    </template>
-  </turbo-stream>
+<%= turbo_stream.prepend 'favorite_locations' do %>
+  <%= render @favorite_location %>
+<% end %>
+<%= turbo_stream.replace 'new_favorite_location' do %>
+  <%= render "new_button" %>
 <% end %>

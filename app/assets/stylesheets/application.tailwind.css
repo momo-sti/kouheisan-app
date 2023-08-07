@@ -15,6 +15,7 @@
 @import 'how';
 @import 'cost';
 @import 'error';
+@import 'favorite_location';
 
 .container {
   max-width: 960px;
