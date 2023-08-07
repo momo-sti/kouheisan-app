@@ -1,4 +1,4 @@
-<%= turbo_stream.prepend 'favorite_locations' do %>
+<%= turbo_stream.append 'favorite_locations' do %>
   <%= render @favorite_location %>
 <% end %>
 <%= turbo_stream.replace 'new_favorite_location' do %>

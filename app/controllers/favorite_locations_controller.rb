@@ -3,7 +3,7 @@ class FavoriteLocationsController < ApplicationController
   before_action :redirect_index, only: %i[ new show edit ]
 
   def index
-    @favorite_locations = current_user.favorite_locations
+    @favorite_locations = current_user.favorite_locations.order(id: :asc)
   end
 
   def new
