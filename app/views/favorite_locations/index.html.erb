@@ -5,10 +5,9 @@
 <div id="favorite_locations">
   <% @favorite_locations.each do |favorite_location| %>
     <%= render favorite_location %>
-    <p>
-      <%= link_to "Show this favorite location", favorite_location %>
-    </p>
   <% end %>
 </div>
 
-<%= link_to "登録する", new_favorite_location_path %>
+<turbo-frame id="favorite_location_new_frame">
+  <%= link_to "登録する", new_favorite_location_path, data: { turbo_frame: "favorite_location_new_frame" } %>
+</turbo-frame>

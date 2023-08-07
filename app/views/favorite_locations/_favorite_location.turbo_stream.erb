@@ -1,0 +1,12 @@
+<turbo-stream action="append" target="favorite_locations">
+  <template>
+    <turbo-frame id="edit_<%= dom_id favorite_location %>">
+      <div id="<%= dom_id favorite_location %>">
+        <p><%= favorite_location.name %></p>
+        <p><%= favorite_location.address %></p>
+        <%= link_to "Edit", edit_favorite_location_path(favorite_location), data: { turbo_frame: "edit_#{dom_id favorite_location}" } %> 
+        <%= button_to "Destroy", favorite_location, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+      </div>
+    </turbo-frame>
+  </template>
+</turbo-stream>

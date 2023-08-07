@@ -12,7 +12,10 @@ class FavoriteLocationsController < ApplicationController
   def create
     @favorite_location = current_user.favorite_locations.build(favorite_location_params)
     if @favorite_location.save
-      redirect_to favorite_locations_path, notice: "お気に入り地点を追加しました。"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to favorite_locations_path, notice: "お気に入り地点を追加しました。" }
+      end
     else
       render :new
     end
@@ -23,7 +26,10 @@ class FavoriteLocationsController < ApplicationController
 
   def update
     if @favorite_location.update(favorite_location_params)
-      redirect_to favorite_locations_path, notice: "お気に入り地点を更新しました。"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to favorite_locations_path, notice: "お気に入り地点を更新しました。" }
+      end
     else
       render :edit
     end
@@ -31,7 +37,10 @@ class FavoriteLocationsController < ApplicationController
 
   def destroy
     @favorite_location.destroy
-    redirect_to favorite_locations_path, notice: "お気に入り地点を削除しました。"
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to favorite_locations_path, notice: "お気に入り地点を削除しました。" }
+    end
   end
 
   private

@@ -1,0 +1,13 @@
+<% if @favorite_location.errors.empty? %>
+  <turbo-stream action="replace" target="edit_<%= dom_id(@favorite_location) %>">
+    <template>
+      <%= render partial: "favorite_location", locals: { favorite_location: @favorite_location } %>
+    </template>
+  </turbo-stream>
+<% else %>
+  <turbo-stream action="replace" target="edit_<%= dom_id(@favorite_location) %>">
+    <template>
+      <%= render partial: "form", locals: { favorite_location: @favorite_location } %>
+    </template>
+  </turbo-stream>
+<% end %>
