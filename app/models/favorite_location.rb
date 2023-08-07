@@ -7,7 +7,7 @@ class FavoriteLocation < ApplicationRecord
 
   def limit_favorite_locations
     if user.favorite_locations.count >= 3
-      errors.add(:user_id, "can't have more than 3 favorite locations")
+      errors.add(:base, "3つまでしか登録できません")
     end
   end
 end
