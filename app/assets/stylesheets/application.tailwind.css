@@ -16,6 +16,7 @@
 @import 'cost';
 @import 'error';
 @import 'favorite_location';
+@import 'autocomplete';
 
 .container {
   max-width: 960px;

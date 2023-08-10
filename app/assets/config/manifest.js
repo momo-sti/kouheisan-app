@@ -13,3 +13,4 @@
 //= link cost.css
 //= link error.css
 //= link favorite_location.css
+//= link autocomplete.css

@@ -6,6 +6,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   let listItemClicked = false;
 
+  function setAddressToInput(element) {
+      const address = element.dataset.address;
+      const input = (element.closest('#favoriteLocationsListBegin')) ? inputBegin : inputEnd;
+      input.value = address;
+      favoriteLocationsListBegin.style.display = 'none';
+      favoriteLocationsListEnd.style.display = 'none';
+  }
+
+  function bindSetAddressToInput() {
+      document.querySelectorAll('[data-address]').forEach(element => {
+          element.addEventListener('click', function() {
+              setAddressToInput(this);
+          });
+      });
+  }
+
   function updateLocationsList(input, locations) {
       const list = (input === inputBegin) ? favoriteLocationsListBegin : favoriteLocationsListEnd;
       list.innerHTML = ''; // Clear the list
@@ -16,9 +32,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           li.dataset.address = location.address;
           li.addEventListener('mousedown', function() {
               listItemClicked = true;
-              input.value = li.dataset.address;
-              favoriteLocationsListBegin.style.display = 'none';
-              favoriteLocationsListEnd.style.display = 'none';
+              setAddressToInput(this);
           });
           list.appendChild(li);
       });
@@ -47,21 +61,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
 
       input.addEventListener('input', function() {
-          fetch(`/search_favorite_location?q=${input.value || ''}`) // If input is empty, send empty string to get all locations
-              .then(response => {
-                  if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  if (data.results && Array.isArray(data.results)) {
-                      updateLocationsList(input, data.results);
-                  }
-              })
-              .catch(error => {
-                  console.error('There was a problem with the fetch operation:', error.message);
-              });
-      });
+        fetch(`/search_favorite_location?q=${input.value || ''}`) // If input is empty, send empty string to get all locations
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.results && Array.isArray(data.results)) {
+                    updateLocationsList(input, data.results);
+                    // 入力が空白の場合、お気に入りの場所リストを表示
+                    if (input.value === "") {
+                        if (input === inputBegin) {
+                            favoriteLocationsListBegin.style.display = 'block';
+                        } else if (input === inputEnd) {
+                            favoriteLocationsListEnd.style.display = 'block';
+                        }
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error.message);
+            });
+    });
+    
   });
+
+  // Call the function to bind the click event
+  bindSetAddressToInput();
 });
