@@ -9,6 +9,3 @@ application.register("hello", HelloController)
 
 import ToastController from "./toast_controller"
 application.register("toast", ToastController)
-
-import AutocompleteController from "./autocomplete_controller"
-application.register("autocomplete", AutocompleteController)

@@ -11,13 +11,10 @@ class TopsController < ApplicationController
   def new
   end
 
-  def search_favorite_location
-    @favorite_locations = if params[:q].present?
-                            FavoriteLocation.where('name LIKE ?', "%#{params[:q]}%")
-                          else
-                            FavoriteLocation.all
-                          end
-    render partial: 'autocomplete_results', locals: { favorite_locations: @favorite_locations }
+  def search
+    query = params[:q]
+    @locations = FavoriteLocation.where('name LIKE ?', "%#{query}%")
+    render json: { results: @locations.as_json }
   end
 
   def favorites

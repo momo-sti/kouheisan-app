@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   resources :favorite_locations
 
-  resources :tops, only: [:new, :reset_session, :focus] do
+  resources :tops, only: [:new] do
     collection do
       post :reset_session
       get :favorites
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   root 'tops#top'
   get '/wakeup', to: 'tops#wakeup'
-  get '/search_favorite_location', to: 'tops#search_favorite_location'
+  get '/search_favorite_location', to: 'tops#search'
 
   #エラーページ
   get '/404"', to: 'application#render_not_found'

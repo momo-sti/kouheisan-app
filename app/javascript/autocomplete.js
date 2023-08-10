@@ -6,6 +6,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   let listItemClicked = false;
 
+  function updateLocationsList(input, locations) {
+      const list = (input === inputBegin) ? favoriteLocationsListBegin : favoriteLocationsListEnd;
+      list.innerHTML = ''; // Clear the list
+
+      locations.forEach(location => {
+          const li = document.createElement('li');
+          li.textContent = location.name;
+          li.dataset.address = location.address;
+          li.addEventListener('mousedown', function() {
+              listItemClicked = true;
+              input.value = li.dataset.address;
+              favoriteLocationsListBegin.style.display = 'none';
+              favoriteLocationsListEnd.style.display = 'none';
+          });
+          list.appendChild(li);
+      });
+  }
+
   [inputBegin, inputEnd].forEach(input => {
       input.addEventListener('focus', function() {
           if (input === inputBegin && !input.value) {
@@ -29,31 +47,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
 
       input.addEventListener('input', function() {
-        if (input.value) { // 値が存在する場合
-            if (input === inputBegin) {
-                favoriteLocationsListBegin.style.display = 'none';
-            } else if (input === inputEnd) {
-                favoriteLocationsListEnd.style.display = 'none';
-            }
-        } else { // 値が空の場合
-            if (input === inputBegin) {
-                favoriteLocationsListBegin.style.display = 'block';
-            } else if (input === inputEnd) {
-                favoriteLocationsListEnd.style.display = 'block';
-            }
-        }
-    });
-  });
-
-  document.querySelectorAll('#favoriteLocationsListBegin li, #favoriteLocationsListEnd li').forEach(item => {
-      item.addEventListener('mousedown', function() {
-          listItemClicked = true;
-          const activeInput = document.activeElement;
-          if (activeInput && activeInput.dataset.autocompleteTarget === "input") {
-              activeInput.value = item.dataset.address;
-              favoriteLocationsListBegin.style.display = 'none';
-              favoriteLocationsListEnd.style.display = 'none';
-          }
+          fetch(`/search_favorite_location?q=${input.value || ''}`) // If input is empty, send empty string to get all locations
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  if (data.results && Array.isArray(data.results)) {
+                      updateLocationsList(input, data.results);
+                  }
+              })
+              .catch(error => {
+                  console.error('There was a problem with the fetch operation:', error.message);
+              });
       });
   });
 });
