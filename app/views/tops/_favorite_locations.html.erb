@@ -1,0 +1,5 @@
+<% favorite_locations.each do |location| %>
+  <li data-address="<%= location.address %>" onclick="setAddressToInput(this)">
+    <%= location.name %>
+  </li>
+<% end %>

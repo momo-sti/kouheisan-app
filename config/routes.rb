@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   
   resources :favorite_locations
 
-  resources :tops, only: [:new, :reset_session] do
-    post :reset_session, on: :collection
+  resources :tops, only: [:new, :reset_session, :focus] do
+    collection do
+      post :reset_session
+      get :favorites
+    end
   end
 
   resources :gasolines, only: [:new, :create]
@@ -39,6 +42,8 @@ Rails.application.routes.draw do
 
   root 'tops#top'
   get '/wakeup', to: 'tops#wakeup'
+  get '/search_favorite_location', to: 'tops#search_favorite_location'
+
   #エラーページ
   get '/404"', to: 'application#render_not_found'
   get '/500', to: 'application#render_internal_server_error'
