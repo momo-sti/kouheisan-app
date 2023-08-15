@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'autocomplete' %>
 <% favorite_locations.each do |location| %>
   <div class="list">
-    <li data-address="<%= location.address %>">
+    <li class="btn btn-sm" data-address="<%= location.address %>">
       <%= location.name %>
     </li>
   </div>

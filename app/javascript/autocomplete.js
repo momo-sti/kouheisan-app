@@ -30,11 +30,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
           const li = document.createElement('li');
           li.textContent = location.name;
           li.dataset.address = location.address;
+          li.className = "btn btn-sm";
+
+          li.style.position = "relative";
+          li.style.margin = "1px 0";
+          li.style.width = "325px";
+          li.style.left = "30px";
+          li.style.textAlign = "left";
+          
           li.addEventListener('mousedown', function() {
               listItemClicked = true;
               setAddressToInput(this);
           });
-          list.appendChild(li);
+          const div = document.createElement('div');
+          div.className = "list";
+          div.appendChild(li);
+          list.appendChild(div);
       });
   }
 
