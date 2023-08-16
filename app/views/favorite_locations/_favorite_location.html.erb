@@ -1,9 +1,12 @@
 <%= turbo_frame_tag favorite_location do %>
-  <%= favorite_location.name %>
-
-  <%= favorite_location.address %>
-
   <div>
+    <%= favorite_location.name %>
+  </div>
+  <div>
+    <%= favorite_location.address %>
+  </div>
+
+  <div class="edit-destroy-button">
     <%= link_to 'Edit', edit_favorite_location_path(favorite_location) %>
     <%= button_to "Destroy", favorite_location, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
   </div>
