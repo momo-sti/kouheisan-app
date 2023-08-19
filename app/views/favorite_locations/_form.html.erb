@@ -12,16 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <i class="fa-solid fa-star" style="color: #fad905;"></i><%= form.label :name %>
+    <%= form.text_field :name, class:"input input-bordered input-accent w-full max-w-xs"%>
   </div>
 
   <div>
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, class:"input input-bordered input-accent w-full max-w-xs" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-active btn-accent" %>
   </div>
 <% end %>
