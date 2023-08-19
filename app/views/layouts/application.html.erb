@@ -19,6 +19,8 @@
     <script src="https://unpkg.com/@sjmc11/tourguidejs@0.0.7/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://unpkg.com/@sjmc11/tourguidejs@0.0.7/dist/css/tour.min.css">
 
+    <!-- OGP -->
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
     <link rel=”icon” href=“/image/logo.ico”>
     <!-- Google tag (gtag.js) -->
@@ -29,12 +31,7 @@
       gtag('js', new Date());
 
       gtag('config', 'G-M9B4G1LYB9');
-    </script>
-
-    <!-- OGP -->
-    <meta property="og:title" content="交平さん" />
-    <meta property="og:image" content="<%= image_url('OGP.PNG') %>" />
-    
+    </script>    
 
   <body>
     <%= render 'shared/flash_message' %>

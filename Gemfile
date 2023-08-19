@@ -56,6 +56,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'line-bot-api'
 gem 'pry-rails'
 gem 'google-cloud-storage'
+gem "meta-tags"
 
 
 

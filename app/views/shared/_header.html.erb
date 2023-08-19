@@ -48,9 +48,8 @@
                             <% end %>
                         </summary>
                         <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <%# <li><a>マイページ</a></li> %>
                             <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-                            <%# <li><%= link_to 'お気に入り地点', favorite_locations_path %></li>
+                            <li><%= link_to 'お気に入り地点', favorite_locations_path %></li>
                         </ul>
                     </details>
                 <% else %>
