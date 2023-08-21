@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'favorite_location' %>
+
 <%= form_with(model: favorite_location, local: false) do |form| %>
   <% if favorite_location.errors.any? %>
     <div style="color: red">
@@ -23,5 +25,6 @@
 
   <div>
     <%= form.submit class:"btn btn-active btn-accent" %>
+    <%= link_to "Back", favorite_locations_path, class:"btn btn-primary" %>
   </div>
 <% end %>
