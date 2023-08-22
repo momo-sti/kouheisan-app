@@ -3,13 +3,16 @@
 <% content_for :title, "お気に入り地点" %>
 <% content_for :back_path, root_path %>
 
-<div class='container list'>
+<div style="text-align: right;">
+  <button class="btn btn-sm btn-link" id="start">操作方法</button>
+</div>
 
-  <div id="favorite_locations">
-    <% @favorite_locations.each do |favorite_location| %>
+<div class="container">
+  <% @favorite_locations.each do |favorite_location| %>
+    <div id="favorite_locations">
       <%= render favorite_location %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <%= render "new_button" %>
 </div>

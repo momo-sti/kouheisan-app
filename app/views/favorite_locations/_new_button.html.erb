@@ -1,5 +1,7 @@
 <%= stylesheet_link_tag 'favorite_location' %>
 
 <%= turbo_frame_tag "new_favorite_location" do %>
-  <%= link_to '追加', new_favorite_location_path, class:"btn btn-active btn-accent"  %>
+  <%= link_to new_favorite_location_path, class: "btn btn-active btn-accent", data: { tg_order: "0", tg_tour: 'お気に入り地点を登録できます。<br>(３地点まで登録可能)' } do %>
+    <i class="fa-solid fa-plus fa-xl" style="color: #ffffff;"></i>
+  <% end %>
 <% end %>
