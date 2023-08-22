@@ -1,0 +1,27 @@
+.edit-destroy-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.container.list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.favorite-list {
+  margin: 30px 0;
+}
+
+.location-name {
+  margin-bottom: 5px;
+}
+
+.location-address {
+  margin: 5px 0 10px 0;
+}
+
+.form-button {
+  margin: 5px 0 20px 0;
+}

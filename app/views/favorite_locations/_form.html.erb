@@ -3,7 +3,6 @@
 <%= form_with(model: favorite_location, local: false) do |form| %>
   <% if favorite_location.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(favorite_location.errors.count, "error") %> prohibited this favorite_location from being saved:</h2>
 
       <ul>
         <% favorite_location.errors.each do |error| %>
@@ -23,7 +22,7 @@
     <%= form.text_field :address, class:"input input-bordered input-accent w-full max-w-xs" %>
   </div>
 
-  <div>
+  <div class="form-button">
     <%= form.submit class:"btn btn-active btn-accent" %>
     <%= link_to "Back", favorite_locations_path, class:"btn btn-primary" %>
   </div>
