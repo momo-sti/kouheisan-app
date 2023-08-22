@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'favorite_location' %>
 
-<%= turbo_frame_tag "new_favorite_location" do %>
+<%= turbo_frame_tag @favorite_location do %>
   <%= render "form", favorite_location: @favorite_location %>
 <% end %>

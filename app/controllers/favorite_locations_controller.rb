@@ -8,7 +8,6 @@ class FavoriteLocationsController < ApplicationController
 
   def new
     @favorite_location = current_user.favorite_locations.build
-    @favorite_location.valid?
   end
 
   def create

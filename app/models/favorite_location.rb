@@ -1,6 +1,8 @@
 class FavoriteLocation < ApplicationRecord
   belongs_to :user
   validate :limit_favorite_locations, on: :create
+  validates :name, presence: true
+  validates :address, presence: true
 
 
   private
