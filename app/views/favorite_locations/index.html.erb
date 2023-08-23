@@ -6,15 +6,22 @@
 
 <div class="container">
   <p class="favo-index">お気に入り地点一覧</p>
-  <% 3.times do |index| %>
-    <div id="favorite_location_<%= index %>">
-      <p><i class="fa-solid fa-star" style="color: #fad905;"></i>お気に入り地点<%= index + 1 %></p>
-      <% favorite_location = @favorite_locations[index] %>
-      <% if favorite_location %>
-        <%= render favorite_location %>
-      <% else %>
-        <%= render "new_button", index: index %>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="favo-table">
+    <% 3.times do |index| %>
+      <div class="favorite-list">
+        <div id="favorite_location_<%= index %>">
+          <% favorite_location = @favorite_locations[index] %>
+          <% unless favorite_location %>
+            <p class="location-name-bef"><i class="fa-solid fa-star fa-spin fa-spin-reverse" style="color: #ffc800;"></i>お気に入り地点<%= index + 1 %></p>
+          <% end %>
+          <% if favorite_location %>
+            <%= render favorite_location %>
+          <% else %>
+            <%= render "new_button", index: index %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+

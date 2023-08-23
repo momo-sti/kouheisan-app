@@ -1,21 +1,19 @@
 <%= stylesheet_link_tag 'favorite_location' %>
 
 <%= turbo_frame_tag favorite_location do %>
-  <div class="favorite-list">
     <div class="location-name">
-      <i class="fa-solid fa-star" style="color: #fad905;"></i><%= favorite_location.name %>
+      <i class="fa-solid fa-star fa-spin fa-spin-reverse" style="color: #ffc800;"></i><%= favorite_location.name %>
     </div>
     <div class="location-address">
       <%= favorite_location.address %>
     </div>
 
     <div class="edit-destroy-button">
-      <%= link_to edit_favorite_location_path(favorite_location), class:"btn btn-xs btn-active btn-success" do %>
-        <i class="fa-regular fa-pen-to-square fa-lg" style="color: #ffffff;"></i>
+      <%= link_to edit_favorite_location_path(favorite_location), class:"btn btn-sm btn-active btn-success" do %>
+        <i class="fa-regular fa-pen-to-square fa-xl" style="color: #ffffff;"></i>
       <% end %>
-      <%= button_to favorite_location_path(favorite_location), method: :delete, class: "btn btn-xs btn-active btn-secondary", data: { turbo: "false" } do %>
-        <i class="fa-regular fa-trash-can fa-lg" style="color: #ffffff;"></i>
+      <%= button_to favorite_location_path(favorite_location), method: :delete, class: "btn btn-sm btn-active btn-secondary", data: { turbo: "false" } do %>
+        <i class="fa-regular fa-trash-can fa-xl" style="color: #ffffff;"></i>
       <% end %>
     </div>
-  </div>
 <% end %>

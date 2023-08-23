@@ -1,7 +1,7 @@
 .edit-destroy-button {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 
 .container.list {
@@ -11,19 +11,27 @@
 }
 
 .favorite-list {
-  margin: 30px 0;
+  padding: 20px 10px;
+  margin: 20px 0;
+  background-color: #e5dfdc;
+  border-radius: 20px
 }
 
 .location-name {
   margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.location-name-bef {
+  font-size: 20px;
 }
 
 .location-address {
-  margin: 5px 0 10px 0;
+  margin: 20px 0 20px 5px;
 }
 
 .form-button {
-  margin: 5px 0 20px 0;
+  margin-top: 5px;
 }
 
 .no-favorite {
@@ -38,5 +46,11 @@
 }
 
 .new-button {
-  margin-top: 10px;
+  margin-top: 20px;
 }
+
+.favo-table {
+  font-size: 18px;
+  
+}
+
