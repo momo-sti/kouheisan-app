@@ -74,6 +74,11 @@
   padding-bottom: 25px;
 }
 
+.btn-link {
+  z-index: 10;
+  position: relative;
+}
+
 @media (min-width: 768px) {
   .container {
     height: 610px;

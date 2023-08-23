@@ -12,6 +12,7 @@ ja:
         messages:
           blank: "を入力してください"
           not_a_number: "は数値で入力してください"
+
   common:
     back: キャンセル
     registration: 登録
@@ -19,6 +20,8 @@ ja:
     search: 検索
     calculation: "計算"
     next: "次へ"
+    instructions: "操作方法"
+
   
   activerecord:
     models:
@@ -35,6 +38,18 @@ ja:
       title: "ガソリン代の計算"
       yen: "円"
     gasoline_cost: "ガソリン代金"
+  highways:
+    highway:
+      start_place: "出発IC"
+      arrive_place: "到着IC"
+      car_type: "自動車タイプ"
+      date: "日付"
+      hour: "時間"
+      start: "出発"
+      arrive: "到着"
+      normal: "普通車"
+      light: "軽自動車"
+      highway_cost: "高速道路料金"
   header:
     how: "使い方"
     logout: "ログアウト"

@@ -3,56 +3,56 @@
 <% content_for :back_path, new_gasoline_path %>
 
 <div style="text-align: right;">
-  <button class="btn btn-sm btn-link" id="start">操作方法</button>
+  <button class="btn btn-sm btn-link" id="start"><%= t('common.instructions') %></button>
 </div>
 
 <div class="container">
   <%= form_with url: highways_path, local: true, id: 'main_form', data: { turbo: false, tg_order: "0", tg_tour: '各項目を入力してください。' } do |f| %>
     <div class="place">
-      <%= f.label :start_place, '出発IC' %>
+      <%= f.label :start_place, t('highways.highway.start_place') %>
       <%= f.text_field :start_place, id: "start_place", class: "input input-bordered input-accent w-full max-w-xs" %>
     </div>
 
     <div class="place">
-      <%= f.label :arrive_place, '到着IC' %>
+      <%= f.label :arrive_place, t('highways.highway.arrive_place') %>
       <%= f.text_field :arrive_place, id: "arrive_place", class: "input input-bordered input-accent w-full max-w-xs" %>
     </div>
 
     <div class="car">
-      <%= f.label :car_type, '自動車タイプ' %>
-      <%= f.select :car_type, options_for_select([['普通車', '1'], ['軽自動車', '0']], selected: '1'), {}, class: "select select-accent w-full max-w-xs" %>
+      <%= f.label :car_type, t('highways.highway.car_type') %>
+      <%= f.select :car_type, options_for_select([[t('highways.highway.normal'), '1'], [t('highways.highway.light'), '0']], selected: '1'), {}, class: "select select-accent w-full max-w-xs" %>
     </div>
 
 
     <div class="date">
-      <%= f.label :date, '日付' %>
+      <%= f.label :date, t('highways.highway.date') %>
       <%= f.date_field :date, class:"input input-bordered input-accent w-full max-w-xs" %>
     </div>
     <div class="time">
-      <%= f.label :hour, '時間' %>
+      <%= f.label :hour, t('highways.highway.hour') %>
       <%= f.select :hour, options_for_select((0..23).to_a.map { |h| h.to_s.rjust(2, '0') }), {}, class: "select select-accent w-full max-w-xs" %>
       <%= f.label :minute, ':' %>
       <%= f.select :minute, options_for_select((0..50).step(10).to_a.map { |m| m.to_s.rjust(2, '0') }), {}, class: "select select-accent w-full max-w-xs" %>
     </div>
 
     <div class="kind">
-      <%= f.label :kind, '出発', value: 1 %>
+      <%= f.label :kind, t('highways.highway.start'), value: 1 %>
       <%= f.radio_button :kind, '1', class: "radio radio-accent" %>
 
-      <%= f.label :kind, '到着', value: 2 %>
+      <%= f.label :kind, t('highways.highway.arrive'), value: 2 %>
       <%= f.radio_button :kind, '2', class: "radio radio-accent" %>
     </div>
 
     <div class="search" data-tg-order="1" data-tg-tour='検索ボタンをクリックすると、外部サイトに金額が表示されます。<br>金額を確認したら、ブラウザの戻るボタンを押してください。'>
-      <%= f.submit '検索', class: "btn btn-active btn-accent fixed-button" %>
+      <%= f.submit t('common.search'), class: "btn btn-active btn-accent fixed-button" %>
     </div>
   <% end %>
 
 
     <div>
       <%= form_with url: save_highway_info_highways_path, local: true do |f| %>
-        <p class="cost" data-tg-order="2" data-tg-tour='外部サイトで表示された金額を入力してください。'>高速道路料金<%= f.number_field :highway_cost, class:"input input-bordered input-accent w-full max-w-xs" %>円</p>
-        <div class="next"><%= f.submit '次へ', class: "btn btn-active btn-accent fixed-button" %></div>
+        <p class="cost" data-tg-order="2" data-tg-tour='外部サイトで表示された金額を入力してください。'><%= t('highways.highway.highway_cost') %><%= f.number_field :highway_cost, class:"input input-bordered input-accent w-full max-w-xs" %>円</p>
+        <div class="next"><%= f.submit t('common.next'), class: "btn btn-active btn-accent fixed-button" %></div>
       <% end %>
     </div>
 </div>
