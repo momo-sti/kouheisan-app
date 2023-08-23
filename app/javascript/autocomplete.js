@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function updateLocationsList(input, locations) {
       const list = (input === inputBegin) ? favoriteLocationsListBegin : favoriteLocationsListEnd;
+
+      if (!list) return;
+      
       list.innerHTML = ''; // Clear the list
 
       locations.forEach(location => {
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           li.style.width = "325px";
           li.style.left = "30px";
           li.style.textAlign = "left";
+          li.style.backgroundColor = "#e5dfdc";
           
           li.addEventListener('mousedown', function() {
               listItemClicked = true;
@@ -49,56 +53,58 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
   }
 
+  
+  if (inputBegin && inputEnd) {
   [inputBegin, inputEnd].forEach(input => {
-      input.addEventListener('focus', function() {
-          if (input === inputBegin && !input.value) {
-              favoriteLocationsListBegin.style.display = 'block';
-          } else if (input === inputEnd && !input.value) {
-              favoriteLocationsListEnd.style.display = 'block';
-          }
-      });
+    input.addEventListener('focus', function() {
+        if (input === inputBegin && !input.value) {
+            favoriteLocationsListBegin.style.display = 'block';
+        } else if (input === inputEnd && !input.value) {
+            favoriteLocationsListEnd.style.display = 'block';
+        }
+    });
 
-      input.addEventListener('blur', function() {
-          setTimeout(() => {
-              if (!listItemClicked) {
-                  if (input === inputBegin) {
-                      favoriteLocationsListBegin.style.display = 'none';
-                  } else if (input === inputEnd) {
-                      favoriteLocationsListEnd.style.display = 'none';
+    input.addEventListener('blur', function() {
+        setTimeout(() => {
+            if (!listItemClicked) {
+                if (input === inputBegin) {
+                    favoriteLocationsListBegin.style.display = 'none';
+                } else if (input === inputEnd) {
+                    favoriteLocationsListEnd.style.display = 'none';
+                }
+            }
+            listItemClicked = false;
+        }, 150);
+    });
+
+    input.addEventListener('input', function() {
+      fetch(`/search_favorite_location?q=${input.value || ''}`) // If input is empty, send empty string to get all locations
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              if (data.results && Array.isArray(data.results)) {
+                  updateLocationsList(input, data.results);
+                  // 入力が空白の場合、お気に入りの場所リストを表示
+                  if (input.value === "") {
+                      if (input === inputBegin) {
+                          favoriteLocationsListBegin.style.display = 'block';
+                      } else if (input === inputEnd) {
+                          favoriteLocationsListEnd.style.display = 'block';
+                      }
                   }
               }
-              listItemClicked = false;
-          }, 150);
-      });
-
-      input.addEventListener('input', function() {
-        fetch(`/search_favorite_location?q=${input.value || ''}`) // If input is empty, send empty string to get all locations
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.results && Array.isArray(data.results)) {
-                    updateLocationsList(input, data.results);
-                    // 入力が空白の場合、お気に入りの場所リストを表示
-                    if (input.value === "") {
-                        if (input === inputBegin) {
-                            favoriteLocationsListBegin.style.display = 'block';
-                        } else if (input === inputEnd) {
-                            favoriteLocationsListEnd.style.display = 'block';
-                        }
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error.message);
-            });
+          })
+          .catch(error => {
+              console.error('There was a problem with the fetch operation:', error.message);
+          });
     });
-    
   });
+}
 
-  // Call the function to bind the click event
-  bindSetAddressToInput();
+// Call the function to bind the click event
+bindSetAddressToInput();
 });
