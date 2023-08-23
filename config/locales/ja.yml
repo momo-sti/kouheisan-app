@@ -40,6 +40,7 @@ ja:
     gasoline_cost: "ガソリン代金"
   highways:
     highway:
+      title: "高速料金の計算"
       start_place: "出発IC"
       arrive_place: "到着IC"
       car_type: "自動車タイプ"
