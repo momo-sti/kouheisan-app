@@ -3,17 +3,18 @@
 <% content_for :title, "お気に入り地点" %>
 <% content_for :back_path, root_path %>
 
-<div style="text-align: right;">
-  <button class="btn btn-sm btn-link" id="start">操作方法</button>
-</div>
 
 <div class="container">
   <p class="favo-index">お気に入り地点一覧</p>
-  <% @favorite_locations.each do |favorite_location| %>
-    <div id="favorite_locations">
-      <%= render favorite_location %>
+  <% 3.times do |index| %>
+    <div id="favorite_location_<%= index %>">
+      <p><i class="fa-solid fa-star" style="color: #fad905;"></i>お気に入り地点<%= index + 1 %></p>
+      <% favorite_location = @favorite_locations[index] %>
+      <% if favorite_location %>
+        <%= render favorite_location %>
+      <% else %>
+        <%= render "new_button", index: index %>
+      <% end %>
     </div>
   <% end %>
-
-  <%= render "new_button" %>
 </div>

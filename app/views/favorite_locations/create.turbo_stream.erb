@@ -1,6 +1,4 @@
-<%= turbo_stream.append 'favorite_locations' do %>
+<%= turbo_stream.replace "favorite_location_#{@index}" do %>
+  <p>お気に入り地点<%= @index + 1 %></p>
   <%= render @favorite_location %>
-<% end %>
-<%= turbo_stream.replace 'new_favorite_location' do %>
-  <%= render "new_button" %>
 <% end %>

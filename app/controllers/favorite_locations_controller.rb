@@ -3,15 +3,20 @@ class FavoriteLocationsController < ApplicationController
   before_action :redirect_index, only: %i[ new show edit ]
 
   def index
-    @favorite_locations = current_user.favorite_locations.order(id: :asc)
+    @favorite_locations = Array.new(3) { |index| current_user.favorite_locations[index] }
   end
+  
+  
 
   def new
     @favorite_location = current_user.favorite_locations.build
+    @index = params[:index].to_i
   end
+  
 
   def create
     @favorite_location = current_user.favorite_locations.build(favorite_location_params)
+    @index = current_user.favorite_locations.count
     if @favorite_location.save
       render :create
     else
@@ -31,15 +36,18 @@ class FavoriteLocationsController < ApplicationController
   end
 
   def destroy
-    @favorite_location.destroy
-    render turbo_stream: turbo_stream.remove(@favorite_location)
+    @favorite_location.destroy!
+    redirect_to favorite_locations_path
   end
+  
+  
 
   private
 
   def set_favorite_location
-    @favorite_location = current_user.favorite_locations.find(params[:id])
-  end
+    @favorite_locations = current_user.favorite_locations
+    @favorite_location = @favorite_locations.find(params[:id])
+  end  
 
   def favorite_location_params
     params.require(:favorite_location).permit(:name, :address)
