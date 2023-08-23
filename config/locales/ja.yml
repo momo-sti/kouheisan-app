@@ -12,3 +12,22 @@ ja:
         messages:
           blank: "を入力してください"
           not_a_number: "は数値で入力してください"
+  common:
+    back: キャンセル
+    registration: 登録
+  
+  activerecord:
+    models:
+      favorite_location: お気に入りの場所
+    attributes:
+      favorite_location:
+        name: お気に入り地点名
+        address: 住所
+  favorite_locations:
+        index:
+          title: "お気に入り地点"
+          subtitle: "お気に入り地点一覧"
+          favorite_point: "お気に入り地点%{index}"
+
+  errors:
+    format: "%{attribute} %{message}"

@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag 'favorite_location' %>
 
 <%= turbo_frame_tag "new_favorite_location_#{ index }" do %>
-  <%= link_to '登録', new_favorite_location_path(index: index), class: "btn btn-active btn-accent new-button" %>
+  <%= link_to t('common.registration'), new_favorite_location_path(index: index), class: "btn btn-active btn-accent new-button" %>
 <% end %>
