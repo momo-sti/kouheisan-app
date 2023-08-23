@@ -35,7 +35,7 @@
 
     <nav class="login">
         <ul>
-            <li><%= link_to '使い方', how_policies_path%></li>
+            <li><%= link_to t('header.how'), how_policies_path%></li>
             <li>
                 <% if user_signed_in? %>
                     <details class="dropdown dropdown-end mb-32">
@@ -48,12 +48,12 @@
                             <% end %>
                         </summary>
                         <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-                            <li><%= link_to 'お気に入り地点', favorite_locations_path %></li>
+                            <li><%= button_to t('header.logout'), destroy_user_session_path, method: :delete %></li>
+                            <li><%= link_to t('favorite_locations.index.title'), favorite_locations_path %></li>
                         </ul>
                     </details>
                 <% else %>
-                    <%= button_to "ログイン", omniauth_authorize_path(:user, :line), data: { turbo: false } %>
+                    <%= button_to t('header.login'), omniauth_authorize_path(:user, :line), data: { turbo: false } %>
                 <% end %>
 
             </li>

@@ -28,6 +28,10 @@ ja:
   tops:
     top:
       title: "距離を計算"
+  header:
+    how: "使い方"
+    logout: "ログアウト"
+    login: "ログイン"
   labels:
         use_highway: "高速道路を使用"
   favorite_locations:
