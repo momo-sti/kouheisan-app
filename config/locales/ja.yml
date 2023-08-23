@@ -15,6 +15,8 @@ ja:
   common:
     back: キャンセル
     registration: 登録
+    decision: 決定
+    search: 検索
   
   activerecord:
     models:
@@ -23,6 +25,11 @@ ja:
       favorite_location:
         name: お気に入り地点名
         address: 住所
+  tops:
+    top:
+      title: "距離を計算"
+  labels:
+        use_highway: "高速道路を使用"
   favorite_locations:
         index:
           title: "お気に入り地点"

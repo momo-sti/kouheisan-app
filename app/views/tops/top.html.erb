@@ -3,7 +3,7 @@
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 
-<% content_for :title, "距離を計算" %>
+<% content_for :title, t('tops.top.title') %>
 
 <div class="container">
   <div id="error-message" class="hidden alert alert-error flex items-center">
@@ -31,18 +31,18 @@
     <div class="flex flex-col">
       <div class="form-control w-52">
         <label class="cursor-pointer label">
-          <span class="label-text">高速道路を使用</span> 
+          <span class="label-text"><%= t('labels.use_highway') %></span> 
           <input type="checkbox" class="toggle toggle-secondary" checked />
         </label>
       </div>
     </div>
-      <button id="searchButton", class="btn btn-active btn-accent">検索</button>
+      <button id="searchButton", class="btn btn-active btn-accent"><%= t('common.search') %></button>
       <div id="routeInfo">
         <i class="fa-solid fa-car fa-xl" style="color: #d75050;"></i>
         <span id="routeDetails"></span>
       </div>
 
-      <%= button_to "決定", {}, {method: :get, id: "confirmButton", class: "btn btn-active btn-accent fixed-button"} %>
+      <%= button_to t('common.decision'), {}, {method: :get, id: "confirmButton", class: "btn btn-active btn-accent fixed-button"} %>
 
   </div>
 </div>
