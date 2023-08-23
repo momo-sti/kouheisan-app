@@ -1,7 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%= stylesheet_link_tag 'gasoline' %>
 
-<% content_for :title, "ガソリン代の計算" %>
+<% content_for :title, t('gasolines.new.title') %>
 <% content_for :back_path, root_path %>
 
 
@@ -22,10 +22,10 @@
     </div>
     <div>
       <%= f.label :price_per_liter, class: 'form-label' %>
-      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit">円/L</p>
+      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit"><%= t('gasolines.new.yen') %>/L</p>
     </div>
     <div class="cal-button">
-      <%= f.submit "計算", class: "btn btn-active btn-accent fixed-button" %>
+      <%= f.submit t('common.calculation'), class: "btn btn-active btn-accent fixed-button" %>
     </div>
   <% end %>
 
@@ -36,7 +36,7 @@
   <% end %>
   <div class="button-wrapper">
     <div class="next">
-      <%= link_to "次へ",  reset_and_redirect_highways_path, class: "btn btn-active btn-accent fixed-button" %>
+      <%= link_to t('common.next'),  reset_and_redirect_highways_path, class: "btn btn-active btn-accent fixed-button" %>
     </div>
   </div>
 </div>

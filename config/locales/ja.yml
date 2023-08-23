@@ -17,6 +17,8 @@ ja:
     registration: 登録
     decision: 決定
     search: 検索
+    calculation: "計算"
+    next: "次へ"
   
   activerecord:
     models:
@@ -28,6 +30,11 @@ ja:
   tops:
     top:
       title: "距離を計算"
+  gasolines:
+    new:
+      title: "ガソリン代の計算"
+      yen: "円"
+    gasoline_cost: "ガソリン代金"
   header:
     how: "使い方"
     logout: "ログアウト"
