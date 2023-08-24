@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag 'extra' %>
-<% content_for :title, "計算結果" %>
+<% content_for :title, t('extras.index.title') %>
 <% content_for :back_path, highway_highways_path %>
 <meta name="turbo-visit-control" content="reload">
 
 <div style="text-align: right;">
-  <button class="btn btn-sm btn-link" id="start">操作方法</button>
+  <button class="btn btn-sm btn-link" id="start"><%= t('common.instructions') %></button>
 </div>
 
 <div class="overflow-x-auto">
@@ -12,42 +12,42 @@
     <!-- head -->
     <tbody>
       <tr id="total-amount", class="text-2xl">
-        <th>合計</th>
-        <th class="right-align" id="total_amount"><%= display_number(@total_amount) %>円</th>
+        <th><%= t('extras.index.total') %></th>
+        <th class="right-align" id="total_amount"><%= display_number(@total_amount) %><%= t('common.yen') %></th>
       </tr>
       <!-- row 1 -->
       <tr id="gasoline-cost", class="text-xl font-bold">
-        <td>ガソリン代金</td>
-        <td class="right-align"><%= display_number(@result) %>円</td>
+        <td><%= t('gasolines.gasoline_cost') %></td>
+        <td class="right-align"><%= display_number(@result) %><%= t('common.yen') %></td>
       </tr>
       <!-- row 2 -->
       <tr id="total-distance-result">
-        <td>距離</td>
+        <td><%= t('activemodel.attributes.gasoline.total_distance') %></td>
         <td class="right-align"><%= display_number(@total_distance) %>km</td>
       </tr>
       <!-- row 3 -->
       <tr id="fuel-efficiency-result">
-        <td>燃費</td>
+        <td><%= t('activemodel.attributes.gasoline.fuel_efficiency') %></td>
         <td class="right-align"><%= display_number(@fuel_efficiency) %>L/km</td>
       </tr>
       <!-- row 4 -->
       <tr id="price-per-liter-result">
-        <td>ガソリン単価</td>
-        <td class="right-align"><%= display_number(@price_per_liter) %>L/円</td>
+        <td><%= t('activemodel.attributes.gasoline.price_per_liter') %></td>
+        <td class="right-align"><%= display_number(@price_per_liter) %>L/<%= t('common.yen') %></td>
       </tr>
       <!-- row 1 -->
       <tr id="highway-cost", class="text-xl font-bold">
-        <td>高速料金</td>
-        <td class="right-align"><%= display_number(@highway_cost) %>円</td>
+        <td><%= t('highways.highway.highway_cost') %></td>
+        <td class="right-align"><%= display_number(@highway_cost) %><%= t('common.yen') %></td>
       </tr>
       <!-- row 2 -->
       <tr id="start-place-result">
-        <td>出発IC : <%= @start_place %></td>
+        <td><%= t('highways.highway.start_place') %> : <%= @start_place %></td>
         <td></td>
       </tr>
       <!-- row 3 -->
       <tr  id="arrive-place-result">
-        <td>到着IC : <%= @arrive_place %></td>
+        <td><%= t('highways.highway.arrive_place') %> : <%= @arrive_place %></td>
         <td></td>
       </tr>
       <!-- row extra -->
@@ -67,7 +67,7 @@
   <input type="checkbox" id="my_modal_7" class="modal-toggle" />
   <div class="modal">
     <div class="modal-box">
-      <h3 class="text-base">費用を追加する</h3>
+      <h3 class="text-base"><%= t('extras.index.add_cost') %></h3>
       <%= render 'form_new', extra: Extra.new %>
     </div>
     <label class="modal-backdrop" for="my_modal_7">Close</label>

@@ -51,7 +51,7 @@
 
     <div>
       <%= form_with url: save_highway_info_highways_path, local: true do |f| %>
-        <p class="cost" data-tg-order="2" data-tg-tour='外部サイトで表示された金額を入力してください。'><%= t('highways.highway.highway_cost') %><%= f.number_field :highway_cost, class:"input input-bordered input-accent w-full max-w-xs" %>円</p>
+        <p class="cost" data-tg-order="2" data-tg-tour='外部サイトで表示された金額を入力してください。'><%= t('highways.highway.highway_cost') %><%= f.number_field :highway_cost, class:"input input-bordered input-accent w-full max-w-xs" %><%= t('common.yen') %></p>
         <div class="next"><%= f.submit t('common.next'), class: "btn btn-active btn-accent fixed-button" %></div>
       <% end %>
     </div>

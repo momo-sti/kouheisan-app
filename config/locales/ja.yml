@@ -21,6 +21,7 @@ ja:
     calculation: "計算"
     next: "次へ"
     instructions: "操作方法"
+    yen: "円"
 
   
   activerecord:
@@ -36,7 +37,6 @@ ja:
   gasolines:
     new:
       title: "ガソリン代の計算"
-      yen: "円"
     gasoline_cost: "ガソリン代金"
   highways:
     highway:
@@ -51,6 +51,21 @@ ja:
       normal: "普通車"
       light: "軽自動車"
       highway_cost: "高速道路料金"
+  extras:
+    create: "追加"
+    update: "更新"
+    index:
+      title: "計算結果"
+      total: "合計"
+      add_cost: "費用を追加する"
+      update_cost: "費用を更新する"
+  splits:
+    person: "人の場合"
+    per_person: "一人当たり"
+    share: "共有する"
+  costs:
+    before: "旅行前"
+    after: "旅行後"
   header:
     how: "使い方"
     logout: "ログアウト"

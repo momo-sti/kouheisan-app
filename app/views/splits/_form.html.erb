@@ -8,17 +8,17 @@
       <button id="decrement-button"><i class="fa-solid fa-square-minus fa-3x" style="color: #ce8950;"></i></button>
       <input type="number" id="person-count" value="1" min="1" class="input input-bordered input-accent w-full max-w-xs">
       <button id="increment-button"><i class="fa-solid fa-square-plus fa-3x" style="color: #ce8950;"></i></button>
-      <p style="display:inline">人の場合</p>
+      <p style="display:inline"><%= t('splits.person') %></p>
     </div>
 
     <div class="split-amount text-xl font-bold">
-      <span>一人当たり</span><span id="split-amount">0</span><span>円</span>
+      <span><%= t('splits.per_person') %></span><span id="split-amount">0</span><span><%= t('common.yen') %></span>
     </div>
   </div>
 
   <div class="share">
     <!-- Open the modal using ID.showModal() method -->
-    <button class="btn btn-active btn-accent", onclick="my_modal_2.showModal()">共有する</button>
+    <button class="btn btn-active btn-accent", onclick="my_modal_2.showModal()"><%= t('splits.share') %></button>
     <dialog id="my_modal_2" class="modal">
       <form method="dialog" class="modal-box">
         <div id="modal_frame">

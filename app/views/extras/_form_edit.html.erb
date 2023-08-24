@@ -16,10 +16,10 @@
         <div><%= f.label :amount %></div>
         <%= f.number_field :amount,  class:"input input-bordered input-accent w-full max-w-xs"%>
       </div>
-      <p class="field-yen">円</p>
+      <p class="field-edit-yen"><%= t('common.yen') %></p>
 
       <div class="actions">
-        <%= f.submit '更新',  class:"btn btn-active btn-accent"%>
+        <%= f.submit t('extras.update'),  class:"btn btn-active btn-accent"%>
       </div>
     </div>
   <% end %>

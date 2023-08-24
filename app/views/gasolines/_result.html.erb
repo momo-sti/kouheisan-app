@@ -1,4 +1,4 @@
 <%= stylesheet_link_tag 'gasoline' %>
 <div class="result">
-  <h1 class="text-xl"><%= t('gasolines.gasoline_cost') %><p class="gas-cost"><%= @result.present? ? display_number(@result) : 0 %></p><p class="yen", style="display:inline">円</p></h1>
+  <h1 class="text-xl"><%= t('gasolines.gasoline_cost') %><p class="gas-cost"><%= @result.present? ? display_number(@result) : 0 %></p><p class="yen", style="display:inline"><%= t('common.yen') %></p></h1>
 </div>

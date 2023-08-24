@@ -6,8 +6,8 @@
     <div id="error_message"></div>
 
     <div class="cost-button">
-      <%= link_to "旅行前", costs_path(action_type: 'before'),  class:"btn btn-active btn-accent before", data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %>
-      <%= link_to "旅行後", costs_path(action_type: 'after'),  class:"btn btn-active btn-accent after", data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %> 
+      <%= link_to t('costs.before'), costs_path(action_type: 'before'),  class:"btn btn-active btn-accent before", data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %>
+      <%= link_to t('costs.after'), costs_path(action_type: 'after'),  class:"btn btn-active btn-accent after", data: { "turbo-method": :post, turbo_action: 'replace', turbo_frame: 'modal_frame' } %> 
     </div>
   <% else %>
     <p class="py-4">ログインが必要です</p>

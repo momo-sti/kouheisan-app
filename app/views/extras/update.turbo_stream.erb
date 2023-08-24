@@ -3,11 +3,11 @@
 <% end %>
 
 <%= turbo_stream.update "extra_amount_#{@extra.id}" do %>
-  <%= @extra.amount %>円
+  <%= @extra.amount %><%= t('common.yen') %>
 <% end %>
 
 <%= turbo_stream.update "total_amount" do %>
-  <%= display_number(@total_amount) %>円
+  <%= display_number(@total_amount) %><%= t('common.yen') %>
 <% end %>
 
 <%= turbo_stream.update "split-container-wrapper" do %>

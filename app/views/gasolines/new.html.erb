@@ -22,7 +22,7 @@
     </div>
     <div>
       <%= f.label :price_per_liter, class: 'form-label' %>
-      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit"><%= t('gasolines.new.yen') %>/L</p>
+      <%= f.number_field :price_per_liter, value: session[:gasoline]['price_per_liter'], step: 'any', class: 'input input-bordered input-accent w-full max-w-xs' %><p style="display:inline", class="unit"><%= t('common.yen') %>/L</p>
     </div>
     <div class="cal-button">
       <%= f.submit t('common.calculation'), class: "btn btn-active btn-accent fixed-button" %>
