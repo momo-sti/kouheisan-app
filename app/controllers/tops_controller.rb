@@ -23,7 +23,6 @@ class TopsController < ApplicationController
       format.json { render json: @favorite_locations }
     end
   end
-  
 
   # TOPページにアクセスするとセッションリセット
   def reset_session

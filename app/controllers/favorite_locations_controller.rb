@@ -1,18 +1,15 @@
 class FavoriteLocationsController < ApplicationController
   before_action :set_favorite_location, only: [:edit, :update, :destroy]
-  before_action :redirect_index, only: %i[ new show edit ]
+  before_action :redirect_index, only: %i[new show edit]
 
   def index
     @favorite_locations = Array.new(3) { |index| current_user.favorite_locations[index] }
   end
-  
-  
 
   def new
     @favorite_location = current_user.favorite_locations.build
     @index = params[:index].to_i
   end
-  
 
   def create
     @favorite_location = current_user.favorite_locations.build(favorite_location_params)
@@ -39,15 +36,13 @@ class FavoriteLocationsController < ApplicationController
     @favorite_location.destroy!
     redirect_to favorite_locations_path
   end
-  
-  
 
   private
 
   def set_favorite_location
     @favorite_locations = current_user.favorite_locations
     @favorite_location = @favorite_locations.find(params[:id])
-  end  
+  end
 
   def favorite_location_params
     params.require(:favorite_location).permit(:name, :address)
