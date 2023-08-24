@@ -70,6 +70,10 @@ ja:
     how: "使い方"
     logout: "ログアウト"
     login: "ログイン"
+  footer:
+    terms: "利用規約"
+    privacy_policy: "プライバシーポリシー"
+    contact: "お問い合わせ"
   labels:
         use_highway: "高速道路を使用"
   favorite_locations:
