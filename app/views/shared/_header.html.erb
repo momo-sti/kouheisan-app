@@ -25,7 +25,7 @@
     <div class="button-wrapper">
         <% if current_page?(extras_path) %>
             <button id="edit-toggle-button",  class="btn btn-sm btn-outline btn-primary" class="btn rounded-full btn-active btn-accent text-xl" 
-                data-tg-order="1" data-tg-tour='追加した費用の編集・削除ボタンが出てきます。'>編集</button>
+                data-tg-order="1" data-tg-tour='追加した費用の編集・削除ボタンが出てきます。'><%= t('header.edit') %></button>
         <% else %>
             <!-- 空の div により、ボタンが存在しない場合でもスペースを確保 -->
             <div style="width: 54px; height: 32px;"></div>
