@@ -1,25 +1,53 @@
 document.addEventListener('turbo:load', function() {
   const mainForm = document.getElementById('main_form');
-  const externalForm = document.getElementById('external_form');
-  
-  if (mainForm) {
-    mainForm.addEventListener('submit', function(event) {
-      event.preventDefault();
+  const searchButton = document.querySelector('.search .btn');
 
+  // セッションストレージからフォームの値を取得
+  function getFormData() {
+    return JSON.parse(sessionStorage.getItem('mainForm') || '[]');
+  }
+
+  // フォームの値をセッションストレージに保存
+  function setFormData() {
+    const formDataArray = Array.from(new FormData(mainForm).entries());
+    sessionStorage.setItem('mainForm', JSON.stringify(formDataArray));
+  }
+
+  // フォームの値をセッションストレージから復元
+  function restoreFormData() {
+    const formData = getFormData();
+    formData.forEach(item => {
+      mainForm[item[0]].value = item[1];
+    });
+    sessionStorage.removeItem('mainForm'); // 一度復元したらセッションストレージから削除
+  }
+
+  if (mainForm) {
+    // 新規タブ開いて親ページがリロードされた際のフォームの値の復元
+    restoreFormData();
+
+    searchButton.addEventListener('click', function() {
       // メインのフォームのデータを取得
       const formData = new FormData(mainForm);
 
-      // 外部サイトへのフォームのデータを設定
-      document.getElementById('startPlaceKana').value = formData.get('start_place');
-      document.getElementById('arrivePlaceKana').value = formData.get('arrive_place');
-      document.getElementById('searchHour').value = formData.get('hour');
-      document.getElementById('searchMinute').value = formData.get('minute');
-      document.getElementById('kind').value = formData.get('kind');
-      document.getElementById('carType').value = formData.get('car_type');
+      // フォームの値を保存
+      setFormData();
+
+      // 外部サイトへのURLを生成
+      const url = new URL('https://www.driveplaza.com/dp/SearchQuick');
       const date = formData.get('date').split('-');
-      document.getElementById('searchYear').value = date[0];
-      document.getElementById('searchMonth').value = parseInt(date[1], 10); // 月を整数に変換
-      document.getElementById('searchDay').value = parseInt(date[2], 10); // 日を整数に変換
+      url.searchParams.append('startPlaceKana', formData.get('start_place'));
+      url.searchParams.append('arrivePlaceKana', formData.get('arrive_place'));
+      url.searchParams.append('searchHour', formData.get('hour'));
+      url.searchParams.append('searchMinute', formData.get('minute'));
+      url.searchParams.append('kind', formData.get('kind'));
+      url.searchParams.append('carType', formData.get('car_type'));
+      url.searchParams.append('searchYear', date[0]);
+      url.searchParams.append('searchMonth', parseInt(date[1], 10)); // 月を整数に変換
+      url.searchParams.append('searchDay', parseInt(date[2], 10)); // 日を整数に変換
+
+      // 新しいタブを開く処理
+      window.open(url.toString(), '_blank');
 
       // メインのフォームを非同期で送信
       fetch(mainForm.action, {
@@ -34,10 +62,6 @@ document.addEventListener('turbo:load', function() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
-        // 外部サイトへのフォームを送信
-        // externalForm.setAttribute('target', '_blank'); // 新しいタブで開く
-        externalForm.submit();
       }).catch(function(error) {
         console.error('There has been a problem with your fetch operation:', error);
       });
