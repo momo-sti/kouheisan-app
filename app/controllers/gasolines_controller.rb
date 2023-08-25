@@ -14,11 +14,16 @@ class GasolinesController < ApplicationController
       @result = @gasoline.calculate
       session[:gasoline] = gasoline_params
       session[:result] = @result
-      redirect_to new_gasoline_path
+      
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.update("gasoline_cost", partial: "gasolines/result", locals: { result: @result }) }
+        format.html { redirect_to new_gasoline_path }
+      end
     else
       render :new
     end
   end
+  
 
   private
 
