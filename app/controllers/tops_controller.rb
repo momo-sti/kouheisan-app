@@ -37,8 +37,6 @@ class TopsController < ApplicationController
   private
 
   def set_favorite_locations
-    Rails.logger.info "Debug: Inside set_favorite_locations. user_signed_in?=#{user_signed_in?}, current_user=#{current_user.inspect}"
     @favorite_locations = user_signed_in? ? current_user.favorite_locations : []
   end
-  
 end
