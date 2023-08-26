@@ -12,7 +12,7 @@
   </div>
 
   <div id="routeSearchForm">
-    <div class="inputForm">
+    <div class="inputForm" data-logged-in="<%= user_signed_in? %>">
       <div data-controller="autocomplete" data-autocomplete-url-value="/search_favorite_location" role="combobox">
         <i class="fa-solid fa-circle fa-lg" style="color: #0084ff;"></i>
         <input id="inputBegin" type="text" placeholder="出発地" data-autocomplete-target="input" class="input input-bordered input-accent w-full max-w-xs"/>
