@@ -5,7 +5,7 @@ class TopsController < ApplicationController
   end
 
   def top
-    @favorite_locations = FavoriteLocation.all
+    set_favorite_locations
   end
 
   def new
@@ -18,7 +18,7 @@ class TopsController < ApplicationController
   end
 
   def favorites
-    @favorite_locations = FavoriteLocation.all
+    set_favorite_locations
     respond_to do |format|
       format.json { render json: @favorite_locations }
     end
@@ -28,5 +28,11 @@ class TopsController < ApplicationController
   def reset_session
     session.delete(:extras)
     head :ok
+  end
+
+  private
+
+  def set_favorite_locations
+    @favorite_locations = user_signed_in? ? current_user.favorite_locations : []
   end
 end
