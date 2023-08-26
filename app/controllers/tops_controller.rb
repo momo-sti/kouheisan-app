@@ -13,14 +13,13 @@ class TopsController < ApplicationController
 
   def search
     query = params[:q]
-    if user_signed_in?
-      @locations = current_user.favorite_locations.where('name LIKE ?', "%#{query}%")
-    else
-      @locations = []
-    end
+    @locations = if user_signed_in?
+                   current_user.favorite_locations.where('name LIKE ?', "%#{query}%")
+                 else
+                   []
+                 end
     render json: { results: @locations.as_json }
   end
-  
 
   def favorites
     set_favorite_locations
