@@ -1,5 +1,5 @@
 # Kouheisan
-![OGP](images/OGP.PNG)
+![OGP](https://github.com/momo-sti/kouheisan-app/blob/main/path/to/image/OGP.PNG?raw=true)
 
 ### ■ サービスURL
 https://kouheisan.com
@@ -72,4 +72,4 @@ README〜ER図作成：6/2 〆切
 - Hotwireを使用して一部SPA化予定
 
 ### ■ ER図
-![ER図](images/ER.png)
+![ER図](https://github.com/momo-sti/kouheisan-app/blob/main/path/to/image/ER.png?raw=true)
