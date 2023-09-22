@@ -16,7 +16,7 @@ document.addEventListener('turbo:load', function() {
 
   // "km" を取り除く（もし含まれていれば）
   if (km && typeof km === 'string') {
-    km = km.replace(' km', '');
+    km = km.replace(' km', '').replace(/,/g, '');
   }
 
   // total_distanceのinputフィールドに値を設定
