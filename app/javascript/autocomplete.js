@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
   const inputForm = document.querySelector('.inputForm');
-  const isLoggedIn = inputForm.getAttribute('data-logged-in') === 'true';
+  const isLoggedIn = inputForm ? inputForm.getAttribute('data-logged-in') === 'true' : false;
 
   const inputBegin = document.getElementById('inputBegin');
   const inputEnd = document.getElementById('inputEnd');
