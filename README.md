@@ -1,11 +1,11 @@
 # Kouheisan
+![OGP](images/OGP.PNG)
 
-アプリを作り直したため以下のリポジトリにREADME・画面遷移図・ER図のレビューがあります。
-https://github.com/momo-sti/kouheisan/pulls?q=is%3Apr+is%3Aclosed
+### ■ サービスURL
+https://kouheisan.com
 
 ### ■ サービス概要
-友人との旅行で交通費の負担を公平にしたいが、直接お金を請求しづらい車持ちの人に
-交通費を計算し、間接的に請求をしてくれる交通費計算アプリ。
+友人との旅行で交通費の負担を公平にしたいけど直接お金を請求しづらい車持ちの人に交通費を計算し、間接的に請求をしてくれるアプリ。
 
 ### ■ ユーザーが抱える課題
 ①旅行で車出しをするときに交通費の請求をしづらい
@@ -40,18 +40,12 @@ https://github.com/momo-sti/kouheisan/pulls?q=is%3Apr+is%3Aclosed
 - お気に入り地点を登録できる
 - LINEBotを使ってグループLINEに交通費を知らせる
 
-**管理ユーザー**
-- ユーザーの一覧、詳細、編集、削除
-- 管理ユーザーの一覧、詳細、作成、編集、削除
-- LINEBotのメッセージの一覧、詳細、作成、編集、削除
-
 **LINEBotの機能**
 - Botに「交平さん」という男性キャラクターを設定
 - アプリで作成した交通費をLINEグループに発信
     - 「 交平さん！」とLINEでメッセージを送るとアプリで作った交通費を交平さんがグループに送信する
 - 交通費の共有後、支払いが完了したか確認する
     - 「支払いができたら★を送ってくれ！」というメッセージを交平さんがグループに発信
-    - ユーザーから★が送られてくると、交平さんが褒めてくれる
 
 ### ■ なぜこのサービスを作りたいのか？
 友達と旅行に行く際ガソリン代や高速代を出してくれない人、割といませんか？
@@ -77,8 +71,5 @@ README〜ER図作成：6/2 〆切
 - LINE Login
 - Hotwireを使用して一部SPA化予定
 
-### ■ 画面遷移図
-https://www.figma.com/file/aK5kMRihDYUqEHgdW27Ix3/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&t=siRe4f0J6aafamao-1
-
 ### ■ ER図
-https://drive.google.com/file/d/1RZ8hj03vHM2lh6d5hyXf2raYZRA0koKA/view?usp=sharing
+![ER図](images/ER.png)
