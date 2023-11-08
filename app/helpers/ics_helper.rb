@@ -1,0 +1,2 @@
+module IcsHelper
+end

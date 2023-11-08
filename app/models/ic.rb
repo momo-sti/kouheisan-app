@@ -1,0 +1,2 @@
+class Ic < ApplicationRecord
+end
